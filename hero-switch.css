@@ -1,5 +1,37 @@
-/* Khamryn's Big Adventures — SOCCER TOP / BASKETBALL BOTTOM-RIGHT */
-.hero-orbit .hero-football-kham{left:auto!important;right:25%!important;top:auto!important;bottom:-1%!important;width:190px!important;z-index:4!important;animation:soccerFloat 7s ease-in-out infinite!important}
-.hero-orbit .hero-soccer-kham{left:30%!important;right:auto!important;top:0!important;bottom:auto!important;width:185px!important;z-index:4!important;animation:footballFloat 8s ease-in-out infinite!important}
-@media(max-width:600px){.hero-orbit .hero-football-kham{left:auto!important;right:5%!important;top:auto!important;bottom:-1%!important;width:104px!important}.hero-orbit .hero-soccer-kham{left:30%!important;right:auto!important;top:0!important;bottom:auto!important;width:100px!important}}
-@media(max-width:380px){.hero-orbit .hero-football-kham{width:88px!important;right:3%!important}.hero-orbit .hero-soccer-kham{width:84px!important;left:30%!important}}
+/* FINAL HERO SWITCH — soccer top, basketball bottom-right */
+.hero-orbit .hero-soccer-kham{
+  left:30% !important;
+  right:auto !important;
+  top:0 !important;
+  bottom:auto !important;
+  width:185px !important;
+  animation:footballFloat 8s ease-in-out infinite !important;
+}
+.hero-orbit .hero-football-kham{
+  left:auto !important;
+  right:25% !important;
+  top:auto !important;
+  bottom:-1% !important;
+  width:190px !important;
+  animation:soccerFloat 7s ease-in-out infinite !important;
+}
+@media(max-width:850px){
+  .hero-orbit .hero-soccer-kham{
+    left:30% !important;
+    right:auto !important;
+    top:0 !important;
+    bottom:auto !important;
+    width:100px !important;
+  }
+  .hero-orbit .hero-football-kham{
+    left:auto !important;
+    right:5% !important;
+    top:auto !important;
+    bottom:-1% !important;
+    width:104px !important;
+  }
+}
+@media(max-width:380px){
+  .hero-orbit .hero-soccer-kham{left:30% !important;width:84px !important}
+  .hero-orbit .hero-football-kham{right:3% !important;width:88px !important}
+}
