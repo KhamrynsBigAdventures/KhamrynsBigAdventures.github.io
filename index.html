@@ -6,6 +6,34 @@
   <meta name="description" content="Khamryn's Big Adventures — books filled with sports, exploration, imagination, and big dreams.">
   <title>Khamryn's Big Adventures</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* The adventure links stay fully clickable while moving like the objects they represent. */
+    .football-link{animation:footballRide 3.8s ease-in-out infinite;}
+    .bike-link{animation:bikeRide 4.6s ease-in-out infinite;}
+    .football-link:hover,.football-link:focus-visible{animation-play-state:paused;}
+    .bike-link:hover,.bike-link:focus-visible{animation-play-state:paused;}
+    @keyframes footballRide{
+      0%,100%{transform:translateX(-24px) rotate(-12deg)}
+      50%{transform:translateX(34px) rotate(-4deg)}
+    }
+    @keyframes bikeRide{
+      0%,100%{transform:translateX(-28px) rotate(-2deg)}
+      50%{transform:translateX(38px) rotate(2deg)}
+    }
+    @media(max-width:560px){
+      @keyframes footballRide{
+        0%,100%{transform:translateX(-12px) rotate(-12deg)}
+        50%{transform:translateX(18px) rotate(-4deg)}
+      }
+      @keyframes bikeRide{
+        0%,100%{transform:translateX(-16px) rotate(-2deg)}
+        50%{transform:translateX(22px) rotate(2deg)}
+      }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .football-link,.bike-link{animation:none;}
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
