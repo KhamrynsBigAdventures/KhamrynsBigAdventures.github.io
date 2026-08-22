@@ -1,4 +1,4 @@
-/* FINAL HERO SWITCH — soccer top, basketball bottom-right */
+/* FINAL HERO SWITCH — exact images: soccer top, basketball bottom-right */
 .hero-orbit .hero-soccer-kham{
   left:30% !important;
   right:auto !important;
@@ -6,9 +6,10 @@
   bottom:auto !important;
   width:185px !important;
   animation:none !important;
-  background:url("images/big-game-exact.png") center/contain no-repeat !important;
+  background:url("images/final-kickoff-exact.png") center/contain no-repeat !important;
 }
 .hero-orbit .hero-soccer-kham img{visibility:hidden !important;}
+
 .hero-orbit .hero-football-kham{
   left:auto !important;
   right:25% !important;
@@ -16,9 +17,10 @@
   bottom:-1% !important;
   width:190px !important;
   animation:none !important;
-  background:url("images/final-kickoff-exact.png") center/contain no-repeat !important;
+  background:url("images/big-game-exact.png") center/contain no-repeat !important;
 }
 .hero-orbit .hero-football-kham img{visibility:hidden !important;}
+
 @media(max-width:850px){
   .hero-orbit .hero-soccer-kham{
     left:30% !important;
