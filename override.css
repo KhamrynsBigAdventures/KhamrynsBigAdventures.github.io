@@ -56,3 +56,21 @@
   .hero-game-kham .screen-item{right:-5px!important;bottom:38px!important}
   .hero-bike-kham .bike-item{right:-4px!important;bottom:36px!important}
 }
+
+/* Khamryn astronaut adventure pass */
+.hero-orbit .kham-portrait{position:relative!important;width:148px!important;height:190px!important;margin:auto!important;overflow:hidden!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45))!important}
+.hero-orbit .kham-portrait img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important}
+/* Crop away the printed cover title/name so Khamryn is the focus. */
+.hero-soccer-kham .kham-portrait img{object-position:72% 68%!important}
+.hero-football-kham .kham-portrait img{object-position:54% 66%!important}
+.hero-cruise-kham .kham-portrait img{object-position:66% 66%!important}
+.hero-game-kham .kham-portrait img{object-position:73% 66%!important}
+.hero-bike-kham .kham-portrait img{object-position:52% 70%!important}
+/* Glass astronaut helmet around Khamryn's head — no emoji helmet. */
+.hero-orbit .kham-portrait::before{content:''!important;position:absolute!important;z-index:20!important;left:27%!important;top:4%!important;width:46%!important;height:27%!important;border:2px solid rgba(220,245,255,.88)!important;border-bottom-color:rgba(140,205,255,.72)!important;border-radius:50% 50% 46% 46%!important;background:linear-gradient(180deg,rgba(225,250,255,.16),rgba(75,170,255,.05))!important;box-shadow:0 0 12px rgba(180,235,255,.5),inset 0 0 8px rgba(255,255,255,.25)!important;pointer-events:none!important}
+.hero-orbit .kham-portrait::after{content:''!important;position:absolute!important;z-index:19!important;left:23%!important;top:18%!important;width:54%!important;height:5px!important;border-radius:999px!important;background:rgba(210,240,255,.55)!important;box-shadow:0 0 8px rgba(150,220,255,.5)!important;pointer-events:none!important}
+/* Make the five figures feel like independent objects in zero gravity. */
+.hero-orbit .adventure-hero{z-index:8!important}
+.hero-orbit .adventure-hero b{margin-top:6px!important}
+@media(max-width:850px){.hero-orbit .kham-portrait{width:120px!important;height:164px!important}}
+@media(max-width:560px){.hero-orbit .kham-portrait{width:100px!important;height:140px!important}.hero-orbit .kham-portrait::before{left:27%;top:4%;width:46%;height:27%}.hero-orbit .kham-portrait::after{left:23%;top:18%;width:54%}}
