@@ -21,6 +21,27 @@
 }
 .hero-orbit .hero-football-kham img{visibility:hidden !important;}
 
+/* CRUISE HERO — use the same little ship symbol as the Cruise book button */
+.hero-orbit .hero-cruise-kham{
+  animation:none !important;
+  background:none !important;
+  width:150px !important;
+  height:120px !important;
+}
+.hero-orbit .hero-cruise-kham img{visibility:hidden !important;}
+.hero-orbit .hero-cruise-kham::before{
+  content:'🛳️' !important;
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:78px !important;
+  line-height:1 !important;
+  filter:drop-shadow(0 7px 8px rgba(0,0,0,.28)) !important;
+}
+
 @media(max-width:850px){
   .hero-orbit .hero-soccer-kham{
     left:30% !important;
@@ -36,10 +57,19 @@
     bottom:-1% !important;
     width:104px !important;
   }
+  .hero-orbit .hero-cruise-kham{
+    width:92px !important;
+    height:82px !important;
+  }
+  .hero-orbit .hero-cruise-kham::before{
+    font-size:50px !important;
+  }
 }
 @media(max-width:380px){
   .hero-orbit .hero-soccer-kham{left:30% !important;width:84px !important}
   .hero-orbit .hero-football-kham{right:3% !important;width:88px !important}
+  .hero-orbit .hero-cruise-kham{width:82px !important;height:72px !important}
+  .hero-orbit .hero-cruise-kham::before{font-size:44px !important}
 }
 
 /* BIKE BOOK BUTTON — use Khamryn riding the red bike instead of the emoji */
