@@ -1,5 +1,5 @@
 /* Khamryn interaction fixes */
-/* The adventure objects are the links — not big decorative buttons. */
+/* Book objects are the actual moving links. */
 .object-link{background:transparent!important;border:0!important;box-shadow:none!important;clip-path:none!important;width:auto!important;height:auto!important;padding:0!important;overflow:visible!important;position:relative;animation:linkFloat 4s ease-in-out infinite;}
 .object-link .object-emoji{font-size:3.9rem;line-height:1;display:block;}
 .object-link>span:last-child{display:block;margin-top:2px!important;font-size:.72rem;letter-spacing:.08em;}
@@ -9,9 +9,16 @@
 .bike-link{animation:bikeRide 3.8s ease-in-out infinite!important;}
 .cruise-link{animation:shipSail 4.6s ease-in-out infinite!important;}
 .soccer-link{animation:soccerKickLink 3s ease-in-out infinite!important;}
+.soccer-link::after{content:'🥅';position:absolute;left:62px;top:10px;font-size:3.3rem;z-index:1;filter:drop-shadow(0 5px 7px rgba(0,0,0,.28));}
+.soccer-link .object-emoji{position:relative;z-index:3;}
+.soccer-link>span:last-child{position:relative;z-index:4;color:#251344!important;text-shadow:none!important;}
 .trophy-link{animation:trophyBounce 3.6s ease-in-out infinite!important;}
+.trophy-link::before{content:'🎉  ✨  🎊';position:absolute;left:-28px;top:-38px;font-size:1.45rem;letter-spacing:.02em;white-space:nowrap;z-index:4;animation:confettiPop 1.8s ease-in-out infinite;filter:drop-shadow(0 4px 5px rgba(0,0,0,.25));}
 
-/* Keep the moving hero links moving on phones too. */
+/* The hero's .adventure-item is absolute by design; the lower adventure cards are not. */
+.adventures .adventure-item{position:relative!important;z-index:auto!important;width:auto!important;height:auto!important;display:block!important;place-items:initial!important;transform:none!important;transform-origin:initial!important;}
+
+/* Keep every hero object moving on mobile too. */
 .hero-soccer-kham .soccer-item{animation:soccerPass 4.8s ease-in-out infinite!important;}
 .hero-football-kham .football-item{animation:footballPass 7.2s ease-in-out infinite!important;}
 .hero-cruise-kham .cruise-item{animation:shipBob 4.8s ease-in-out infinite!important;}
@@ -24,5 +31,7 @@
 @keyframes shipSail{0%,100%{transform:translateX(-8px) translateY(0) rotate(-2deg)}50%{transform:translateX(22px) translateY(-7px) rotate(2deg)}}
 @keyframes soccerKickLink{0%,18%{transform:translateX(0) rotate(0)}45%{transform:translateX(65px) rotate(220deg)}62%{transform:translateX(65px) rotate(360deg)}100%{transform:translateX(0) rotate(720deg)}}
 @keyframes trophyBounce{0%,100%{transform:translateY(5px) scale(.98)}50%{transform:translateY(-12px) scale(1.05)}}
+@keyframes confettiPop{0%,100%{transform:translateY(8px) scale(.8) rotate(-4deg);opacity:.55}45%{transform:translateY(-9px) scale(1.08) rotate(4deg);opacity:1}70%{transform:translateY(-4px) scale(1) rotate(-2deg);opacity:.9}}
 
-@media(prefers-reduced-motion:reduce){.object-link,.hero-soccer-kham .soccer-item,.hero-football-kham .football-item,.hero-cruise-kham .cruise-item,.hero-game-kham .screen-item,.hero-bike-kham .bike-item{animation:none!important;}}
+@media(max-width:560px){.soccer-link::after{left:48px;top:8px;font-size:2.6rem}.trophy-link::before{left:-20px;top:-32px;font-size:1.05rem}}
+@media(prefers-reduced-motion:reduce){.object-link,.hero-soccer-kham .soccer-item,.hero-football-kham .football-item,.hero-cruise-kham .cruise-item,.hero-game-kham .screen-item,.hero-bike-kham .bike-item,.trophy-link::before{animation:none!important;}}
