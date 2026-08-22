@@ -1,40 +1,40 @@
-/* Khamryn's Big Adventures — responsive hero + floating adventure artwork */
-.hero-orbit .kham-portrait{position:relative!important;width:210px!important;height:185px!important;margin:auto!important;overflow:visible!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))!important;clip-path:none!important}
-.hero-orbit .kham-portrait img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important}
-.hero-orbit .kham-portrait::before,.hero-orbit .kham-portrait::after,.hero-orbit .adventure-item{display:none!important}
-.hero-orbit .adventure-hero{position:absolute!important;width:210px!important;height:220px!important;z-index:8!important;filter:drop-shadow(0 10px 14px rgba(0,0,0,.28))!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;pointer-events:none!important}
-.hero-orbit .adventure-hero img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:transparent!important;border:0!important;box-shadow:none!important}
-.hero-orbit .hero-core{z-index:20!important}.hero-orbit .orbit{z-index:1!important}
-.hero-orbit .hero-soccer-kham{left:0!important;top:170px!important;animation:soccerFloat 7s ease-in-out infinite!important}
-.hero-orbit .hero-football-kham{left:120px!important;top:0!important;animation:footballFloat 8s ease-in-out infinite!important}
-.hero-orbit .hero-cruise-kham{right:-10px!important;top:170px!important;animation:cruiseFloat 9s ease-in-out infinite!important}
-.hero-orbit .hero-game-kham{right:35px!important;bottom:-15px!important;animation:basketballFloat 6s ease-in-out infinite!important}
-.hero-orbit .hero-bike-kham{left:25px!important;bottom:-15px!important;animation:bikeFloat 7.5s ease-in-out infinite!important}
-.hero-orbit .hero-sport-icon{display:grid!important;place-items:center!important;width:100%!important;height:100%!important;font-size:6.2rem!important;line-height:1!important;filter:drop-shadow(0 10px 14px rgba(0,0,0,.32))!important}
-.hero-orbit .hero-game-kham .hero-sport-icon{font-size:5.7rem!important}
-@keyframes soccerFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-10px)}}
-@keyframes footballFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(55px,18px)}}
-@keyframes cruiseFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-28px,12px)}}
-@keyframes basketballFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,22px)}}
-@keyframes bikeFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(28px,-12px)}}
-
-/* Keep Books + Connect visible in portrait phone view */
+/* Khamryn's Big Adventures — final hero + mobile navigation */
 .site-header{min-width:0!important}
 .brand{min-width:0!important;white-space:nowrap!important}
 .nav{flex-shrink:0!important;white-space:nowrap!important}
+.hero-orbit .hero-world{position:relative!important;z-index:20!important;width:280px!important;height:420px!important;display:block!important;overflow:hidden!important;border-radius:24px!important;background:#171044!important;box-shadow:0 18px 45px rgba(0,0,0,.38),0 0 55px rgba(134,103,232,.35)!important;animation:worldFloat 8s ease-in-out infinite!important}
+.hero-orbit .hero-world img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;border:0!important;margin:0!important;border-radius:24px!important}
+.hero-orbit .hero-core{display:none!important}
+.hero-orbit .orbit{z-index:1!important}
+.hero-orbit .adventure-hero{position:absolute!important;width:130px!important;height:130px!important;z-index:24!important;display:grid!important;place-items:center!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;pointer-events:none!important;filter:drop-shadow(0 10px 14px rgba(0,0,0,.32))!important}
+.hero-orbit .hero-sport-icon{display:grid!important;place-items:center!important;width:100%!important;height:100%!important;font-size:5.8rem!important;line-height:1!important}
+.hero-orbit .hero-soccer-kham{left:-8px!important;top:155px!important;animation:soccerFloat 7s ease-in-out infinite!important}
+.hero-orbit .hero-football-kham{left:100px!important;top:-10px!important;animation:footballFloat 8s ease-in-out infinite!important}
+.hero-orbit .hero-game-kham{right:5px!important;bottom:-10px!important;animation:basketballFloat 6s ease-in-out infinite!important}
+.hero-orbit .hero-bike-kham{left:0!important;bottom:-10px!important;animation:bikeFloat 7.5s ease-in-out infinite!important}
+.hero-orbit .hero-game-kham .hero-sport-icon{font-size:5.3rem!important}
+@keyframes soccerFloat{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(18px,-12px) rotate(8deg)}}
+@keyframes footballFloat{0%,100%{transform:translate(0,0) rotate(-8deg)}50%{transform:translate(35px,16px) rotate(8deg)}}
+@keyframes basketballFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,18px)}}
+@keyframes bikeFloat{0%,100%{transform:translate(0,0) rotate(-4deg)}50%{transform:translate(25px,-12px) rotate(4deg)}}
+@keyframes worldFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @media(max-width:600px){
-.site-header{padding:11px 14px!important;gap:8px!important}
-.brand{font-size:clamp(.68rem,3.5vw,.88rem)!important;gap:5px!important;flex:1 1 auto!important;min-width:0!important}
-.brand-star{font-size:.95rem!important;flex:0 0 auto!important}
-.nav{gap:9px!important;font-size:.75rem!important;flex:0 0 auto!important}
-.nav a{white-space:nowrap!important;display:inline-block!important}
+.site-header{position:fixed!important;top:max(8px,env(safe-area-inset-top))!important;left:8px!important;right:8px!important;width:auto!important;z-index:99999!important;padding:10px 12px!important;gap:8px!important;border:1px solid rgba(255,255,255,.28)!important;border-radius:999px!important;background:rgba(18,10,48,.94)!important;backdrop-filter:blur(18px)!important;box-shadow:0 8px 28px rgba(0,0,0,.28)!important}
+.site-header .brand{flex:1 1 auto!important;min-width:0!important;font-size:clamp(.68rem,3.45vw,.86rem)!important;gap:5px!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.site-header .brand-star{font-size:.95rem!important;flex:0 0 auto!important}
+.site-header .nav{display:flex!important;flex:0 0 auto!important;gap:9px!important;font-size:.76rem!important;white-space:nowrap!important}
+.site-header .nav a{display:inline-block!important;white-space:nowrap!important;pointer-events:auto!important;padding:3px 1px!important}
+.hero{padding-top:115px!important}
+.hero-orbit{min-height:530px!important;margin-top:20px!important}
+.hero-orbit .hero-world{width:205px!important;height:308px!important;border-radius:18px!important}
+.hero-orbit .hero-world img{border-radius:18px!important}
+.hero-orbit .adventure-hero{width:82px!important;height:82px!important}
+.hero-orbit .hero-sport-icon{font-size:3.55rem!important}
+.hero-orbit .hero-game-kham .hero-sport-icon{font-size:3.3rem!important}
+.hero-orbit .hero-soccer-kham{left:-9px!important;top:150px!important}
+.hero-orbit .hero-football-kham{left:45px!important;top:-2px!important}
+.hero-orbit .hero-game-kham{right:-3px!important;bottom:-2px!important}
+.hero-orbit .hero-bike-kham{left:-7px!important;bottom:-2px!important}
 }
-@media(max-width:380px){
-.site-header{padding-left:10px!important;padding-right:10px!important;gap:6px!important}
-.brand{font-size:.64rem!important}
-.nav{gap:7px!important;font-size:.68rem!important}
-}
-
-@media(max-width:850px){.hero-orbit{min-height:560px!important}.hero-orbit .adventure-hero{width:155px!important;height:175px!important}.hero-orbit .hero-soccer-kham{left:-5px!important;top:170px!important}.hero-orbit .hero-football-kham{left:90px!important;top:5px!important}.hero-orbit .hero-cruise-kham{right:-5px!important;top:170px!important}.hero-orbit .hero-game-kham{right:10px!important;bottom:-10px!important}.hero-orbit .hero-bike-kham{left:5px!important;bottom:-10px!important}.hero-orbit .hero-sport-icon{font-size:4.8rem!important}.hero-orbit .hero-game-kham .hero-sport-icon{font-size:4.4rem!important}}
-@media(max-width:560px){.hero-orbit{min-height:500px!important}.hero-orbit .adventure-hero{width:112px!important;height:135px!important}.hero-orbit .hero-soccer-kham{left:-12px!important;top:155px!important}.hero-orbit .hero-football-kham{left:55px!important;top:0!important}.hero-orbit .hero-cruise-kham{right:-12px!important;top:155px!important}.hero-orbit .hero-game-kham{right:0!important;bottom:-2px!important}.hero-orbit .hero-bike-kham{left:-5px!important;bottom:-2px!important}.hero-orbit .hero-sport-icon{font-size:3.5rem!important}.hero-orbit .hero-game-kham .hero-sport-icon{font-size:3.2rem!important}}
-@media(prefers-reduced-motion:reduce){.hero-orbit .adventure-hero{animation:none!important}}
+@media(max-width:380px){.site-header{left:6px!important;right:6px!important;padding:9px 10px!important;gap:6px!important}.site-header .brand{font-size:.63rem!important}.site-header .nav{gap:7px!important;font-size:.69rem!important}.hero{padding-left:6vw!important;padding-right:6vw!important}.hero-orbit{min-height:500px!important}.hero-orbit .hero-world{width:180px!important;height:270px!important}.hero-orbit .adventure-hero{width:70px!important;height:70px!important}.hero-orbit .hero-sport-icon{font-size:3rem!important}.hero-orbit .hero-game-kham .hero-sport-icon{font-size:2.8rem!important}}
+@media(prefers-reduced-motion:reduce){.hero-orbit .adventure-hero,.hero-orbit .hero-world{animation:none!important}}
