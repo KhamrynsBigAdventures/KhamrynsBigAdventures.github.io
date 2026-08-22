@@ -1,0 +1,28 @@
+/* Khamryn interaction fixes */
+/* The adventure objects are the links — not big decorative buttons. */
+.object-link{background:transparent!important;border:0!important;box-shadow:none!important;clip-path:none!important;width:auto!important;height:auto!important;padding:0!important;overflow:visible!important;position:relative;animation:linkFloat 4s ease-in-out infinite;}
+.object-link .object-emoji{font-size:3.9rem;line-height:1;display:block;}
+.object-link>span:last-child{display:block;margin-top:2px!important;font-size:.72rem;letter-spacing:.08em;}
+.football-link{animation:footballThrow 3.2s ease-in-out infinite!important;transform-origin:center!important;}
+.football-link .object-emoji{font-size:3.8rem!important;filter:drop-shadow(0 6px 8px rgba(0,0,0,.28));}
+.football-link>span:last-child{color:#fff!important;text-shadow:0 2px 4px rgba(0,0,0,.5)!important;}
+.bike-link{animation:bikeRide 3.8s ease-in-out infinite!important;}
+.cruise-link{animation:shipSail 4.6s ease-in-out infinite!important;}
+.soccer-link{animation:soccerKickLink 3s ease-in-out infinite!important;}
+.trophy-link{animation:trophyBounce 3.6s ease-in-out infinite!important;}
+
+/* Keep the moving hero links moving on phones too. */
+.hero-soccer-kham .soccer-item{animation:soccerPass 4.8s ease-in-out infinite!important;}
+.hero-football-kham .football-item{animation:footballPass 7.2s ease-in-out infinite!important;}
+.hero-cruise-kham .cruise-item{animation:shipBob 4.8s ease-in-out infinite!important;}
+.hero-game-kham .screen-item{animation:screenGlow 2.8s ease-in-out infinite!important;}
+.hero-bike-kham .bike-item{animation:bikeBounce .9s ease-in-out infinite!important;}
+
+@keyframes linkFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+@keyframes footballThrow{0%{transform:translate(-8px,8px) rotate(-25deg)}18%{transform:translate(12px,-8px) rotate(35deg)}42%{transform:translate(92px,-48px) rotate(170deg)}62%{transform:translate(155px,-10px) rotate(300deg)}82%{transform:translate(70px,12px) rotate(430deg)}100%{transform:translate(-8px,8px) rotate(695deg)}}
+@keyframes bikeRide{0%,100%{transform:translateX(-8px) rotate(-2deg)}50%{transform:translateX(28px) rotate(3deg)}}
+@keyframes shipSail{0%,100%{transform:translateX(-8px) translateY(0) rotate(-2deg)}50%{transform:translateX(22px) translateY(-7px) rotate(2deg)}}
+@keyframes soccerKickLink{0%,18%{transform:translateX(0) rotate(0)}45%{transform:translateX(65px) rotate(220deg)}62%{transform:translateX(65px) rotate(360deg)}100%{transform:translateX(0) rotate(720deg)}}
+@keyframes trophyBounce{0%,100%{transform:translateY(5px) scale(.98)}50%{transform:translateY(-12px) scale(1.05)}}
+
+@media(prefers-reduced-motion:reduce){.object-link,.hero-soccer-kham .soccer-item,.hero-football-kham .football-item,.hero-cruise-kham .cruise-item,.hero-game-kham .screen-item,.hero-bike-kham .bike-item{animation:none!important;}}
