@@ -1,19 +1,20 @@
-/* Picture-first hero: show each complete book artwork. Motion comes after the pictures are right. */
-.hero-orbit .kham-portrait{position:relative!important;width:210px!important;height:185px!important;margin:auto!important;overflow:hidden!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))!important;clip-path:none!important}
-.hero-orbit .kham-portrait img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;margin:0!important;border:0!important;border-radius:0!important}
-.hero-orbit .kham-portrait::before,.hero-orbit .kham-portrait::after{display:none!important}
-.hero-orbit .adventure-item{display:none!important}
-.hero-orbit .adventure-hero{width:210px!important;height:220px!important;z-index:8!important;animation:pictureFloat 6s ease-in-out infinite!important;filter:none!important}
-.hero-orbit .adventure-hero b{display:block!important;margin-top:6px!important;position:relative!important;z-index:10!important;font-size:.62rem!important;letter-spacing:.12em!important;text-align:center!important;color:#fff!important;text-shadow:0 2px 5px rgba(0,0,0,.45)!important}
-.hero-orbit .hero-soccer-kham{position:absolute!important;left:0!important;top:170px!important}
-.hero-orbit .hero-football-kham{position:absolute!important;left:120px!important;top:0!important}
-.hero-orbit .hero-cruise-kham{position:absolute!important;right:-10px!important;top:170px!important}
-.hero-orbit .hero-game-kham{position:absolute!important;right:35px!important;bottom:-15px!important}
-.hero-orbit .hero-bike-kham{position:absolute!important;left:25px!important;bottom:-15px!important}
-.hero-orbit .hero-core{z-index:20!important}
-.hero-orbit .orbit{z-index:1!important}
-.hero-football-kham::after{content:none!important}
-@keyframes pictureFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* Khamryn's Big Adventures — floating artwork */
+.hero-orbit .kham-portrait{position:relative!important;width:210px!important;height:185px!important;margin:auto!important;overflow:visible!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))!important;clip-path:none!important}
+.hero-orbit .kham-portrait img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important}
+.hero-orbit .kham-portrait::before,.hero-orbit .kham-portrait::after,.hero-orbit .adventure-item{display:none!important}
+.hero-orbit .adventure-hero{width:210px!important;height:220px!important;z-index:8!important;filter:none!important;background:transparent!important}
+.hero-orbit .adventure-hero b{display:block!important;margin-top:4px!important;position:relative!important;z-index:10!important;font-size:.62rem!important;letter-spacing:.12em!important;text-align:center!important;color:#fff!important;text-shadow:0 2px 5px rgba(0,0,0,.45)!important}
+.hero-orbit .hero-soccer-kham{position:absolute!important;left:0!important;top:170px!important;animation:soccerFloat 7s ease-in-out infinite!important}
+.hero-orbit .hero-football-kham{position:absolute!important;left:120px!important;top:0!important;animation:footballFloat 8s ease-in-out infinite!important}
+.hero-orbit .hero-cruise-kham{position:absolute!important;right:-10px!important;top:170px!important;animation:cruiseFloat 9s ease-in-out infinite!important}
+.hero-orbit .hero-game-kham{position:absolute!important;right:35px!important;bottom:-15px!important;animation:basketballFloat 6s ease-in-out infinite!important}
+.hero-orbit .hero-bike-kham{position:absolute!important;left:25px!important;bottom:-15px!important;animation:bikeFloat 7.5s ease-in-out infinite!important}
+.hero-orbit .hero-core{z-index:20!important}.hero-orbit .orbit{z-index:1!important}
+@keyframes soccerFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-10px)}}
+@keyframes footballFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(55px,18px)}}
+@keyframes cruiseFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-28px,12px)}}
+@keyframes basketballFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,22px)}}
+@keyframes bikeFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(28px,-12px)}}
 @media(max-width:850px){.hero-orbit{min-height:560px!important}.hero-orbit .adventure-hero{width:155px!important;height:175px!important}.hero-orbit .kham-portrait{width:155px!important;height:155px!important}.hero-orbit .hero-soccer-kham{left:-5px!important;top:170px!important}.hero-orbit .hero-football-kham{left:90px!important;top:5px!important}.hero-orbit .hero-cruise-kham{right:-5px!important;top:170px!important}.hero-orbit .hero-game-kham{right:10px!important;bottom:-10px!important}.hero-orbit .hero-bike-kham{left:5px!important;bottom:-10px!important}}
 @media(max-width:560px){.hero-orbit{min-height:500px!important}.hero-orbit .adventure-hero{width:112px!important;height:135px!important}.hero-orbit .kham-portrait{width:112px!important;height:112px!important}.hero-orbit .hero-soccer-kham{left:-12px!important;top:155px!important}.hero-orbit .hero-football-kham{left:55px!important;top:0!important}.hero-orbit .hero-cruise-kham{right:-12px!important;top:155px!important}.hero-orbit .hero-game-kham{right:0!important;bottom:-2px!important}.hero-orbit .hero-bike-kham{left:-5px!important;bottom:-2px!important}.hero-orbit .adventure-hero b{font-size:.5rem!important}}
 @media(prefers-reduced-motion:reduce){.hero-orbit .adventure-hero{animation:none!important}}
