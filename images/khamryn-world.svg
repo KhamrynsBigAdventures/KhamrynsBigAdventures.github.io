@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-labelledby="title desc">
+<title id="title">Khamryn's Big Adventures</title>
+<desc id="desc">A purple space adventure scene with stars, planets, a rocket and an adventurous kid silhouette.</desc>
+<defs>
+  <radialGradient id="bg" cx="50%" cy="35%" r="75%"><stop offset="0" stop-color="#5630b2"/><stop offset=".58" stop-color="#2b1768"/><stop offset="1" stop-color="#100a32"/></radialGradient>
+  <radialGradient id="planet" cx="35%" cy="30%"><stop offset="0" stop-color="#ffd77a"/><stop offset="1" stop-color="#d99035"/></radialGradient>
+  <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4f1ff"/><stop offset="1" stop-color="#c8b8ff"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="600" height="900" rx="32" fill="url(#bg)"/>
+<g fill="#fff" opacity=".85">
+ <circle cx="72" cy="120" r="3"/><circle cx="150" cy="220" r="2"/><circle cx="510" cy="155" r="3"/><circle cx="465" cy="270" r="2"/><circle cx="100" cy="510" r="3"/><circle cx="535" cy="560" r="2"/><circle cx="455" cy="690" r="3"/><circle cx="130" cy="760" r="2"/>
+</g>
+<g fill="#ffd96f" opacity=".95"><path d="M84 350l6 15 15 6-15 6-6 15-6-15-15-6 15-6z"/><path d="M500 390l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/><path d="M390 95l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/></g>
+<ellipse cx="300" cy="510" rx="205" ry="235" fill="none" stroke="#9f82e9" stroke-width="3" opacity=".38" transform="rotate(-18 300 510)"/>
+<ellipse cx="300" cy="510" rx="235" ry="125" fill="none" stroke="#d8b75f" stroke-width="2" opacity=".42" transform="rotate(22 300 510)"/>
+<circle cx="455" cy="620" r="72" fill="url(#planet)" opacity=".95"/><ellipse cx="455" cy="620" rx="110" ry="25" fill="none" stroke="#e9c97d" stroke-width="7" opacity=".65" transform="rotate(-18 455 620)"/>
+<g filter="url(#glow)"><path d="M145 170h0"/><path d="M135 205c22-50 65-72 111-69l28 30-22 24-37-8-33 30z" fill="#f7f2ff"/><path d="M196 195l24-28 18 10-12 35z" fill="#ffd36a"/><circle cx="222" cy="178" r="7" fill="#6e4cc6"/><path d="M154 210l-35 18 27 10z" fill="#ffb04a"/><path d="M178 211l-18 31 30-18z" fill="#ff7b66"/></g>
+<g transform="translate(300 330)"><circle cx="0" cy="0" r="58" fill="#24134f" stroke="#d7c6ff" stroke-width="4"/><circle cx="0" cy="0" r="44" fill="#5b3a9f"/><path d="M-22-4q22-22 44 0" fill="none" stroke="#f7f2ff" stroke-width="7" stroke-linecap="round"/><circle cx="-17" cy="-5" r="5" fill="#f7f2ff"/><circle cx="17" cy="-5" r="5" fill="#f7f2ff"/><path d="M-14 19q14 13 28 0" fill="none" stroke="#ffd66e" stroke-width="5" stroke-linecap="round"/>
+<path d="M-70 80q70-50 140 0v170H-70z" fill="url(#suit)" stroke="#c9b6ff" stroke-width="4"/><path d="M-70 125h140" stroke="#8a6ad0" stroke-width="8"/><circle cx="0" cy="145" r="13" fill="#ffd66e"/><path d="M-70 105l-65 70 28 20 37-43M70 105l65 70-28 20-37-43" fill="url(#suit)" stroke="#c9b6ff" stroke-width="4"/><path d="M-35 250l-28 105h38l25-105M35 250l28 105H25L0 250" fill="url(#suit)" stroke="#c9b6ff" stroke-width="4"/><path d="M-28 355h-35M28 355h35" stroke="#ffd66e" stroke-width="13" stroke-linecap="round"/></g>
+<text x="300" y="735" text-anchor="middle" fill="#ffe28b" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="800" letter-spacing="3">KHAMRYN'S WORLD</text>
+<text x="300" y="775" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="600" letter-spacing="1">BIG DREAMS. BIG ADVENTURES.</text>
+<g fill="#fff" opacity=".9"><circle cx="205" cy="835" r="3"/><circle cx="300" cy="820" r="4"/><circle cx="395" cy="835" r="3"/></g>
+</svg>
