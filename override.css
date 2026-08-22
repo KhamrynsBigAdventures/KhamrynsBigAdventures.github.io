@@ -18,20 +18,21 @@
 @keyframes basketballFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,22px)}}
 @keyframes bikeFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(28px,-12px)}}
 
-/* Keep the main navigation usable in portrait phone view. */
+/* Keep Books + Connect visible in portrait phone view */
 .site-header{min-width:0!important}
 .brand{min-width:0!important;white-space:nowrap!important}
 .nav{flex-shrink:0!important;white-space:nowrap!important}
-@media(max-width:560px){
-  .site-header{padding:12px 4vw!important;gap:10px!important}
-  .brand{font-size:.78rem!important;gap:6px!important}
-  .brand-star{font-size:1rem!important}
-  .nav{gap:10px!important;font-size:.76rem!important}
+@media(max-width:600px){
+.site-header{padding:11px 14px!important;gap:8px!important}
+.brand{font-size:clamp(.68rem,3.5vw,.88rem)!important;gap:5px!important;flex:1 1 auto!important;min-width:0!important}
+.brand-star{font-size:.95rem!important;flex:0 0 auto!important}
+.nav{gap:9px!important;font-size:.75rem!important;flex:0 0 auto!important}
+.nav a{white-space:nowrap!important;display:inline-block!important}
 }
 @media(max-width:380px){
-  .site-header{padding-left:3vw!important;padding-right:3vw!important;gap:7px!important}
-  .brand{font-size:.7rem!important}
-  .nav{gap:8px!important;font-size:.7rem!important}
+.site-header{padding-left:10px!important;padding-right:10px!important;gap:6px!important}
+.brand{font-size:.64rem!important}
+.nav{gap:7px!important;font-size:.68rem!important}
 }
 
 @media(max-width:850px){.hero-orbit{min-height:560px!important}.hero-orbit .adventure-hero{width:155px!important;height:175px!important}.hero-orbit .hero-soccer-kham{left:-5px!important;top:170px!important}.hero-orbit .hero-football-kham{left:90px!important;top:5px!important}.hero-orbit .hero-cruise-kham{right:-5px!important;top:170px!important}.hero-orbit .hero-game-kham{right:10px!important;bottom:-10px!important}.hero-orbit .hero-bike-kham{left:5px!important;bottom:-10px!important}.hero-orbit .hero-sport-icon{font-size:4.8rem!important}.hero-orbit .hero-game-kham .hero-sport-icon{font-size:4.4rem!important}}
