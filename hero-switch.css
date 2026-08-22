@@ -41,3 +41,27 @@
   .hero-orbit .hero-soccer-kham{left:30% !important;width:84px !important}
   .hero-orbit .hero-football-kham{right:3% !important;width:88px !important}
 }
+
+/* BIKE BOOK BUTTON — use Khamryn riding the red bike instead of the emoji */
+.book-info .bike-link{
+  width:190px !important;
+  height:135px !important;
+  gap:0 !important;
+}
+.book-info .bike-link .object-emoji{
+  width:175px !important;
+  height:105px !important;
+  margin:0 !important;
+  font-size:0 !important;
+  background:url("images/big-bike-exact.png") center/contain no-repeat !important;
+  filter:drop-shadow(0 7px 9px rgba(0,0,0,.3)) !important;
+}
+.book-info .bike-link>span:last-child{
+  margin-top:-1px !important;
+  color:#9ff1d9 !important;
+  font-size:.72rem !important;
+}
+@media(max-width:850px){
+  .book-info .bike-link{width:175px !important;height:125px !important}
+  .book-info .bike-link .object-emoji{width:160px !important;height:95px !important}
+}
