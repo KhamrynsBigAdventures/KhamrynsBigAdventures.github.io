@@ -1,76 +1,47 @@
-/* Final visual pass: full-body Khamryn figures + floating adventure emojis */
+/* Khamryn's Big Adventures — final hero cleanup */
 
-/* The lower MORE THAN BOOKS cards were inheriting hero-item positioning. Keep them as normal cards. */
+/* Lower adventure cards stay in normal document flow. */
 .adventures .adventure-grid{position:relative!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important;margin-top:42px!important}
-.adventures .adventure-grid .adventure-item{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;display:block!important;padding:28px 22px!important;border:1px solid var(--line)!important;border-radius:20px!important;background:rgba(255,255,255,.07)!important;filter:none!important;box-shadow:none!important;transform:none!important;animation:none!important;text-align:left!important}
+.adventures .adventure-grid .adventure-item{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;display:block!important;padding:28px 22px!important;border:1px solid var(--line)!important;border-radius:20px!important;background:rgba(255,255,255,.07)!important;filter:none!important;box-shadow:none!important;transform:none!important;animation:none!important;text-align:left!important}
 .adventures .adventure-grid .adventure-item::before{content:'✦'!important;display:block!important;position:static!important;width:auto!important;height:auto!important;margin:0 0 14px!important;border-radius:0!important;background:none!important;box-shadow:none!important;color:var(--gold)!important;font-size:1.8rem!important}
-.adventures .adventure-grid .adventure-item::after{content:none!important}
-.adventures .adventure-grid .adventure-item>span{display:none!important}
+.adventures .adventure-grid .adventure-item::after,.adventures .adventure-grid .adventure-item>span{display:none!important;content:none!important}
 
-/* HERO: no circular frames. Khamryn is shown as a floating full figure/card image. */
-.hero-orbit .adventure-hero{width:126px!important;z-index:8!important}
-.hero-orbit .kham-portrait{width:112px!important;height:158px!important;margin:auto!important;border:0!important;border-radius:0!important;overflow:visible!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 13px 15px rgba(0,0,0,.38))!important}
-.hero-orbit .kham-portrait::before,.hero-orbit .kham-portrait::after{display:none!important;content:none!important}
-.hero-orbit .kham-portrait img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:14px!important;border:0!important;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 15px 28px rgba(0,0,0,.28)!important}
-.hero-soccer-kham .kham-portrait img{object-position:72% 67%!important}
-.hero-football-kham .kham-portrait img{object-position:54% 63%!important}
-.hero-cruise-kham .kham-portrait img{object-position:66% 64%!important}
-.hero-game-kham .kham-portrait img{object-position:73% 64%!important}
-.hero-bike-kham .kham-portrait img{object-position:52% 58%!important}
+/* HERO: Khamryn figures are independent floating objects — never circles. */
+.hero-orbit .adventure-hero{width:150px!important;z-index:8!important}
+.hero-orbit .kham-portrait{position:relative!important;width:138px!important;height:188px!important;margin:auto!important;overflow:hidden!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 16px 18px rgba(0,0,0,.42))!important}
+.hero-orbit .kham-portrait img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border:0!important;border-radius:0!important;box-shadow:none!important}
 
-/* Adventure objects are actual emoji, floating above/alongside Khamryn. */
-.hero-orbit .adventure-item{width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;display:block!important;position:absolute!important;z-index:12!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 7px 9px rgba(0,0,0,.4))!important;font-size:2rem!important;line-height:1!important;outline:none!important}
-.hero-orbit .adventure-item::after{content:none!important;display:none!important}
-.hero-orbit .adventure-item::before{display:block!important;position:static!important;width:auto!important;height:auto!important;border:0!important;background:none!important;box-shadow:none!important;transform:none!important}
-.hero-soccer-kham .soccer-item::before{content:'⚽️'!important}
-.hero-football-kham .football-item::before{content:'🏈'!important}
-.hero-cruise-kham .cruise-item::before{content:'🛳️'!important}
-.hero-game-kham .screen-item::before{content:'🏀'!important}
-.hero-bike-kham .bike-item::before{content:'🚲'!important}
-.hero-soccer-kham .soccer-item{right:-10px!important;bottom:48px!important;animation:soccerKick 3s ease-in-out infinite!important}
-.hero-football-kham .football-item{right:-18px!important;bottom:54px!important;animation:footballThrow 3.2s ease-in-out infinite!important}
-.hero-cruise-kham .cruise-item{right:-14px!important;bottom:48px!important;animation:cruiseSail 4.6s ease-in-out infinite!important}
-.hero-game-kham .screen-item{right:-14px!important;bottom:54px!important;animation:basketballBounce 1.5s ease-in-out infinite!important}
-.hero-bike-kham .bike-item{right:-12px!important;bottom:50px!important;animation:bikeRide 3.8s ease-in-out infinite!important}
+/* Organic floating silhouette rather than a card/circle. */
+.hero-soccer-kham .kham-portrait,.hero-football-kham .kham-portrait,.hero-cruise-kham .kham-portrait,.hero-game-kham .kham-portrait,.hero-bike-kham .kham-portrait{clip-path:polygon(25% 0,72% 0,88% 13%,92% 33%,82% 50%,95% 69%,88% 88%,72% 100%,30% 100%,14% 88%,8% 68%,17% 51%,7% 32%,13% 13%)!important}
 
-/* Keep the five adventure names readable under their floating figures. */
-.hero-orbit .adventure-hero b{position:relative!important;z-index:13!important;display:block!important;margin-top:8px!important;font-size:.55rem!important;letter-spacing:.11em!important;color:#fff!important;text-shadow:0 2px 6px rgba(0,0,0,.65)!important}
+/* Crop toward Khamryn so printed cover borders/titles are minimized. */
+.hero-soccer-kham .kham-portrait img{object-position:72% 68%!important;transform:scale(1.12)!important}
+.hero-football-kham .kham-portrait img{object-position:54% 66%!important;transform:scale(1.12)!important}
+.hero-cruise-kham .kham-portrait img{object-position:66% 66%!important;transform:scale(1.12)!important}
+.hero-game-kham .kham-portrait img{object-position:73% 66%!important;transform:scale(1.12)!important}
+.hero-bike-kham .kham-portrait img{object-position:52% 70%!important;transform:scale(1.12)!important}
 
-/* Mobile spacing: still full figures, just a little smaller. */
+/* Glass astronaut headgear — drawn with CSS, not an emoji. */
+.hero-orbit .kham-portrait::before{content:''!important;position:absolute!important;z-index:30!important;left:26%!important;top:3%!important;width:48%!important;height:27%!important;border:2px solid rgba(220,245,255,.9)!important;border-radius:50% 50% 46% 46%!important;background:linear-gradient(180deg,rgba(225,250,255,.18),rgba(75,170,255,.04))!important;box-shadow:0 0 14px rgba(180,235,255,.55),inset 0 0 9px rgba(255,255,255,.28)!important;pointer-events:none!important}
+.hero-orbit .kham-portrait::after{content:''!important;position:absolute!important;z-index:29!important;left:22%!important;top:18%!important;width:56%!important;height:5px!important;border-radius:999px!important;background:rgba(210,240,255,.58)!important;box-shadow:0 0 8px rgba(150,220,255,.5)!important;pointer-events:none!important}
+
+/* IMPORTANT: no floating emoji objects. The Khamryn figure is the adventure object. */
+.hero-orbit .adventure-item{display:none!important}
+.hero-orbit .adventure-hero b{position:relative!important;z-index:40!important;display:block!important;margin-top:7px!important;font-size:.58rem!important;letter-spacing:.11em!important;color:#fff!important;text-shadow:0 2px 7px rgba(0,0,0,.72)!important}
+
+/* Keep the universe clean: only stars/sparkles belong in the orbital field. */
+.hero-orbit .sparkle{z-index:3!important}
+
 @media(max-width:850px){
   .adventures .adventure-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  .hero-orbit .adventure-hero{width:108px!important}
-  .hero-orbit .kham-portrait{width:96px!important;height:136px!important}
+  .hero-orbit .adventure-hero{width:126px!important}
+  .hero-orbit .kham-portrait{width:116px!important;height:166px!important}
 }
 @media(max-width:560px){
   .adventures .adventure-grid{grid-template-columns:1fr 1fr!important;gap:12px!important}
   .adventures .adventure-grid .adventure-item{padding:22px 17px!important}
   .hero-orbit{transform:none!important;min-height:530px!important}
-  .hero-orbit .adventure-hero{width:88px!important}
-  .hero-orbit .kham-portrait{width:78px!important;height:112px!important}
-  .hero-orbit .adventure-item{font-size:1.45rem!important}
-  .hero-orbit .adventure-hero b{font-size:.43rem!important}
-  .hero-soccer-kham .soccer-item{right:-4px!important;bottom:34px!important}
-  .hero-football-kham .football-item{right:-6px!important;bottom:38px!important}
-  .hero-cruise-kham .cruise-item{right:-5px!important;bottom:34px!important}
-  .hero-game-kham .screen-item{right:-5px!important;bottom:38px!important}
-  .hero-bike-kham .bike-item{right:-4px!important;bottom:36px!important}
+  .hero-orbit .adventure-hero{width:102px!important}
+  .hero-orbit .kham-portrait{width:94px!important;height:136px!important}
+  .hero-orbit .adventure-hero b{font-size:.46rem!important}
 }
-
-/* Khamryn astronaut adventure pass */
-.hero-orbit .kham-portrait{position:relative!important;width:148px!important;height:190px!important;margin:auto!important;overflow:hidden!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45))!important}
-.hero-orbit .kham-portrait img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important}
-/* Crop away the printed cover title/name so Khamryn is the focus. */
-.hero-soccer-kham .kham-portrait img{object-position:72% 68%!important}
-.hero-football-kham .kham-portrait img{object-position:54% 66%!important}
-.hero-cruise-kham .kham-portrait img{object-position:66% 66%!important}
-.hero-game-kham .kham-portrait img{object-position:73% 66%!important}
-.hero-bike-kham .kham-portrait img{object-position:52% 70%!important}
-/* Glass astronaut helmet around Khamryn's head — no emoji helmet. */
-.hero-orbit .kham-portrait::before{content:''!important;position:absolute!important;z-index:20!important;left:27%!important;top:4%!important;width:46%!important;height:27%!important;border:2px solid rgba(220,245,255,.88)!important;border-bottom-color:rgba(140,205,255,.72)!important;border-radius:50% 50% 46% 46%!important;background:linear-gradient(180deg,rgba(225,250,255,.16),rgba(75,170,255,.05))!important;box-shadow:0 0 12px rgba(180,235,255,.5),inset 0 0 8px rgba(255,255,255,.25)!important;pointer-events:none!important}
-.hero-orbit .kham-portrait::after{content:''!important;position:absolute!important;z-index:19!important;left:23%!important;top:18%!important;width:54%!important;height:5px!important;border-radius:999px!important;background:rgba(210,240,255,.55)!important;box-shadow:0 0 8px rgba(150,220,255,.5)!important;pointer-events:none!important}
-/* Make the five figures feel like independent objects in zero gravity. */
-.hero-orbit .adventure-hero{z-index:8!important}
-.hero-orbit .adventure-hero b{margin-top:6px!important}
-@media(max-width:850px){.hero-orbit .kham-portrait{width:120px!important;height:164px!important}}
-@media(max-width:560px){.hero-orbit .kham-portrait{width:100px!important;height:140px!important}.hero-orbit .kham-portrait::before{left:27%;top:4%;width:46%;height:27%}.hero-orbit .kham-portrait::after{left:23%;top:18%;width:54%}}
