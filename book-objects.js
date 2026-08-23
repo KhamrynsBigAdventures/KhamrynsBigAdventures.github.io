@@ -2,7 +2,8 @@
 (function () {
   'use strict';
 
-  const ASSET_BASE = 'https://khamrynsbigadventures.github.io/Kharyms-big-adventures/';
+  // Canonical GitHub Pages root. Do NOT use the old /Kharyms-big-adventures/ path.
+  const ASSET_BASE = 'https://khamrynsbigadventures.github.io/';
 
   const books = [
     /* Big Game: EXACT Khamryn basketball + hoop artwork from the hero universe. */
@@ -33,7 +34,7 @@
 
       const img = document.createElement('img');
       img.className = 'object-art';
-      img.src = `${ASSET_BASE}${book.image}?v=20260823-final-object`;
+      img.src = `${ASSET_BASE}${book.image}?v=20260823-canonical-root`;
       img.alt = book.alt;
       img.loading = 'eager';
       img.decoding = 'async';
