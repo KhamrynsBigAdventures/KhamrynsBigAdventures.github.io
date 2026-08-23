@@ -1,7 +1,7 @@
 /* Khamryn's Big Adventures — persistent site soundtrack */
 (function(){
-  // The audio file must exist at this exact path in the GitHub Pages repo.
-  const SOURCE = 'audio/khamryn-site.mp3';
+  // The uploaded soundtrack is currently stored in the repo root with a colon in its filename.
+  const SOURCE = './audio%3Akhamryn-site.mp3';
   const KEY_TIME = 'khamrynMusicTime';
   const KEY_WAS_PLAYING = 'khamrynMusicPlaying';
   const KEY_VOLUME = 'khamrynMusicVolume';
@@ -92,7 +92,6 @@
       try{sessionStorage.setItem(KEY_WAS_PLAYING,'1')}catch(e){}
       updateButton();
     }catch(e){
-      // Autoplay is blocked until a user gesture, or the audio file is missing.
       updateButton();
     }
   }
@@ -113,9 +112,6 @@
     try{sessionStorage.setItem(KEY_TIME,String(audio.currentTime))}catch(e){}
   });
 
-  // Browsers generally block audible autoplay. The first tap/click anywhere
-  // on the site becomes the activation gesture, while the dedicated button
-  // always remains available.
   let activated = false;
   function activate(){
     if(activated) return;
@@ -125,7 +121,6 @@
   window.addEventListener('pointerdown', activate, {once:true, passive:true});
   window.addEventListener('keydown', activate, {once:true});
 
-  // Attempt autoplay where the browser permits it.
   startMusic();
 
   window.addEventListener('pagehide', ()=>{
