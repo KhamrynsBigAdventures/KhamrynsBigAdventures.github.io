@@ -2,7 +2,8 @@
 (function(){
   'use strict';
 
-  const SOURCE = 'https://khamrynsbigadventures.github.io/Kharyms-big-adventures/Khamryn%E2%80%99s%20Big%20Adventures%202.mp3';
+  // Canonical GitHub Pages root. Do NOT use the old /Kharyms-big-adventures/ path.
+  const SOURCE = 'https://khamrynsbigadventures.github.io/Khamryn%E2%80%99s%20Big%20Adventures%202.mp3';
   const KEY_TIME = 'khamrynMusicTime';
   const KEY_WAS_PLAYING = 'khamrynMusicPlaying';
   const KEY_VOLUME = 'khamrynMusicVolume';
@@ -84,11 +85,11 @@
   audio.addEventListener('timeupdate', ()=>{ try{sessionStorage.setItem(KEY_TIME,String(audio.currentTime));}catch(e){} });
   audio.addEventListener('volumechange', ()=>{ try{localStorage.setItem(KEY_VOLUME,String(audio.volume));}catch(e){} });
 
-  // Browsers may block true autoplay. Start immediately when allowed, and
-  // use the first real user gesture as the fallback so one tap anywhere
-  // starts the soundtrack without requiring a second tap on the rocket.
+  // Autoplay when the browser allows it. On iPhone/iPad, audio autoplay can be
+  // blocked until the first user gesture; the first tap anywhere then starts it.
   function activate(){ startMusic(); }
   window.addEventListener('pointerdown', activate, {once:true, passive:true});
+  window.addEventListener('touchstart', activate, {once:true, passive:true});
   window.addEventListener('keydown', activate, {once:true});
   startMusic();
 
