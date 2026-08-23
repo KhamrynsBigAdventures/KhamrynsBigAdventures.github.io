@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const SOURCE = './Khamry%20n%E2%80%99s%20Big%20Adventures%202.mp3'.replace('Khamry%20n','Khamryn');
+  const SOURCE = './Khamryn%E2%80%99s%20Big%20Adventures%202.mp3';
   const KEY_TIME = 'khamrynMusicTime';
   const KEY_WAS_PLAYING = 'khamrynMusicPlaying';
   const KEY_VOLUME = 'khamrynMusicVolume';
