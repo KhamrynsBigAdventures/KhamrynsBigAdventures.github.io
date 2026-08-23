@@ -1,9 +1,10 @@
-/* Khamryn's Big Adventures — FORCE the correct illustrated GET THE BOOK objects */
+/* Khamryn's Big Adventures — FINAL book CTA artwork mapping */
 (function () {
   'use strict';
 
   const books = [
-    { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/big-game-exact.png', alt: "Get Khamryn's Big Game" },
+    /* Big Game: use the EXACT basketball/hoop Khamryn artwork from the hero universe. */
+    { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/winning-play-exact.png', alt: "Get Khamryn's Big Game" },
     { index: 2, className: 'bike-link', href: 'https://www.amazon.com/dp/B0FB34CP6R', image: 'images/big-bike-exact.png', alt: "Get Khamryn's Big Bike Adventure" },
     { index: 3, className: 'cruise-link', href: 'https://www.amazon.com/dp/B0FHP5157W', image: 'images/cruise-adventures-exact.png', alt: "Get Khamryn's Cruise Adventures" },
     { index: 4, className: 'soccer-link', href: 'https://www.amazon.com/dp/B0FLXF1VJX', image: 'images/final-kickoff-exact.png', alt: "Get Khamryn's Final Kickoff" },
@@ -17,6 +18,7 @@
     books.forEach(book => {
       const info = cards[book.index - 1]?.querySelector('.book-info');
       if (!info) return;
+
       const old = info.querySelector('.object-link');
       if (old) old.remove();
 
@@ -29,7 +31,7 @@
 
       const img = document.createElement('img');
       img.className = 'object-art';
-      img.src = `${book.image}?v=20260822-force`;
+      img.src = `${book.image}?v=20260823-exact-basketball`;
       img.alt = book.alt;
       img.loading = 'eager';
       img.decoding = 'async';
@@ -43,6 +45,9 @@
     });
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addObjects, { once: true });
-  else addObjects();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addObjects, { once: true });
+  } else {
+    addObjects();
+  }
 })();
