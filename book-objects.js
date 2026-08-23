@@ -2,9 +2,11 @@
 (function () {
   'use strict';
 
+  const ASSET_BASE = 'https://khamrynsbigadventures.github.io/Kharyms-big-adventures/';
+
   const books = [
-    /* Big Game: use the EXACT basketball/hoop Khamryn artwork from the hero universe. */
-    { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/winning-play-exact.png', alt: "Get Khamryn's Big Game" },
+    /* Big Game: EXACT Khamryn basketball + hoop artwork from the hero universe. */
+    { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/big-game-exact.png', alt: "Get Khamryn's Big Game" },
     { index: 2, className: 'bike-link', href: 'https://www.amazon.com/dp/B0FB34CP6R', image: 'images/big-bike-exact.png', alt: "Get Khamryn's Big Bike Adventure" },
     { index: 3, className: 'cruise-link', href: 'https://www.amazon.com/dp/B0FHP5157W', image: 'images/cruise-adventures-exact.png', alt: "Get Khamryn's Cruise Adventures" },
     { index: 4, className: 'soccer-link', href: 'https://www.amazon.com/dp/B0FLXF1VJX', image: 'images/final-kickoff-exact.png', alt: "Get Khamryn's Final Kickoff" },
@@ -31,7 +33,7 @@
 
       const img = document.createElement('img');
       img.className = 'object-art';
-      img.src = `${book.image}?v=20260823-exact-basketball`;
+      img.src = `${ASSET_BASE}${book.image}?v=20260823-final-object`;
       img.alt = book.alt;
       img.loading = 'eager';
       img.decoding = 'async';
