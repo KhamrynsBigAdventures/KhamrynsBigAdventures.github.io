@@ -89,15 +89,17 @@
   startMusic();
 
   const navState = {busy:false};
-  const INTERNAL = /^(?:index\.html|game\.html|connect\.html)(?:#.*)?$/i;
-
+  // Treat every first-party HTML page as an internal route so the soundtrack
+  // and its current position survive navigation without a full page reload.
   function isInternalLink(a){
     if(!a || a.target === '_blank' || a.hasAttribute('download')) return false;
     const raw = a.getAttribute('href');
     if(!raw || raw.startsWith('#') || raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('javascript:')) return false;
     let url;
     try{url=new URL(raw,location.href);}catch(e){return false;}
-    return url.origin===location.origin && INTERNAL.test(url.pathname.split('/').pop()+url.hash);
+    if(url.origin!==location.origin)return false;
+    const path=url.pathname.split('/').pop() || 'index.html';
+    return /\.html$/i.test(path) || path === '';
   }
 
   function sameDocumentHash(url){
