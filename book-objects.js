@@ -2,11 +2,30 @@
 (function () {
   'use strict';
 
-  // Canonical GitHub Pages root. Do NOT use the old /Kharyms-big-adventures/ path.
   const ASSET_BASE = 'https://khamrynsbigadventures.github.io/';
 
+  /* The basketball hero artwork is navigation, not a purchase CTA. */
+  document.addEventListener('click', function (event) {
+    const image = event.target && event.target.closest
+      ? event.target.closest('img[src*="big-game-exact.png"]')
+      : null;
+    if (!image) return;
+
+    const hero = image.closest('.hero-football-kham');
+    if (!hero) return;
+
+    const target = document.getElementById('book-big-game');
+    if (!target) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', '#book-big-game');
+  }, true);
+
   const books = [
-    /* Big Game: EXACT Khamryn basketball + hoop artwork from the hero universe. */
     { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/big-game-exact.png', alt: "Get Khamryn's Big Game" },
     { index: 2, className: 'bike-link', href: 'https://www.amazon.com/dp/B0FB34CP6R', image: 'images/big-bike-exact.png', alt: "Get Khamryn's Big Bike Adventure" },
     { index: 3, className: 'cruise-link', href: 'https://www.amazon.com/dp/B0FHP5157W', image: 'images/cruise-adventures-exact.png', alt: "Get Khamryn's Cruise Adventures" },
