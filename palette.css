@@ -7,4 +7,27 @@ body{background:var(--client-blue-deep)!important;color:var(--client-cream)!impo
 .intro{background:radial-gradient(circle at 15% 40%,rgba(73,185,107,.16),transparent 35%)!important}.book-card{background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(73,185,107,.08))!important;border-color:var(--client-line)!important}.book-football{background:linear-gradient(135deg,#0a4168,#126ea3)!important}.book-bike{background:linear-gradient(135deg,#176d52,#2f9a68)!important}.book-cruise{background:linear-gradient(135deg,#0d527d,#1985b5)!important}.book-soccer{background:linear-gradient(135deg,#70520d,#b18316)!important}.book-winning{background:linear-gradient(135deg,#0d5c54,#16816c)!important}.adventures{background:linear-gradient(180deg,#073a60,#075d68)!important}.adventure-item{background:rgba(73,185,107,.10)!important;border-color:var(--client-line)!important}.connect-card{background:radial-gradient(circle at 80% 20%,rgba(255,212,71,.22),transparent 28%),linear-gradient(135deg,#0d5b82,#126b58)!important;border-color:rgba(255,212,71,.4)!important}.site-footer{background:#06243d!important}
 .book-art.cover-art a{display:block;position:relative;z-index:3;cursor:pointer}.book-art.cover-art a:focus-visible{outline:3px solid var(--client-yellow);outline-offset:6px;border-radius:14px}
 .adventure-header{background:rgba(8,45,79,.96)!important;border-bottom-color:rgba(255,212,71,.35)!important}.adventure-header .back{color:var(--client-yellow)!important}.adventure-header .brand{color:var(--client-cream)!important}body:has(.adventure-header){background:radial-gradient(circle at 50% 0%,#1767a8 0,#0a466e 45%,#06243d 100%)!important}.adventure-header + .wrap .hero .eyebrow,.adventure-header + .wrap .hero h1 span{color:var(--client-yellow)!important}.adventure-header + .wrap .panel{background:rgba(8,64,87,.84)!important;border-color:rgba(73,185,107,.28)!important}.adventure-header + .wrap .choice{border-color:rgba(255,212,71,.42)!important;background:rgba(255,255,255,.07)!important}.adventure-header + .wrap .choice:hover,.adventure-header + .wrap .choice:focus-visible{background:rgba(73,185,107,.18)!important;border-color:var(--client-yellow)!important}.adventure-header + .wrap .choice[aria-pressed="true"]{background:rgba(255,212,71,.18)!important;border-color:var(--client-yellow)!important}.adventure-header + .wrap .success{border-color:var(--client-yellow)!important}.adventure-header + .wrap .cta{background:var(--client-yellow)!important;color:#092b49!important}.adventure-header + .wrap .secondary{border-color:rgba(255,255,255,.42)!important}.adventure-header + .wrap .book-reveal{background:linear-gradient(145deg,rgba(73,185,107,.18),rgba(255,212,71,.08))!important;border-color:rgba(255,212,71,.5)!important}.adventure-header + .wrap .shot-scene{border-color:rgba(73,185,107,.28)!important;background:linear-gradient(180deg,rgba(22,103,168,.18),rgba(73,185,107,.07))!important}
+
+/* Big Bike Adventure — match the main website palette */
+body:has(.bike-adventure){background:var(--client-blue-deep)!important;color:var(--client-cream)!important}
+body:has(.bike-adventure) .bike-adventure{background:transparent!important}
+body:has(.bike-adventure) .bike-panel{background:linear-gradient(135deg,rgba(22,103,168,.30),rgba(73,185,107,.08))!important;border-color:var(--client-line)!important;box-shadow:0 24px 60px rgba(0,0,0,.28)!important}
+body:has(.bike-adventure) .bike-adventure h1{color:var(--client-cream)!important}
+body:has(.bike-adventure) .bike-adventure .lead{color:var(--client-muted)!important}
+body:has(.bike-adventure) .game-note,.bike-note{color:rgba(220,236,245,.78)!important}
+body:has(.bike-adventure) .save-meter-label{color:var(--client-cream)!important}
+body:has(.bike-adventure) .coin-track{background:rgba(255,255,255,.10)!important;border-color:rgba(255,212,71,.38)!important}
+body:has(.bike-adventure) .coin-fill{background:linear-gradient(90deg,var(--client-green),var(--client-yellow))!important}
+body:has(.bike-adventure) .coin-count{color:var(--client-yellow)!important}
+body:has(.bike-adventure) .question{background:rgba(255,255,255,.055)!important;border-color:rgba(255,255,255,.18)!important}
+body:has(.bike-adventure) .question h2{color:var(--client-cream)!important}
+body:has(.bike-adventure) .choice{border-color:rgba(73,185,107,.75)!important;background:rgba(73,185,107,.10)!important;color:var(--client-cream)!important}
+body:has(.bike-adventure) .choice:hover,body:has(.bike-adventure) .choice:focus-visible{border-color:var(--client-yellow)!important;background:rgba(255,212,71,.12)!important}
+body:has(.bike-adventure) .feedback.correct{color:#72d98f!important}.feedback.retry{color:var(--client-yellow)!important}
+body:has(.bike-adventure) .finish h2{color:var(--client-yellow)!important}
+body:has(.bike-adventure) .finish p{color:var(--client-muted)!important}
+body:has(.bike-adventure) .button-gold{background:var(--client-yellow)!important;color:#092b49!important}
+body:has(.bike-adventure) .button-outline{border-color:rgba(255,255,255,.42)!important;background:rgba(73,185,107,.12)!important;color:var(--client-cream)!important}
+body:has(.bike-adventure) .bike-note{color:rgba(220,236,245,.72)!important}
+
 @media(prefers-reduced-motion:reduce){.book-art.cover-art a{transition:none!important}}
