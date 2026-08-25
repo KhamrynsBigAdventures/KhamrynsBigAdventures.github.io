@@ -1,4 +1,4 @@
-/* Khamryn's Big Adventures — basketball hero opens Big Game card */
+/* Khamryn's Big Adventures — direct hero-to-book navigation */
 (function(){
   'use strict';
 
@@ -8,19 +8,23 @@
     if(!link || !target || link.dataset.bookJumpBound === '1') return;
 
     link.dataset.bookJumpBound = '1';
+    link.setAttribute('href', '#book-big-game');
+    link.setAttribute('aria-label', "Explore Khamryn's Big Game");
 
     function openBook(event){
       event.preventDefault();
       event.stopPropagation();
       if(event.stopImmediatePropagation) event.stopImmediatePropagation();
-      target.scrollIntoView({behavior:'smooth', block:'start'});
+
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 18;
+
+      window.scrollTo({top: Math.max(0, top), left: 0, behavior: 'smooth'});
       history.replaceState(null, '', '#book-big-game');
     }
 
-    // Keep the real href as a no-JavaScript fallback, while intercepting
-    // the tap before any other site handler can redirect the hero image.
-    link.setAttribute('href', '#book-big-game');
-    link.setAttribute('aria-label', "Explore Khamryn's Big Game book");
+    // Capture the tap before the site's global navigation handler can process it.
     link.addEventListener('click', openBook, true);
     link.addEventListener('keydown', function(event){
       if(event.key === 'Enter' || event.key === ' '){
