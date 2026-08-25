@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Khamryn's Big Game Adventure — an interactive basketball experience inspired by Khamryn's Big Game.">
+<title>Khamryn's Big Game Adventure</title>
+<link rel="stylesheet" href="style.css?v=20260822-final">
+<style>
+:root{--purple:#160d35;--purple2:#29115c;--gold:#f7c948;--ink:#fff8e8;--muted:#d9d1ef;--panel:rgba(49,24,98,.78)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0%,#43228a 0,#1c0e42 45%,#0d0821 100%);color:var(--ink);font-family:Arial,sans-serif;min-height:100vh}.adventure-header{position:sticky;top:0;z-index:20;background:rgba(13,8,33,.92);backdrop-filter:blur(12px);padding:14px 20px;border-bottom:1px solid rgba(247,201,72,.25);display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{color:white;text-decoration:none;font-weight:800}.back{color:var(--gold);text-decoration:none;font-weight:700}.wrap{width:min(920px,92%);margin:auto}.hero{padding:54px 0 30px;text-align:center}.eyebrow{color:var(--gold);font-weight:800;letter-spacing:.12em;font-size:.78rem}.hero h1{font-size:clamp(2.4rem,8vw,5rem);line-height:.95;margin:10px 0}.hero h1 span{color:var(--gold)}.hero p{max-width:650px;margin:18px auto;color:var(--muted);font-size:1.08rem;line-height:1.65}.court{position:relative;margin:20px auto 40px;max-width:720px;min-height:190px;border:2px solid rgba(247,201,72,.5);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),repeating-linear-gradient(90deg,transparent 0 79px,rgba(255,255,255,.04) 80px 81px);overflow:hidden;display:grid;place-items:center;box-shadow:0 24px 70px rgba(0,0,0,.35)}.ball{font-size:5rem;filter:drop-shadow(0 12px 16px rgba(0,0,0,.35));animation:bounce 2.2s ease-in-out infinite}@keyframes bounce{0%,100%{transform:translateY(8px)}50%{transform:translateY(-18px)}}.panel{background:var(--panel);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:26px;margin:18px 0;box-shadow:0 18px 50px rgba(0,0,0,.25)}.panel h2{margin-top:0}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.choice{border:1px solid rgba(247,201,72,.35);background:rgba(255,255,255,.06);color:white;border-radius:16px;padding:16px;text-align:left;font:inherit;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}.choice:hover,.choice:focus-visible{transform:translateY(-3px);background:rgba(247,201,72,.13);border-color:var(--gold);outline:none}.choice[aria-pressed="true"]{background:rgba(247,201,72,.2);border-color:var(--gold)}.feedback{min-height:54px;margin-top:16px;color:var(--muted);line-height:1.55}.locked{opacity:.55}.success{display:none;text-align:center;border:2px solid var(--gold)}.success.show{display:block}.cta{display:inline-block;background:var(--gold);color:#251348;text-decoration:none;font-weight:900;padding:14px 22px;border-radius:999px;margin:8px}.secondary{display:inline-block;color:white;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:13px 20px;border-radius:999px;margin:8px}.note{font-size:.85rem;color:#bdb3dc;margin-top:25px;text-align:center}.reduced-motion *{animation:none!important;transition:none!important}@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}@media(max-width:600px){.adventure-header{padding:12px 14px}.hero{padding-top:38px}.panel{padding:20px}.court{min-height:150px}}
+</style>
+</head>
+<body>
+<header class="adventure-header"><a class="brand" href="index.html">✦ Khamryn's Big Adventures</a><a class="back" href="index.html#book-big-game">← Back to Big Game</a></header>
+<main class="wrap">
+<section class="hero">
+<p class="eyebrow">KHAMRYN'S BIG GAME</p>
+<h1>The Big Game <span>Challenge</span></h1>
+<p>Khamryn's basketball journey starts with a disappointing tryout, but he keeps practicing. With help from his older cousin, his friends, and a whole lot of heart and hustle, he earns his chance in a 3-on-3 tournament.</p>
+<div class="court" aria-label="Basketball court illustration"><div class="ball" aria-hidden="true">🏀</div></div>
+</section>
+<section class="panel" id="challenge-1">
+<h2>🔐 Locker Room Clue</h2>
+<p>Khamryn learns something important after his tryout. What matters alongside talent?</p>
+<div class="choices" role="group" aria-label="Choose the lesson Khamryn learns">
+<button class="choice" data-answer="wrong">Being taller and faster than everyone</button>
+<button class="choice" data-answer="right">Heart and hustle</button>
+<button class="choice" data-answer="wrong">Winning every game</button>
+</div><p class="feedback" aria-live="polite"></p>
+</section>
+<section class="panel locked" id="challenge-2" aria-disabled="true">
+<h2>🏀 Tournament Door</h2>
+<p>The next clue points to the opportunity Khamryn and his friends prepare for. Which one opens the door?</p>
+<div class="choices">
+<button class="choice" data-answer="wrong">A solo championship</button>
+<button class="choice" data-answer="right">A school 3-on-3 tournament</button>
+<button class="choice" data-answer="wrong">A swimming relay</button>
+</div><p class="feedback" aria-live="polite"></p>
+</section>
+<section class="panel locked" id="challenge-3" aria-disabled="true">
+<h2>🚪 The Court Door</h2>
+<p>In the semifinal, Khamryn gets a chance to help his team. What does he do?</p>
+<div class="choices">
+<button class="choice" data-answer="right">He makes a crucial shot that leads his team to victory.</button>
+<button class="choice" data-answer="wrong">He wins the entire tournament by himself.</button>
+<button class="choice" data-answer="wrong">He quits after facing tough competition.</button>
+</div><p class="feedback" aria-live="polite"></p>
+</section>
+<section class="panel success" id="finish">
+<h2>🏆 You Opened the Court!</h2>
+<p>Khamryn doesn't win the finals, but he walks away feeling like a champion because he proved something to himself: hard work and perseverance can lead to success on the court.</p>
+<p>The biggest win isn't always the scoreboard. Sometimes it's discovering what you're capable of when you keep showing up.</p>
+<a class="cta" href="#book">Discover the Book</a><a class="secondary" href="index.html#book-big-game">Back to Khamryn's Big Game</a>
+</section>
+<p class="note">This interactive experience is inspired by the events and themes in <em>Khamryn's Big Game</em>; it is not a replacement for the story.</p>
+</main>
+<script>
+(function(){
+ const stages=[document.getElementById('challenge-1'),document.getElementById('challenge-2'),document.getElementById('challenge-3')];
+ stages.forEach((stage,index)=>{
+  stage.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>{
+   const feedback=stage.querySelector('.feedback');
+   stage.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed','false'));
+   btn.setAttribute('aria-pressed','true');
+   if(btn.dataset.answer==='right'){
+    feedback.textContent=index===0?'That’s it. Khamryn’s older cousin teaches him that heart and hustle matter just as much as talent.':index===1?'That’s it. Khamryn and his friends prepare for the school’s 3-on-3 tournament.':'That’s it. Khamryn makes the crucial semifinal shot that leads his team to victory.';
+    const next=stages[index+1];
+    if(next){next.classList.remove('locked');next.removeAttribute('aria-disabled');setTimeout(()=>next.scrollIntoView({behavior:'smooth',block:'center'}),250)}else{document.getElementById('finish').classList.add('show');setTimeout(()=>document.getElementById('finish').scrollIntoView({behavior:'smooth',block:'center'}),250)}
+   }else feedback.textContent='Not quite. Try the clue again — the answer comes directly from Khamryn’s story.';
+  }));
+ });
+ document.getElementById('finish').querySelector('.cta').addEventListener('click',function(e){e.preventDefault();window.location.href='index.html#book-big-game'});
+})();
+</script>
+</body>
+</html>
