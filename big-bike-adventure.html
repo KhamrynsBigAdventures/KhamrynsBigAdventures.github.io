@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Khamryn’s Big Bike Adventure</title>
+  <style>
+    :root{--blue:#083b5c;--blue2:#0d668d;--yellow:#ffd447;--green:#54c878;--white:#fffaf0}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(160deg,var(--blue),#0d5779);color:var(--white);font-family:Arial,sans-serif;text-align:center}
+    nav{position:sticky;top:0;z-index:5;margin:14px;border:1px solid rgba(255,255,255,.35);border-radius:36px;padding:15px 20px;background:rgba(5,43,70,.9);display:flex;justify-content:space-between;align-items:center;font-weight:700}
+    nav a{color:var(--yellow);text-decoration:none}.wrap{max-width:760px;margin:auto;padding:30px 22px 70px}.book{background:rgba(8,59,92,.72);border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:28px 22px 38px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+    img{max-width:100%;border-radius:18px;display:block;margin:0 auto 28px}.title{font-family:Georgia,serif;font-size:clamp(2rem,7vw,3.4rem);margin:10px 0 20px}.copy{font-size:1.2rem;line-height:1.7;opacity:.94}.btn{display:inline-block;margin-top:24px;padding:16px 30px;border-radius:999px;background:var(--yellow);color:#073b5c;text-decoration:none;font-weight:800;border:0;font-size:1rem;cursor:pointer}
+    #adventure{display:none;margin-top:28px;padding:30px 20px;border:2px solid var(--yellow);border-radius:28px;background:rgba(18,83,111,.8)}.bike{font-size:4.5rem;display:inline-block;animation:ride 1.2s ease-in-out infinite alternate}@keyframes ride{to{transform:translateX(18px) rotate(-2deg)}}
+    .win{font-family:Georgia,serif;font-size:clamp(1.8rem,6vw,3rem);margin:12px 0}.money{font-size:1.25rem;line-height:1.7}.reveal{margin-top:25px;padding:25px;border-radius:24px;background:linear-gradient(135deg,var(--green),#2fa76b);color:#073b5c;display:none}.amazon{display:inline-block;margin-top:18px;padding:15px 25px;border-radius:999px;background:#fff;color:#073b5c;text-decoration:none;font-weight:800}
+  </style>
+</head>
+<body>
+  <nav><a href="index.html">✦ Khamryn’s Big Adventures</a><a href="index.html#books">← Back to Books</a></nav>
+  <main class="wrap">
+    <section class="book">
+      <img src="images/big-bike-adventure.png" alt="Khamryn riding a bike">
+      <h1 class="title">Khamryn’s Big Bike Adventure</h1>
+      <p class="copy">A ride into the great outdoors, where curiosity turns every path into a possibility.</p>
+      <button class="btn" id="start">🚲 Start the Adventure</button>
+    </section>
+
+    <section id="adventure" aria-live="polite">
+      <div class="bike">🚲</div>
+      <h2 class="win">You made it!</h2>
+      <p class="money">You kept going, made it through the adventure, and reached the finish line.</p>
+      <button class="btn" id="finish">💥 Reveal Your Reward</button>
+      <div class="reveal" id="reveal">
+        <h2>🚲 YOU SAVED UP ENOUGH MONEY!</h2>
+        <p class="money">Now you can get yourself a <strong>BIG BIKE!</strong> 🎉</p>
+        <a class="amazon" href="https://www.amazon.com/" target="_blank" rel="noopener">📚 Get the Book →</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    const adventure=document.getElementById('adventure');
+    const reveal=document.getElementById('reveal');
+    document.getElementById('start').addEventListener('click',()=>{adventure.style.display='block';adventure.scrollIntoView({behavior:'smooth'});});
+    document.getElementById('finish').addEventListener('click',()=>{reveal.style.display='block';reveal.scrollIntoView({behavior:'smooth'});});
+  </script>
+</body>
+</html>
