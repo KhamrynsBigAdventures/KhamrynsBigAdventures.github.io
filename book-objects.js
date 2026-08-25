@@ -3,7 +3,7 @@
   'use strict';
 
   const ASSET_BASE = 'https://khamrynsbigadventures.github.io/';
-  const COVER_VERSION = '20260825-covers3';
+  const COVER_VERSION = '20260825-covers4';
 
   const heroTargets = {
     'big-game-exact.png': 'book-big-game',
@@ -49,10 +49,9 @@
     const image = cover.querySelector('img');
     if (!image) return;
 
-    // Use the verified real cover PNG directly. The SVG versions are no longer
-    // used for the visible book covers because the mobile browser is rendering
-    // those as blank artwork containers.
-    image.src = `${ASSET_BASE}${book.image}?v=${COVER_VERSION}`;
+    // IMPORTANT: index.html already contains the REAL BOOK COVER.
+    // Never replace it with the adventure/character artwork. The *exact.png
+    // files are for the floating adventure art and GET THE BOOK objects only.
     image.setAttribute('loading', 'eager');
     image.setAttribute('decoding', 'async');
     image.setAttribute('fetchpriority', 'high');
@@ -89,7 +88,7 @@
       link.setAttribute('aria-label', book.alt);
       const img = document.createElement('img');
       img.className = 'object-art';
-      img.src = `${ASSET_BASE}${book.image}?v=20260825-adventure-nav3`;
+      img.src = `${ASSET_BASE}${book.image}?v=${COVER_VERSION}`;
       img.alt = book.alt;
       img.loading = 'eager';
       img.decoding = 'async';
