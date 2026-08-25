@@ -3,7 +3,7 @@
   'use strict';
 
   const ASSET_BASE = 'https://khamrynsbigadventures.github.io/';
-  const COVER_VERSION = '20260825-covers2';
+  const COVER_VERSION = '20260825-covers3';
 
   const heroTargets = {
     'big-game-exact.png': 'book-big-game',
@@ -42,24 +42,23 @@
     { index: 5, className: 'winning-play-link', href: 'https://www.amazon.com/dp/B0GXLHT5F2', image: 'images/winning-play-exact.png', alt: "Get Khamryn's Winning Play", id: 'book-winning-play' }
   ];
 
-  function refreshCoverImage(cover) {
-    const image = cover.querySelector('img');
-    if (!image) return;
-    const src = image.getAttribute('src');
-    if (!src || src.includes('?')) return;
-    image.setAttribute('loading', 'eager');
-    image.setAttribute('decoding', 'async');
-    image.setAttribute('fetchpriority', 'high');
-    image.src = src + '?v=' + COVER_VERSION;
-  }
-
   function makeCoverInteractive(card, book) {
     const destination = bookAdventureTargets[book.id];
     const cover = card.querySelector('.book-art.cover-art');
     if (!cover) return;
     const image = cover.querySelector('img');
     if (!image) return;
-    refreshCoverImage(cover);
+
+    // Use the verified real cover PNG directly. The SVG versions are no longer
+    // used for the visible book covers because the mobile browser is rendering
+    // those as blank artwork containers.
+    image.src = `${ASSET_BASE}${book.image}?v=${COVER_VERSION}`;
+    image.setAttribute('loading', 'eager');
+    image.setAttribute('decoding', 'async');
+    image.setAttribute('fetchpriority', 'high');
+    image.removeAttribute('srcset');
+    image.removeAttribute('sizes');
+
     if (!destination || cover.querySelector('.book-adventure-link')) return;
     const link = document.createElement('a');
     link.className = 'book-adventure-link';
@@ -90,7 +89,7 @@
       link.setAttribute('aria-label', book.alt);
       const img = document.createElement('img');
       img.className = 'object-art';
-      img.src = `${ASSET_BASE}${book.image}?v=20260825-adventure-nav`;
+      img.src = `${ASSET_BASE}${book.image}?v=20260825-adventure-nav3`;
       img.alt = book.alt;
       img.loading = 'eager';
       img.decoding = 'async';
