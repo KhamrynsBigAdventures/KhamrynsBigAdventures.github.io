@@ -1,87 +1,14 @@
 /* FINAL HERO SWITCH — exact images: soccer top, basketball bottom-right */
-.hero-orbit .hero-soccer-kham{
-  left:30% !important;
-  right:auto !important;
-  top:0 !important;
-  bottom:auto !important;
-  width:185px !important;
-  animation:none !important;
-  background:url("images/final-kickoff-exact.png") center/contain no-repeat !important;
-}
+.hero-orbit .hero-soccer-kham{left:30% !important;right:auto !important;top:0 !important;bottom:auto !important;width:185px !important;animation:none !important;background:url("images/final-kickoff-exact.png") center/contain no-repeat !important;}
 .hero-orbit .hero-soccer-kham img{visibility:hidden !important;}
-
-.hero-orbit .hero-football-kham{
-  left:auto !important;
-  right:25% !important;
-  top:auto !important;
-  bottom:-1% !important;
-  width:190px !important;
-  animation:none !important;
-  background:url("images/big-game-exact.png") center/contain no-repeat !important;
-}
+.hero-orbit .hero-football-kham{left:auto !important;right:25% !important;top:auto !important;bottom:-1% !important;width:190px !important;animation:none !important;background:url("images/big-game-exact.png") center/contain no-repeat !important;cursor:pointer !important;}
 .hero-orbit .hero-football-kham img{visibility:hidden !important;}
-
-/* CRUISE HERO — keep Khamryn's actual cruise artwork */
-.hero-orbit .hero-cruise-kham{
-  animation:none !important;
-  background:none !important;
-  width:195px !important;
-  height:auto !important;
-}
+.hero-orbit #book-big-game{scroll-margin-top:110px;}
+.hero-orbit .hero-cruise-kham{animation:none !important;background:none !important;width:195px !important;height:auto !important;}
 .hero-orbit .hero-cruise-kham img{visibility:visible !important;}
 .hero-orbit .hero-cruise-kham::before{content:none !important;display:none !important;}
-
-@media(max-width:850px){
-  .hero-orbit .hero-soccer-kham{left:30% !important;right:auto !important;top:0 !important;bottom:auto !important;width:100px !important;}
-  .hero-orbit .hero-football-kham{left:auto !important;right:5% !important;top:auto !important;bottom:-1% !important;width:104px !important;}
-  .hero-orbit .hero-cruise-kham{width:104px !important;height:auto !important;}
-}
-@media(max-width:380px){
-  .hero-orbit .hero-soccer-kham{left:30% !important;width:84px !important;}
-  .hero-orbit .hero-football-kham{right:3% !important;width:88px !important;}
-  .hero-orbit .hero-cruise-kham{width:88px !important;}
-}
-
-/* CRUISE BOOK BUTTON — replace the emoji with Khamryn's actual cruise artwork */
-.book-info .cruise-link{
-  width:190px !important;
-  height:135px !important;
-  gap:0 !important;
-}
-.book-info .cruise-link .object-emoji{
-  width:175px !important;
-  height:105px !important;
-  margin:0 !important;
-  font-size:0 !important;
-  background:url("images/cruise-adventures-exact.png") center/contain no-repeat !important;
-  filter:drop-shadow(0 7px 9px rgba(0,0,0,.3)) !important;
-}
-.book-info .cruise-link>span:last-child{
-  margin-top:-1px !important;
-  color:#ffd978 !important;
-  font-size:.72rem !important;
-}
-@media(max-width:850px){
-  .book-info .cruise-link{width:175px !important;height:125px !important;}
-  .book-info .cruise-link .object-emoji{width:160px !important;height:95px !important;}
-}
-
-/* BIKE BOOK BUTTON — use Khamryn riding the red bike instead of the emoji */
-.book-info .bike-link{
-  width:190px !important;
-  height:135px !important;
-  gap:0 !important;
-}
-.book-info .bike-link .object-emoji{
-  width:175px !important;
-  height:105px !important;
-  margin:0 !important;
-  font-size:0 !important;
-  background:url("images/big-bike-exact.png") center/contain no-repeat !important;
-  filter:drop-shadow(0 7px 9px rgba(0,0,0,.3)) !important;
-}
-.book-info .bike-link>span:last-child{margin-top:-1px !important;color:#9ff1d9 !important;font-size:.72rem !important;}
-@media(max-width:850px){
-  .book-info .bike-link{width:175px !important;height:125px !important;}
-  .book-info .bike-link .object-emoji{width:160px !important;height:95px !important;}
-}
+@media(max-width:850px){.hero-orbit .hero-soccer-kham{left:30% !important;right:auto !important;top:0 !important;bottom:auto !important;width:100px !important;}.hero-orbit .hero-football-kham{left:auto !important;right:5% !important;top:auto !important;bottom:-1% !important;width:104px !important;}.hero-orbit .hero-cruise-kham{width:104px !important;height:auto !important;}}
+@media(max-width:380px){.hero-orbit .hero-soccer-kham{left:30% !important;width:84px !important;}.hero-orbit .hero-football-kham{right:3% !important;width:88px !important;}.hero-orbit .hero-cruise-kham{width:88px !important;}}
+.book-info .cruise-link{width:190px !important;height:135px !important;gap:0 !important;}.book-info .cruise-link .object-emoji{width:175px !important;height:105px !important;margin:0 !important;font-size:0 !important;background:url("images/cruise-adventures-exact.png") center/contain no-repeat !important;filter:drop-shadow(0 7px 9px rgba(0,0,0,.3)) !important;}.book-info .cruise-link>span:last-child{margin-top:-1px !important;color:#ffd978 !important;font-size:.72rem !important;}
+.book-info .bike-link{width:190px !important;height:135px !important;gap:0 !important;}.book-info .bike-link .object-emoji{width:175px !important;height:105px !important;margin:0 !important;font-size:0 !important;background:url("images/big-bike-exact.png") center/contain no-repeat !important;filter:drop-shadow(0 7px 9px rgba(0,0,0,.3)) !important;}.book-info .bike-link>span:last-child{margin-top:-1px !important;color:#9ff1d9 !important;font-size:.72rem !important;}
+@media(max-width:850px){.book-info .cruise-link{width:175px !important;height:125px !important;}.book-info .cruise-link .object-emoji{width:160px !important;height:95px !important;}.book-info .bike-link{width:175px !important;height:125px !important;}.book-info .bike-link .object-emoji{width:160px !important;height:95px !important;}}
