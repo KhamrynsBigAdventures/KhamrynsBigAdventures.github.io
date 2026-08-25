@@ -1,46 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Khamryn’s Big Bike Adventure</title>
-  <style>
-    :root{--blue:#083b5c;--blue2:#0d668d;--yellow:#ffd447;--green:#54c878;--white:#fffaf0}
-    *{box-sizing:border-box} body{margin:0;background:linear-gradient(160deg,var(--blue),#0d5779);color:var(--white);font-family:Arial,sans-serif;text-align:center}
-    nav{position:sticky;top:0;z-index:5;margin:14px;border:1px solid rgba(255,255,255,.35);border-radius:36px;padding:15px 20px;background:rgba(5,43,70,.9);display:flex;justify-content:space-between;align-items:center;font-weight:700}
-    nav a{color:var(--yellow);text-decoration:none}.wrap{max-width:760px;margin:auto;padding:30px 22px 70px}.book{background:rgba(8,59,92,.72);border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:28px 22px 38px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-    img{max-width:100%;border-radius:18px;display:block;margin:0 auto 28px}.title{font-family:Georgia,serif;font-size:clamp(2rem,7vw,3.4rem);margin:10px 0 20px}.copy{font-size:1.2rem;line-height:1.7;opacity:.94}.btn{display:inline-block;margin-top:24px;padding:16px 30px;border-radius:999px;background:var(--yellow);color:#073b5c;text-decoration:none;font-weight:800;border:0;font-size:1rem;cursor:pointer}
-    #adventure{display:none;margin-top:28px;padding:30px 20px;border:2px solid var(--yellow);border-radius:28px;background:rgba(18,83,111,.8)}.bike{font-size:4.5rem;display:inline-block;animation:ride 1.2s ease-in-out infinite alternate}@keyframes ride{to{transform:translateX(18px) rotate(-2deg)}}
-    .win{font-family:Georgia,serif;font-size:clamp(1.8rem,6vw,3rem);margin:12px 0}.money{font-size:1.25rem;line-height:1.7}.reveal{margin-top:25px;padding:25px;border-radius:24px;background:linear-gradient(135deg,var(--green),#2fa76b);color:#073b5c;display:none}.amazon{display:inline-block;margin-top:18px;padding:15px 25px;border-radius:999px;background:#fff;color:#073b5c;text-decoration:none;font-weight:800}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Khamryn's Big Bike Adventure — save, work hard, and ride toward a dream.">
+<title>Khamryn's Big Bike Adventure</title>
+<link rel="stylesheet" href="style.css?v=20260822-final">
+<link rel="stylesheet" href="palette.css?v=20260825-client-colors1">
+<link rel="stylesheet" href="fixes.css?v=20260822-final">
+<style>
+:root{--bike-blue:#0d5ea8;--bike-green:#38b86a;--bike-yellow:#ffd447;--bike-cream:#fffaf0}
+body{background:linear-gradient(180deg,#073a66 0%,#0c6aa5 48%,#08764f 100%)}
+.bike-adventure{max-width:920px;margin:0 auto;padding:8rem 1.2rem 5rem}.bike-panel{background:rgba(5,45,78,.9);border:2px solid rgba(255,212,71,.7);border-radius:30px;padding:clamp(1.5rem,5vw,3rem);box-shadow:0 24px 60px rgba(0,0,0,.25);text-align:center;overflow:hidden}.bike-cover{width:min(300px,78vw);border-radius:18px;display:block;margin:0 auto 1.5rem;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.bike-adventure h1{color:var(--bike-cream);font-size:clamp(2.2rem,7vw,4.4rem);margin:.4rem 0 1rem}.bike-adventure .lead{color:#fff;font-size:1.2rem;line-height:1.7;max-width:700px;margin:0 auto 2rem}.save-meter{margin:1.5rem auto 2rem;max-width:650px;text-align:left}.save-meter-label{display:flex;justify-content:space-between;gap:1rem;color:#fff;font-weight:800;margin-bottom:.55rem}.jar-track{height:22px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,212,71,.45);overflow:hidden}.jar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--bike-green),var(--bike-yellow));transition:width .45s ease}.chores{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.5rem 0}.chore{border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);border-radius:20px;padding:1.2rem;color:#fff;cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease;min-height:130px;display:flex;flex-direction:column;justify-content:center;align-items:center}.chore:hover,.chore:focus-visible{transform:translateY(-4px);border-color:var(--bike-yellow);background:rgba(255,212,71,.12);outline:none}.chore.done{border-color:var(--bike-green);background:rgba(56,184,106,.18);cursor:default;transform:none}.chore .icon{font-size:2rem;display:block;margin-bottom:.4rem}.chore strong{font-size:1rem}.status{min-height:2.5rem;color:#fff;font-weight:700;margin:1rem 0}.finish{display:none;animation:pop .65s ease both}.finish.show{display:block}.bike-reveal{position:relative;margin:1rem auto 1.2rem;max-width:560px;min-height:260px;display:grid;place-items:center}.bike-reveal svg{width:min(500px,90vw);filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));animation:rideIn .8s cubic-bezier(.2,.9,.2,1) both}.bow{position:absolute;top:2px;right:12%;font-size:3.2rem;animation:wiggle 1.1s ease-in-out infinite alternate;z-index:2}.finish h2{color:var(--bike-yellow);font-size:clamp(2rem,6vw,3.3rem);margin:.4rem 0}.finish p{color:#fff;font-size:1.15rem;line-height:1.65;max-width:650px;margin:.7rem auto}.button-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:1.5rem}.bike-note{color:rgba(255,255,255,.75);font-size:.9rem;margin-top:1.5rem}@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}@keyframes rideIn{from{opacity:0;transform:translateX(80px) scale(.8)}to{opacity:1;transform:translateX(0) scale(1)}}@keyframes wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+@media(max-width:700px){.chores{grid-template-columns:1fr}.bike-adventure{padding-top:6rem}.bike-panel{border-radius:24px}.chore{min-height:100px;flex-direction:row;gap:.8rem}.chore .icon{margin:0}}@media(prefers-reduced-motion:reduce){.jar-fill,.chore,.finish,.bike-reveal svg,.bow{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <nav><a href="index.html">✦ Khamryn’s Big Adventures</a><a href="index.html#books">← Back to Books</a></nav>
-  <main class="wrap">
-    <section class="book">
-      <img src="images/big-bike-adventure.png" alt="Khamryn riding a bike">
-      <h1 class="title">Khamryn’s Big Bike Adventure</h1>
-      <p class="copy">A ride into the great outdoors, where curiosity turns every path into a possibility.</p>
-      <button class="btn" id="start">🚲 Start the Adventure</button>
-    </section>
-
-    <section id="adventure" aria-live="polite">
-      <div class="bike">🚲</div>
-      <h2 class="win">You made it!</h2>
-      <p class="money">You kept going, made it through the adventure, and reached the finish line.</p>
-      <button class="btn" id="finish">💥 Reveal Your Reward</button>
-      <div class="reveal" id="reveal">
-        <h2>🚲 YOU SAVED UP ENOUGH MONEY!</h2>
-        <p class="money">Now you can get yourself a <strong>BIG BIKE!</strong> 🎉</p>
-        <a class="amazon" href="https://www.amazon.com/" target="_blank" rel="noopener">📚 Get the Book →</a>
-      </div>
-    </section>
-  </main>
-  <script>
-    const adventure=document.getElementById('adventure');
-    const reveal=document.getElementById('reveal');
-    document.getElementById('start').addEventListener('click',()=>{adventure.style.display='block';adventure.scrollIntoView({behavior:'smooth'});});
-    document.getElementById('finish').addEventListener('click',()=>{reveal.style.display='block';reveal.scrollIntoView({behavior:'smooth'});});
-  </script>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-star">✦</span><span>Khamryn's Big Adventures</span></a><nav class="nav"><a href="index.html#books">Books</a><a href="connect.html">Connect</a></nav></header>
+<main class="bike-adventure">
+<section class="bike-panel" aria-labelledby="bike-title">
+<p class="section-kicker">BOOK TWO · BIG BIKE ADVENTURE</p>
+<h1 id="bike-title">Let’s Go for a Ride! 🚲</h1>
+<p class="lead">Khamryn dreams of a sleek matte black dirt bike with vibrant neon yellow accents. His old red bike is getting too small, and he discovers he doesn’t have enough money yet. Help him save the way he does in the story — through kind, helpful work for his mom and his neighbor, Mr. Rico.</p>
+<div class="save-meter" aria-label="Khamryn's savings progress"><div class="save-meter-label"><span>🫙 Savings Jar</span><span id="progressText">0 of 4 helpful jobs</span></div><div class="jar-track"><div class="jar-fill" id="jarFill"></div></div></div>
+<div class="chores" id="chores" aria-label="Helpful jobs">
+<button class="chore" type="button"><span class="icon">🏠</span><strong>Help Mom</strong></button>
+<button class="chore" type="button"><span class="icon">🤝🏾</span><strong>Help Mr. Rico</strong></button>
+<button class="chore" type="button"><span class="icon">🌱</span><strong>Do a helpful neighborhood task</strong></button>
+<button class="chore" type="button"><span class="icon">🫙</span><strong>Add another helpful job to the savings jar</strong></button>
+</div>
+<p class="status" id="status" aria-live="polite">Every little bit helps. Choose a helpful job.</p>
+<div class="finish" id="finish" aria-live="polite">
+<div class="bike-reveal" aria-label="Khamryn's dream bike reveal"><span class="bow" aria-hidden="true">🎀</span>
+<svg viewBox="0 0 640 300" role="img" aria-label="A sleek matte black dirt bike with neon yellow accents">
+<circle cx="170" cy="215" r="58" fill="#111" stroke="#ffd447" stroke-width="8"/><circle cx="475" cy="215" r="58" fill="#111" stroke="#ffd447" stroke-width="8"/><circle cx="170" cy="215" r="22" fill="#252525"/><circle cx="475" cy="215" r="22" fill="#252525"/>
+<path d="M170 215 L250 125 L370 125 L475 215 M250 125 L310 215 L475 215 M310 215 L275 95 L350 75 L405 125" fill="none" stroke="#ffd447" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M250 125 L335 100 L405 125 L360 170 L275 165 Z" fill="#111" stroke="#ffd447" stroke-width="7"/>
+<path d="M338 100 L390 62 L430 72" fill="none" stroke="#111" stroke-width="18" stroke-linecap="round"/><path d="M390 62 L440 55" fill="none" stroke="#ffd447" stroke-width="8" stroke-linecap="round"/>
+<path d="M270 165 L235 205 M405 125 L440 205" stroke="#111" stroke-width="18" stroke-linecap="round"/>
+<path d="M325 150 L370 145" stroke="#ffd447" stroke-width="9" stroke-linecap="round"/>
+<text x="320" y="270" text-anchor="middle" fill="#fffaf0" font-size="22" font-weight="800">DREAM BIKE</text>
+</svg></div>
+<h2>🎀 NEW BIKE REVEAL!</h2>
+<p><strong>Hard work pays off!</strong> Khamryn saved little by little, stayed patient, and reached his goal. Now he can visit the bike shop with his mom and find the dream bike he worked toward.</p>
+<div class="button-row"><a class="button button-gold" href="https://www.amazon.com/dp/B0FB34CP6R" target="_blank" rel="noopener">GET THE BOOK →</a><a class="button button-outline" href="big-bike-book.html">← Back to the Book</a></div>
+</div>
+<p class="bike-note">This mini-adventure is inspired by the events and lessons in <em>Khamryn's Big Bike Adventure</em>; it is not a replacement for the book.</p>
+</section>
+</main>
+<footer class="site-footer"><div><strong>Khamryn's Big Adventures</strong><p>Big dreams. Bigger adventures.</p></div><p class="copyright">© 2026 LeSheAnn Hargro · Website design &amp; development</p></footer>
+<script>
+(function(){const chores=[...document.querySelectorAll('.chore')],fill=document.getElementById('jarFill'),text=document.getElementById('progressText'),status=document.getElementById('status'),finish=document.getElementById('finish');let count=0;chores.forEach(btn=>btn.addEventListener('click',()=>{if(btn.classList.contains('done'))return;btn.classList.add('done');btn.disabled=true;count++;fill.style.width=(count/4*100)+'%';text.textContent=count+' of 4 helpful jobs';if(count<4){status.textContent='Nice work! Khamryn’s savings jar is getting fuller. Keep going!'}else{status.textContent='You did it! Khamryn has saved enough to reach his bike goal.';setTimeout(()=>finish.classList.add('show'),350)}}))})();
+</script>
 </body>
 </html>
