@@ -8,10 +8,6 @@
     if(!link || !target || link.dataset.bookJumpBound === '1') return;
 
     link.dataset.bookJumpBound = '1';
-    link.removeAttribute('href');
-    link.setAttribute('role', 'button');
-    link.setAttribute('tabindex', '0');
-    link.setAttribute('aria-label', "Open Khamryn's Big Game book");
 
     function openBook(event){
       event.preventDefault();
@@ -21,6 +17,10 @@
       history.replaceState(null, '', '#book-big-game');
     }
 
+    // Keep the real href as a no-JavaScript fallback, while intercepting
+    // the tap before any other site handler can redirect the hero image.
+    link.setAttribute('href', '#book-big-game');
+    link.setAttribute('aria-label', "Explore Khamryn's Big Game book");
     link.addEventListener('click', openBook, true);
     link.addEventListener('keydown', function(event){
       if(event.key === 'Enter' || event.key === ' '){
