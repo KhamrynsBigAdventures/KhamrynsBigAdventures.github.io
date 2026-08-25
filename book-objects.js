@@ -1,20 +1,28 @@
-/* Khamryn's Big Adventures — FINAL book CTA artwork mapping */
+/* Khamryn's Big Adventures — adventure hero navigation + book CTA mapping */
 (function () {
   'use strict';
 
   const ASSET_BASE = 'https://khamrynsbigadventures.github.io/';
 
-  /* The basketball hero artwork is navigation, not a purchase CTA. */
+  // Hero artwork is navigation to the matching existing book card.
+  const heroTargets = {
+    'big-game-exact.png': 'book-big-game',
+    'big-bike-exact.png': 'book-big-bike',
+    'cruise-adventures-exact.png': 'book-cruise-adventures',
+    'final-kickoff-exact.png': 'book-final-kickoff',
+    'winning-play-exact.png': 'book-winning-play'
+  };
+
   document.addEventListener('click', function (event) {
-    const image = event.target && event.target.closest
-      ? event.target.closest('img[src*="big-game-exact.png"]')
-      : null;
+    const image = event.target && event.target.closest ? event.target.closest('img') : null;
     if (!image) return;
 
-    const hero = image.closest('.hero-football-kham');
-    if (!hero) return;
+    const filename = image.getAttribute('src')?.split('/').pop()?.split('?')[0];
+    const targetId = heroTargets[filename];
+    const hero = image.closest('.adventure-hero');
+    if (!targetId || !hero) return;
 
-    const target = document.getElementById('book-big-game');
+    const target = document.getElementById(targetId);
     if (!target) return;
 
     event.preventDefault();
@@ -22,15 +30,15 @@
     if (event.stopImmediatePropagation) event.stopImmediatePropagation();
 
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#book-big-game');
+    history.replaceState(null, '', '#' + targetId);
   }, true);
 
   const books = [
-    { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/big-game-exact.png', alt: "Get Khamryn's Big Game" },
-    { index: 2, className: 'bike-link', href: 'https://www.amazon.com/dp/B0FB34CP6R', image: 'images/big-bike-exact.png', alt: "Get Khamryn's Big Bike Adventure" },
-    { index: 3, className: 'cruise-link', href: 'https://www.amazon.com/dp/B0FHP5157W', image: 'images/cruise-adventures-exact.png', alt: "Get Khamryn's Cruise Adventures" },
-    { index: 4, className: 'soccer-link', href: 'https://www.amazon.com/dp/B0FLXF1VJX', image: 'images/final-kickoff-exact.png', alt: "Get Khamryn's Final Kickoff" },
-    { index: 5, className: 'winning-play-link', href: 'https://www.amazon.com/dp/B0GXLHT5F2', image: 'images/winning-play-exact.png', alt: "Get Khamryn's Winning Play" }
+    { index: 1, className: 'football-link', href: 'https://www.amazon.com/dp/B0F2465NHT', image: 'images/big-game-exact.png', alt: "Get Khamryn's Big Game", id: 'book-big-game' },
+    { index: 2, className: 'bike-link', href: 'https://www.amazon.com/dp/B0FB34CP6R', image: 'images/big-bike-exact.png', alt: "Get Khamryn's Big Bike Adventure", id: 'book-big-bike' },
+    { index: 3, className: 'cruise-link', href: 'https://www.amazon.com/dp/B0FHP5157W', image: 'images/cruise-adventures-exact.png', alt: "Get Khamryn's Cruise Adventures", id: 'book-cruise-adventures' },
+    { index: 4, className: 'soccer-link', href: 'https://www.amazon.com/dp/B0FLXF1VJX', image: 'images/final-kickoff-exact.png', alt: "Get Khamryn's Final Kickoff", id: 'book-final-kickoff' },
+    { index: 5, className: 'winning-play-link', href: 'https://www.amazon.com/dp/B0GXLHT5F2', image: 'images/winning-play-exact.png', alt: "Get Khamryn's Winning Play", id: 'book-winning-play' }
   ];
 
   function addObjects() {
@@ -38,9 +46,12 @@
     if (!cards.length) return;
 
     books.forEach(book => {
-      const info = cards[book.index - 1]?.querySelector('.book-info');
-      if (!info) return;
+      const card = cards[book.index - 1];
+      if (!card) return;
+      card.id = book.id;
 
+      const info = card.querySelector('.book-info');
+      if (!info) return;
       const old = info.querySelector('.object-link');
       if (old) old.remove();
 
@@ -53,7 +64,7 @@
 
       const img = document.createElement('img');
       img.className = 'object-art';
-      img.src = `${ASSET_BASE}${book.image}?v=20260823-canonical-root`;
+      img.src = `${ASSET_BASE}${book.image}?v=20260825-adventure-nav`;
       img.alt = book.alt;
       img.loading = 'eager';
       img.decoding = 'async';
