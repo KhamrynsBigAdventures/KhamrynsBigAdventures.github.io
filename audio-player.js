@@ -19,15 +19,15 @@
       '.book-reveal .cta, .book-reveal .book-btn, .finish .book-cta'
     );
     bookButtons.forEach((button) => {
-      button.textContent = 'GET THE BOOK →';
+      if (button.textContent !== 'GET THE BOOK →') button.textContent = 'GET THE BOOK →';
     });
 
     const backButtons = document.querySelectorAll(
       '.book-reveal .back, .book-reveal .back-btn, .finish .button-outline, .success .secondary'
     );
     backButtons.forEach((button) => {
-      button.textContent = '← Back Home';
-      button.setAttribute('href', 'index.html');
+      if (button.textContent !== '← Back Home') button.textContent = '← Back Home';
+      if (button.getAttribute('href') !== 'index.html') button.setAttribute('href', 'index.html');
     });
 
     // Winning Play was missing its book CTA. Add one when its final reveal appears.
