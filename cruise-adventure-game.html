@@ -37,8 +37,10 @@
 .book-reveal{opacity:0;transform:translateY(28px) scale(.97);max-height:0;overflow:hidden;transition:opacity .7s ease,transform .7s ease,max-height .7s ease;margin-top:0}
 .book-reveal.show{opacity:1;transform:none;max-height:1000px;margin-top:1.5rem}
 .reveal-cover{width:min(260px,70vw);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.3);margin:1rem auto}
-.confetti-piece{position:fixed;top:-20px;width:10px;height:16px;z-index:9999;pointer-events:none;animation:fall 1100ms ease-out forwards}
-@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:0}}
+/* Celebration burst: a pop across the viewport instead of fast-falling confetti. */
+.confetti-piece{position:fixed;left:50vw;top:48vh;width:11px;height:17px;z-index:9999;pointer-events:none;opacity:0;border-radius:2px;transform:translate(-50%,-50%) rotate(0deg) scale(.2);animation:confettiPop 1500ms cubic-bezier(.16,1,.3,1) forwards}
+.confetti-piece.ribbon{width:7px;height:24px;border-radius:999px}
+@keyframes confettiPop{0%{opacity:0;transform:translate(-50%,-50%) rotate(0deg) scale(.15)}12%{opacity:1;transform:translate(calc(-50% + var(--x1)),calc(-50% + var(--y1))) rotate(var(--r1)) scale(1)}72%{opacity:1;transform:translate(calc(-50% + var(--x2)),calc(-50% + var(--y2))) rotate(var(--r2)) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--x3)),calc(-50% + var(--y3))) rotate(var(--r3)) scale(.85)}}
 @keyframes shipDepart{0%{opacity:0;transform:translateX(-20px) scale(.92)}35%{opacity:1;transform:translateX(8px) scale(1.04)}100%{opacity:1;transform:translateX(0) scale(1)}}
 @media (prefers-reduced-motion:reduce){.confetti-piece{animation-duration:1ms}.voyage-sendoff{animation:none}.book-reveal{transition:none}}
 </style>
@@ -69,7 +71,30 @@ const questions=[
 const gameArea=document.getElementById('gameArea'), intro=document.getElementById('introCopy'), stamps=[...document.querySelectorAll('.stamp')];
 let index=0,locked=false;
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function confetti(){const colors=['#ffd341','#2d8ec5','#39c977','#f5f7fa'];for(let i=0;i<70;i++){const p=document.createElement('span');p.className='confetti-piece';p.style.left=(Math.random()*100)+'vw';p.style.background=colors[i%colors.length];p.style.setProperty('--x',((Math.random()-.5)*220)+'px');p.style.transform='rotate('+Math.random()*360+'deg)';document.body.appendChild(p);setTimeout(()=>p.remove(),1300);}}
+function confetti(){
+ const colors=['#ffd341','#2d8ec5','#39c977','#f5f7fa'];
+ const pieces=96;
+ for(let i=0;i<pieces;i++){
+  const p=document.createElement('span');
+  p.className='confetti-piece'+(Math.random()<.2?' ribbon':'');
+  p.style.background=colors[i%colors.length];
+  const angle=Math.random()*Math.PI*2;
+  const distance=80+Math.random()*520;
+  const x1=Math.cos(angle)*distance*.45;
+  const y1=Math.sin(angle)*distance*.45;
+  const x2=Math.cos(angle)*distance;
+  const y2=Math.sin(angle)*distance;
+  const x3=x2+(Math.random()-.5)*180;
+  const y3=y2+(Math.random()-.5)*180;
+  p.style.setProperty('--x1',x1+'px');p.style.setProperty('--y1',y1+'px');
+  p.style.setProperty('--x2',x2+'px');p.style.setProperty('--y2',y2+'px');
+  p.style.setProperty('--x3',x3+'px');p.style.setProperty('--y3',y3+'px');
+  p.style.setProperty('--r1',(Math.random()*360)+'deg');p.style.setProperty('--r2',(Math.random()*720-360)+'deg');p.style.setProperty('--r3',(Math.random()*720-360)+'deg');
+  p.style.animationDelay=(Math.random()*140)+'ms';
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),1800);
+ }
+}
 function renderQuestion(){locked=false;const item=questions[index];const answers=shuffle(item.answers);gameArea.innerHTML=`<div class="question-number">Adventure ${index+1} of ${questions.length} · ${item.line}</div><h2>${item.q}</h2><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><button class="next-btn" id="nextBtn" type="button" hidden>Next Adventure →</button>`;const box=document.getElementById('answers');answers.forEach(answer=>{const b=document.createElement('button');b.className='answer';b.type='button';b.textContent=answer;b.addEventListener('click',()=>choose(b,answer,item));box.appendChild(b);});}
 function choose(button,answer,item){if(locked)return;if(answer!==item.correct){button.classList.add('wrong');const f=document.getElementById('feedback');f.className='feedback try';f.textContent='Almost! Give it another try. 🚢';return;}locked=true;button.classList.add('correct');document.querySelectorAll('.answer').forEach(b=>b.disabled=true);stamps[index].classList.add('done');confetti();const f=document.getElementById('feedback');f.className='feedback win';f.textContent='That’s right! Adventure stamp earned! 🎉';const next=document.getElementById('nextBtn');next.hidden=false;next.textContent=index===questions.length-1?'Finish the Voyage →':'Next Adventure →';next.addEventListener('click',()=>{index++;if(index<questions.length)renderQuestion();else finish();},{once:true});}
 function finish(){intro.textContent='You did it! Khamryn’s cruise adventure is complete.';gameArea.innerHTML='<div class="result"><div class="voyage-sendoff"><div class="voyage-ship" aria-hidden="true">🚢</div><h2 class="voyage-title">BON VOYAGE, KHAMRYN!</h2><p class="voyage-subtitle">You made it aboard! The adventure doesn’t end here — it sails on.</p></div><div class="book-reveal" id="bookReveal"><img class="reveal-cover" src="images/cruise-adventures.svg" alt="Khamryn’s Cruise Adventures book cover"><h2>📖 Your Next Adventure Awaits!</h2><p class="game-copy">Ready to keep exploring? Khamryn’s Cruise Adventures is waiting for you.</p><a class="book-btn" href="https://www.amazon.com/dp/B0FHP5157W" target="_blank" rel="noopener">GET THE BOOK →</a><a class="next-btn back-btn" href="index.html#books">← Back to the Books</a></div></div>';confetti();setTimeout(()=>document.getElementById('bookReveal').classList.add('show'),1800);}
