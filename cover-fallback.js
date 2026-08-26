@@ -39,7 +39,7 @@
       flip.type = 'button';
       flip.className = 'book-flip';
       flip.setAttribute('aria-expanded', 'false');
-      flip.setAttribute('aria-label', `Flip ${data.title} to read its summary`);
+      flip.setAttribute('aria-label', `Flip ${data.title} to read its summary and adventure`);
 
       const front = document.createElement('span');
       front.className = 'book-face book-front';
@@ -78,19 +78,19 @@
       .flip-library-intro{color:var(--muted,#e7f3f7);max-width:620px;margin:.6rem 0 0;line-height:1.6}
       .book-flip-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;align-items:stretch}
       .book-flip-card{min-width:0;perspective:1200px;background:transparent;position:relative}
-      .book-flip{position:relative;display:block;width:100%;height:430px;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;perspective:1200px;text-align:left;-webkit-tap-highlight-color:transparent}
+      .book-flip{position:relative;display:block;width:100%;height:430px;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;perspective:1200px;text-align:left;-webkit-tap-highlight-color:transparent;touch-action:manipulation;z-index:10}
       .book-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:20px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .75s cubic-bezier(.2,.75,.2,1),box-shadow .35s ease}
-      .book-front{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);transform:rotateY(0deg);box-shadow:0 18px 45px rgba(0,0,0,.22);padding:12px}
+      .book-front{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);transform:rotateY(0deg);box-shadow:0 18px 45px rgba(0,0,0,.22);padding:12px;pointer-events:none}
       .book-front iframe{display:block;width:100%;height:100%;border:0;border-radius:14px;background:transparent;pointer-events:none}
-      .book-back{transform:rotateY(180deg);background:linear-gradient(145deg,rgba(13,94,168,.98),rgba(5,53,95,.98));border:2px solid rgba(255,212,71,.68);padding:24px 18px;text-align:center;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+      .book-back{transform:rotateY(180deg);background:linear-gradient(145deg,rgba(13,94,168,.98),rgba(5,53,95,.98));border:2px solid rgba(255,212,71,.68);padding:24px 18px;text-align:center;box-shadow:0 18px 45px rgba(0,0,0,.28);pointer-events:none}
       .book-back-kicker{color:#ffd447;font-weight:900;letter-spacing:.1em;font-size:.65rem;line-height:1.3;margin-bottom:12px}
       .book-back strong{font-family:Georgia,serif;color:#fffdf2;font-size:1.45rem;line-height:1.05;margin-bottom:14px}
       .book-summary{color:#e7f3f7;font-size:.86rem;line-height:1.5;overflow:auto;max-height:230px;padding-right:3px}
       .book-detail-cta{color:#ffd447;font-weight:900;font-size:.78rem;line-height:1.35;margin-top:14px}
-      .book-game-link{display:inline-block;margin-top:10px;color:#fffdf2;text-decoration:none;border:1px solid rgba(255,255,255,.38);border-radius:999px;padding:8px 12px;font-size:.72rem;font-weight:900}
+      .book-game-link{display:inline-block;margin-top:10px;color:#fffdf2;text-decoration:none;border:1px solid rgba(255,255,255,.38);border-radius:999px;padding:8px 12px;font-size:.72rem;font-weight:900;pointer-events:auto}
       .book-game-link:hover,.book-game-link:focus-visible{border-color:#ffd447;color:#ffd447;outline:none}
       .book-flip.is-flipped .book-front{transform:rotateY(-180deg)}
-      .book-flip.is-flipped .book-back{transform:rotateY(0deg)}
+      .book-flip.is-flipped .book-back{transform:rotateY(0deg);pointer-events:auto}
       @media(max-width:1100px){.book-flip-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
       @media(max-width:720px){.book-flip-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;-webkit-overflow-scrolling:touch}.book-flip-card{flex:0 0 74vw;max-width:300px;scroll-snap-align:center}.book-flip{height:430px}}
       @media(prefers-reduced-motion:reduce){.book-face{transition:none}}
