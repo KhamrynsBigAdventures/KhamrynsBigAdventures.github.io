@@ -1,16 +1,25 @@
 /* Khamryn's Big Adventures — reliable cover renderer
    Safari/iOS can restore index.html from the back-forward cache after an
-   adventure page. Re-run the cover fallback on pageshow so the real covers
-   are restored even when the document is not freshly loaded. */
+   adventure page. The previous fallback replaced the SVG with a temporary
+   Blob URL and revoked it, which could leave a restored cover blank.
+   Keep the original SVG as the source of truth and rebuild the artwork. */
 (function () {
   'use strict';
 
   function decodeEmbeddedCover(img) {
-    if (!img || !img.src || !/\.svg(?:\?|#|$)/i.test(img.src)) return;
+    if (!img) return;
+
+    var originalSrc = img.dataset.coverOriginalSrc;
+    if (!originalSrc) {
+      originalSrc = img.getAttribute('src') || '';
+      if (!/\.svg(?:\?|#|$)/i.test(originalSrc)) return;
+      img.dataset.coverOriginalSrc = originalSrc;
+    }
+
     if (img.dataset.coverFallbackRunning === '1') return;
     img.dataset.coverFallbackRunning = '1';
 
-    fetch(img.src, { cache: 'no-store' })
+    fetch(originalSrc, { cache: 'no-store' })
       .then(function (response) {
         if (!response.ok) throw new Error('Cover request failed');
         return response.text();
@@ -25,13 +34,20 @@
         });
         var blobUrl = URL.createObjectURL(new Blob([bytes], { type: mime }));
 
-        img.addEventListener('load', function () {
-          setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 1000);
-        }, { once: true });
+        var oldBlobUrl = img.dataset.coverBlobUrl;
+        if (oldBlobUrl && oldBlobUrl !== blobUrl) {
+          try { URL.revokeObjectURL(oldBlobUrl); } catch (e) {}
+        }
+        img.dataset.coverBlobUrl = blobUrl;
 
+        /* Keep this Blob URL alive while the page is cached by Safari. */
         img.src = blobUrl;
       })
       .catch(function () {
+        /* If conversion fails, restore the real SVG rather than a blank src. */
+        img.src = originalSrc;
+      })
+      .finally(function () {
         img.dataset.coverFallbackRunning = '0';
       });
   }
@@ -40,18 +56,25 @@
     document.querySelectorAll('#books .cover-art img').forEach(decodeEmbeddedCover);
   }
 
+  function restoreCovers() {
+    document.querySelectorAll('#books .cover-art img').forEach(function (img) {
+      var originalSrc = img.dataset.coverOriginalSrc;
+      if (originalSrc) {
+        img.dataset.coverFallbackRunning = '0';
+        img.src = originalSrc;
+      }
+    });
+    init();
+    setTimeout(init, 150);
+    setTimeout(init, 700);
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
     init();
   }
 
-  /* Critical for iPhone/Safari when Home is restored from bfcache. */
-  window.addEventListener('pageshow', function () {
-    document.querySelectorAll('#books .cover-art img').forEach(function (img) {
-      img.dataset.coverFallbackRunning = '0';
-    });
-    setTimeout(init, 0);
-    setTimeout(init, 250);
-  });
+  window.addEventListener('pageshow', restoreCovers, false);
+  window.addEventListener('focus', restoreCovers, false);
 })();
