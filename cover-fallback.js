@@ -1,80 +1,33 @@
-/* Khamryn's Big Adventures — reliable cover renderer
-   Safari/iOS can restore index.html from the back-forward cache after an
-   adventure page. The previous fallback replaced the SVG with a temporary
-   Blob URL and revoked it, which could leave a restored cover blank.
-   Keep the original SVG as the source of truth and rebuild the artwork. */
+/* Khamryn's Big Adventures — cover safety
+   Keep the real SVG cover as the source of truth.
+   Never replace it with a Blob URL: Safari/iOS can restore a cached page
+   with a stale Blob URL and leave the cover area blank. */
 (function () {
   'use strict';
 
-  function decodeEmbeddedCover(img) {
-    if (!img) return;
-
-    var originalSrc = img.dataset.coverOriginalSrc;
-    if (!originalSrc) {
-      originalSrc = img.getAttribute('src') || '';
-      if (!/\.svg(?:\?|#|$)/i.test(originalSrc)) return;
-      img.dataset.coverOriginalSrc = originalSrc;
-    }
-
-    if (img.dataset.coverFallbackRunning === '1') return;
-    img.dataset.coverFallbackRunning = '1';
-
-    fetch(originalSrc, { cache: 'no-store' })
-      .then(function (response) {
-        if (!response.ok) throw new Error('Cover request failed');
-        return response.text();
-      })
-      .then(function (svgText) {
-        var match = svgText.match(/data:image\/(jpeg|jpg|png);base64,([^"']+)/i);
-        if (!match) throw new Error('Embedded cover artwork not found');
-
-        var mime = match[1].toLowerCase() === 'png' ? 'image/png' : 'image/jpeg';
-        var bytes = Uint8Array.from(atob(match[2]), function (char) {
-          return char.charCodeAt(0);
-        });
-        var blobUrl = URL.createObjectURL(new Blob([bytes], { type: mime }));
-
-        var oldBlobUrl = img.dataset.coverBlobUrl;
-        if (oldBlobUrl && oldBlobUrl !== blobUrl) {
-          try { URL.revokeObjectURL(oldBlobUrl); } catch (e) {}
-        }
-        img.dataset.coverBlobUrl = blobUrl;
-
-        /* Keep this Blob URL alive while the page is cached by Safari. */
-        img.src = blobUrl;
-      })
-      .catch(function () {
-        /* If conversion fails, restore the real SVG rather than a blank src. */
-        img.src = originalSrc;
-      })
-      .finally(function () {
-        img.dataset.coverFallbackRunning = '0';
-      });
-  }
-
-  function init() {
-    document.querySelectorAll('#books .cover-art img').forEach(decodeEmbeddedCover);
-  }
-
-  function restoreCovers() {
+  function rememberAndRestore() {
     document.querySelectorAll('#books .cover-art img').forEach(function (img) {
-      var originalSrc = img.dataset.coverOriginalSrc;
-      if (originalSrc) {
-        img.dataset.coverFallbackRunning = '0';
-        img.src = originalSrc;
+      var original = img.getAttribute('data-cover-src');
+      if (!original) {
+        original = img.getAttribute('src') || '';
+        if (!/\.svg(?:\?|#|$)/i.test(original)) return;
+        img.setAttribute('data-cover-src', original);
+      }
+      if (img.getAttribute('src') !== original) {
+        img.setAttribute('src', original);
       }
     });
-    init();
-    setTimeout(init, 150);
-    setTimeout(init, 700);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
+    document.addEventListener('DOMContentLoaded', rememberAndRestore, { once: true });
   } else {
-    init();
+    rememberAndRestore();
   }
 
-  window.addEventListener('pageshow', restoreCovers, false);
-  window.addEventListener('focus', restoreCovers, false);
+  window.addEventListener('pageshow', function () {
+    rememberAndRestore();
+    setTimeout(rememberAndRestore, 100);
+    setTimeout(rememberAndRestore, 500);
+  });
 })();
