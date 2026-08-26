@@ -52,9 +52,7 @@
 <h1 class="game-title">🚢 All Aboard!</h1>
 <p class="game-copy" id="introCopy">Khamryn and Kendall are ready to explore. Six cruise experiences are waiting. Answer a question from each adventure and collect all six passport stamps!</p>
 <div class="passport" id="passport" aria-label="Cruise passport"><span class="stamp" data-stamp="0">🎪 Carnival</span><span class="stamp" data-stamp="1">🔎 Royal Caribbean</span><span class="stamp" data-stamp="2">🎨 Celebrity</span><span class="stamp" data-stamp="3">🏆 Norwegian</span><span class="stamp" data-stamp="4">🌴 Margaritaville</span><span class="stamp" data-stamp="5">🏴‍☠️ MSC</span></div>
-<div id="gameArea">
-<button class="next-btn" id="startBtn" type="button">START THE VOYAGE →</button>
-</div>
+<div id="gameArea"></div>
 </section>
 </main>
 <script>
@@ -75,7 +73,9 @@ function confetti(){const colors=['#ffd341','#2d8ec5','#39c977','#f5f7fa'];for(l
 function renderQuestion(){locked=false;const item=questions[index];const answers=shuffle(item.answers);gameArea.innerHTML=`<div class="question-number">Adventure ${index+1} of ${questions.length} · ${item.line}</div><h2>${item.q}</h2><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><button class="next-btn" id="nextBtn" type="button" hidden>Next Adventure →</button>`;const box=document.getElementById('answers');answers.forEach(answer=>{const b=document.createElement('button');b.className='answer';b.type='button';b.textContent=answer;b.addEventListener('click',()=>choose(b,answer,item));box.appendChild(b);});}
 function choose(button,answer,item){if(locked)return;if(answer!==item.correct){button.classList.add('wrong');const f=document.getElementById('feedback');f.className='feedback try';f.textContent='Almost! Give it another try. 🚢';return;}locked=true;button.classList.add('correct');document.querySelectorAll('.answer').forEach(b=>b.disabled=true);stamps[index].classList.add('done');confetti();const f=document.getElementById('feedback');f.className='feedback win';f.textContent='That’s right! Adventure stamp earned! 🎉';const next=document.getElementById('nextBtn');next.hidden=false;next.textContent=index===questions.length-1?'Finish the Voyage →':'Next Adventure →';next.addEventListener('click',()=>{index++;if(index<questions.length)renderQuestion();else finish();},{once:true});}
 function finish(){intro.textContent='You did it! Khamryn’s cruise adventure is complete.';gameArea.innerHTML='<div class="result"><div class="voyage-sendoff"><div class="voyage-ship" aria-hidden="true">🚢</div><h2 class="voyage-title">BON VOYAGE, KHAMRYN!</h2><p class="voyage-subtitle">You made it aboard! The adventure doesn’t end here — it sails on.</p></div><div class="book-reveal" id="bookReveal"><img class="reveal-cover" src="images/cruise-adventures.svg" alt="Khamryn’s Cruise Adventures book cover"><h2>📖 Your Next Adventure Awaits!</h2><p class="game-copy">Ready to keep exploring? Khamryn’s Cruise Adventures is waiting for you.</p><a class="book-btn" href="https://www.amazon.com/dp/B0FHP5157W" target="_blank" rel="noopener">GET THE BOOK →</a><a class="next-btn back-btn" href="index.html#books">← Back to the Books</a></div></div>';confetti();setTimeout(()=>document.getElementById('bookReveal').classList.add('show'),1800);}
-document.getElementById('startBtn').addEventListener('click',()=>{intro.textContent='Choose the best answer. If you miss one, no worries—try again! Every time the question loads, the answer choices are shuffled.';renderQuestion();});
+// The homepage CTA opens this page, so the first question starts immediately.
+intro.textContent='Choose the best answer. If you miss one, no worries—try again! Every time the question loads, the answer choices are shuffled.';
+renderQuestion();
 })();
 </script>
 </body>
