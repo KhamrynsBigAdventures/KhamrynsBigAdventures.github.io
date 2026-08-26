@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Khamryn's Cruise Adventures interactive game.">
+<title>Khamryn's Cruise Adventure</title>
+<link rel="stylesheet" href="style.css?v=20260822-final">
+<link rel="stylesheet" href="palette.css?v=20260825-client-colors1">
+<link rel="stylesheet" href="fixes.css?v=20260822-final">
+<style>
+.cruise-game{max-width:900px;margin:auto;padding:7rem 1rem 5rem;text-align:center}
+.game-card{background:rgba(255,255,255,.08);border:2px solid rgba(255,213,65,.75);border-radius:28px;padding:2rem 1.25rem;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.cruise-cover{width:min(260px,70vw);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.25);margin-bottom:1.5rem}
+.game-kicker{color:#ffd341;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.game-title{font-size:clamp(2.2rem,7vw,4.5rem);margin:.25rem 0 1rem}
+.game-copy{font-size:1.12rem;line-height:1.7;max-width:720px;margin:0 auto 1.5rem}
+.passport{display:flex;gap:.45rem;justify-content:center;flex-wrap:wrap;margin:1rem auto 1.75rem}
+.stamp{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.5rem .75rem;font-size:.9rem;opacity:.55}
+.stamp.done{opacity:1;background:rgba(255,213,65,.14);border-color:#ffd341}
+.question-number{color:#ffd341;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.answers{display:grid;gap:.8rem;max-width:680px;margin:1.5rem auto}
+.answer{appearance:none;width:100%;border:2px solid rgba(62,211,119,.8);background:rgba(17,91,102,.45);color:#fff;border-radius:18px;padding:1rem 1.1rem;font:inherit;font-weight:700;text-align:left;cursor:pointer;transition:.18s transform,.18s background,.18s border-color}
+.answer:hover,.answer:focus-visible{transform:translateY(-2px);border-color:#ffd341;background:rgba(17,91,102,.72);outline:none}
+.answer.correct{border-color:#ffd341;background:rgba(255,211,65,.2)}
+.answer.wrong{border-color:#7adf98;background:rgba(62,211,119,.12)}
+.feedback{min-height:3rem;font-weight:800;font-size:1.05rem;margin:1rem auto}
+.feedback.try{color:#fff}.feedback.win{color:#ffd341}
+.next-btn,.book-btn{display:inline-block;border:0;border-radius:999px;padding:.9rem 1.5rem;font-weight:900;text-decoration:none;cursor:pointer;margin:.35rem}
+.next-btn,.book-btn{background:#ffd341;color:#062f50}.next-btn[hidden]{display:none}
+.back-btn{color:#fff;border:1px solid rgba(255,255,255,.45);background:transparent}
+.result{padding:1rem 0}.result h2{color:#ffd341}
+.confetti-piece{position:fixed;top:-20px;width:10px;height:16px;z-index:9999;pointer-events:none;animation:fall 1100ms ease-out forwards}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.confetti-piece{animation-duration:1ms}}
+</style>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-star">✦</span><span>Khamryn's Big Adventures</span></a><nav class="nav"><a href="index.html#books">Books</a><a href="connect.html">Connect</a></nav></header>
+<main class="cruise-game">
+<section class="game-card" id="gameCard">
+<img class="cruise-cover" src="images/cruise-adventures.svg" alt="Khamryn's Cruise Adventures book cover">
+<p class="game-kicker">Book Three · Interactive Adventure</p>
+<h1 class="game-title">🚢 All Aboard!</h1>
+<p class="game-copy" id="introCopy">Khamryn and Kendall are ready to explore. Six cruise experiences are waiting. Answer a question from each adventure and collect all six passport stamps!</p>
+<div class="passport" id="passport" aria-label="Cruise passport"><span class="stamp" data-stamp="0">🎪 Carnival</span><span class="stamp" data-stamp="1">🔎 Royal Caribbean</span><span class="stamp" data-stamp="2">🎨 Celebrity</span><span class="stamp" data-stamp="3">🏆 Norwegian</span><span class="stamp" data-stamp="4">🌴 Margaritaville</span><span class="stamp" data-stamp="5">🏴‍☠️ MSC</span></div>
+<div id="gameArea">
+<button class="next-btn" id="startBtn" type="button">START THE VOYAGE →</button>
+</div>
+</section>
+</main>
+<script>
+(function(){
+'use strict';
+const questions=[
+ {line:'Carnival · Camp Ocean',q:'What does Khamryn experience at Camp Ocean?',answers:['Energetic activities and new friendships','A pirate-themed LEGO adventure','Beach crafts and movie nights','Sports tournaments'],correct:'Energetic activities and new friendships'},
+ {line:'Royal Caribbean · Adventure Ocean',q:'Which activity is part of Khamryn’s Adventure Ocean experience?',answers:['Cooking classes','Scavenger hunts','Designing T-shirts','Glow-in-the-dark dodgeball'],correct:'Scavenger hunts'},
+ {line:'Celebrity · Camp at Sea',q:'Which pair of activities is described for Camp at Sea?',answers:['Beach crafts and movie nights','Cooking classes and designing T-shirts','Sports tournaments and dodgeball','Scavenger hunts and pirate adventures'],correct:'Cooking classes and designing T-shirts'},
+ {line:'Norwegian · Splash Academy',q:'What kind of activities does Khamryn find at Splash Academy?',answers:['Sports tournaments and glow-in-the-dark dodgeball','Cooking classes and T-shirt design','Scavenger hunts and new friendships','Beach crafts and movie nights'],correct:'Sports tournaments and glow-in-the-dark dodgeball'},
+ {line:'Margaritaville · Kids Club',q:'Which activities are part of Khamryn’s Margaritaville adventure?',answers:['Beach crafts and movie nights','Sports tournaments and dodgeball','Cooking classes and T-shirt design','Scavenger hunts'],correct:'Beach crafts and movie nights'},
+ {line:'MSC Cruises · Doremi Club',q:'What does Khamryn find at Doremi Club?',answers:['A pirate-themed adventure and LEGO play areas','Movie nights and beach crafts','Cooking classes and T-shirt design','Sports tournaments'],correct:'A pirate-themed adventure and LEGO play areas'}
+];
+const gameArea=document.getElementById('gameArea'), intro=document.getElementById('introCopy'), stamps=[...document.querySelectorAll('.stamp')];
+let index=0,locked=false;
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function confetti(){const colors=['#ffd341','#2d8ec5','#39c977','#f5f7fa'];for(let i=0;i<70;i++){const p=document.createElement('span');p.className='confetti-piece';p.style.left=(Math.random()*100)+'vw';p.style.background=colors[i%colors.length];p.style.setProperty('--x',((Math.random()-.5)*220)+'px');p.style.transform='rotate('+Math.random()*360+'deg)';document.body.appendChild(p);setTimeout(()=>p.remove(),1300);}}
+function renderQuestion(){locked=false;const item=questions[index];const answers=shuffle(item.answers);gameArea.innerHTML=`<div class="question-number">Adventure ${index+1} of ${questions.length} · ${item.line}</div><h2>${item.q}</h2><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><button class="next-btn" id="nextBtn" type="button" hidden>Next Adventure →</button>`;const box=document.getElementById('answers');answers.forEach(answer=>{const b=document.createElement('button');b.className='answer';b.type='button';b.textContent=answer;b.addEventListener('click',()=>choose(b,answer,item));box.appendChild(b);});}
+function choose(button,answer,item){if(locked)return;if(answer!==item.correct){button.classList.add('wrong');const f=document.getElementById('feedback');f.className='feedback try';f.textContent='Almost! Give it another try. 🚢';return;}locked=true;button.classList.add('correct');document.querySelectorAll('.answer').forEach(b=>b.disabled=true);stamps[index].classList.add('done');confetti();const f=document.getElementById('feedback');f.className='feedback win';f.textContent='That’s right! Adventure stamp earned! 🎉';const next=document.getElementById('nextBtn');next.hidden=false;next.textContent=index===questions.length-1?'Finish the Voyage →':'Next Adventure →';next.addEventListener('click',()=>{index++;if(index<questions.length)renderQuestion();else finish();},{once:true});}
+function finish(){intro.textContent='You explored all six cruise experiences! The best adventures are the ones filled with exploration, friendship, and memories.';gameArea.innerHTML='<div class="result"><h2>🎉 VOYAGE COMPLETE!</h2><p class="game-copy">Khamryn’s Cruise Adventure is complete. You collected all six passport stamps!</p><a class="book-btn" href="https://www.amazon.com/dp/B0FHP5157W" target="_blank" rel="noopener">GET THE BOOK →</a><a class="next-btn back-btn" href="index.html#books">← Back to the Books</a></div>';confetti();}
+document.getElementById('startBtn').addEventListener('click',()=>{intro.textContent='Choose the best answer. If you miss one, no worries—try again! Every time the question loads, the answer choices are shuffled.';renderQuestion();});
+})();
+</script>
+</body>
+</html>
