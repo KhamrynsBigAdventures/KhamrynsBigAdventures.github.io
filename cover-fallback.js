@@ -52,7 +52,7 @@
 
       const back = document.createElement('span');
       back.className = 'book-face book-back';
-      back.innerHTML = `<span class="book-back-kicker">THE STORY BEHIND THE ADVENTURE</span><strong>${data.title}</strong><span class="book-summary">${data.summary}</span><span class="book-detail-cta">${data.cta}</span>`;
+      back.innerHTML = `<span class="book-back-kicker">THE STORY BEHIND THE ADVENTURE</span><strong>${data.title}</strong><span class="book-summary">${data.summary}</span>`;
 
       flip.appendChild(front);
       flip.appendChild(back);
@@ -68,7 +68,8 @@
       const cta = document.createElement('a');
       cta.className = 'book-game-link';
       cta.href = data.href;
-      cta.textContent = 'Go to the Adventure →';
+      cta.textContent = data.cta;
+      cta.setAttribute('aria-label', data.cta);
       cta.addEventListener('click', event => event.stopPropagation());
       back.appendChild(cta);
     });
@@ -85,10 +86,9 @@
       .book-back{transform:rotateY(180deg);background:linear-gradient(145deg,rgba(13,94,168,.98),rgba(5,53,95,.98));border:2px solid rgba(255,212,71,.68);padding:24px 18px;text-align:center;box-shadow:0 18px 45px rgba(0,0,0,.28);pointer-events:none}
       .book-back-kicker{color:#ffd447;font-weight:900;letter-spacing:.1em;font-size:.65rem;line-height:1.3;margin-bottom:12px}
       .book-back strong{font-family:Georgia,serif;color:#fffdf2;font-size:1.45rem;line-height:1.05;margin-bottom:14px}
-      .book-summary{color:#e7f3f7;font-size:.86rem;line-height:1.5;overflow:auto;max-height:230px;padding-right:3px}
-      .book-detail-cta{color:#ffd447;font-weight:900;font-size:.78rem;line-height:1.35;margin-top:14px}
-      .book-game-link{display:inline-block;margin-top:10px;color:#fffdf2;text-decoration:none;border:1px solid rgba(255,255,255,.38);border-radius:999px;padding:8px 12px;font-size:.72rem;font-weight:900;pointer-events:auto}
-      .book-game-link:hover,.book-game-link:focus-visible{border-color:#ffd447;color:#ffd447;outline:none}
+      .book-summary{color:#e7f3f7;font-size:.86rem;line-height:1.5;overflow:auto;max-height:265px;padding-right:3px}
+      .book-game-link{display:inline-flex;align-items:center;justify-content:center;margin-top:18px;color:#0b2f4f;background:#ffd447;text-decoration:none;border:2px solid #ffd447;border-radius:999px;padding:11px 18px;font-size:.78rem;font-weight:900;line-height:1.15;pointer-events:auto;white-space:normal;text-align:center;box-shadow:0 8px 18px rgba(0,0,0,.18)}
+      .book-game-link:hover,.book-game-link:focus-visible{background:#fff0a8;border-color:#fff0a8;color:#0b2f4f;outline:none}
       .book-flip.is-flipped .book-front{transform:rotateY(-180deg)}
       .book-flip.is-flipped .book-back{transform:rotateY(0deg);pointer-events:auto}
       @media(max-width:1100px){.book-flip-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
