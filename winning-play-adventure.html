@@ -41,7 +41,8 @@ h1{font-family:Georgia,serif;font-size:clamp(2.2rem,7vw,4.7rem);margin:.25rem 0 
 @keyframes footballBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.25) rotate(0)}14%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r)) scale(1.15)}}
 @keyframes khRun{0%{left:-22%;transform:scaleX(1)}65%{left:62%;transform:scaleX(1)}100%{left:76%;transform:scaleX(1)}}
 @keyframes ballCarry{0%{left:5%;opacity:1}65%{left:69%;opacity:1}100%{left:83%;opacity:1}}
-@media(max-width:600px){.win-game{padding-top:6rem}.game-card{padding:1rem;border-radius:22px}.scoreboard{grid-template-columns:1fr auto 1fr}.team strong{font-size:1rem}.field{min-height:120px}.runner{width:155px}.touchdown-zone{font-size:.7rem}}
+@media(max-width:600px){.win-game{padding-top:6rem}.game-card{padding:1rem;border-radius:22px}.scoreboard{grid-template-columns:1fr auto 1fr}.team strong{font-size:1rem}.field{min-height:120px}.endzone{width:24%;font-size:.72rem;letter-spacing:.06em}.endzone.left{left:10px}.endzone.right{right:10px}.field-ball{left:25%;font-size:2.8rem}.field-goal{right:25%;font-size:3.1rem}.runner{width:155px}.touchdown-zone{font-size:.7rem}}
+@media(max-width:390px){.endzone{font-size:.62rem}.field-ball{left:28%;font-size:2.5rem}.field-goal{right:28%;font-size:2.8rem}}
 @media(prefers-reduced-motion:reduce){.football-pop.show,.ball-burst.show,.final-field.run .runner,.final-field.run .final-football{animation:none}.runner{left:72%}.final-football{left:80%;opacity:1}}
 </style>
 </head>
