@@ -15,7 +15,10 @@
 
   const bookAdventureTargets = {
     'book-big-game': 'big-game-adventure.html',
-    'book-big-bike': 'big-bike-adventure.html'
+    'book-big-bike': 'big-bike-adventure.html',
+    'book-cruise-adventures': 'cruise-adventure-game.html',
+    'book-final-kickoff': 'final-kickoff-adventure-music.html',
+    'book-winning-play': 'winning-play-adventure.html'
   };
 
   document.addEventListener('click', function (event) {
