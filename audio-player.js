@@ -11,4 +11,43 @@
     oldAudio.remove();
   }
   if (oldBar) oldBar.remove();
+
+  // Keep every finished adventure consistent:
+  // GET THE BOOK → then ← Back Home.
+  function standardizeAdventureEnding() {
+    const bookButtons = document.querySelectorAll(
+      '.book-reveal .cta, .book-reveal .book-btn, .finish .book-cta'
+    );
+    bookButtons.forEach((button) => {
+      button.textContent = 'GET THE BOOK →';
+    });
+
+    const backButtons = document.querySelectorAll(
+      '.book-reveal .back, .book-reveal .back-btn, .finish .button-outline, .success .secondary'
+    );
+    backButtons.forEach((button) => {
+      button.textContent = '← Back Home';
+      button.setAttribute('href', 'index.html');
+    });
+
+    // Winning Play was missing its book CTA. Add one when its final reveal appears.
+    if (location.pathname.endsWith('winning-play-adventure.html')) {
+      const reveal = document.querySelector('#bookReveal');
+      if (reveal && !reveal.querySelector('.book-purchase-link')) {
+        const back = reveal.querySelector('a.back');
+        const bookLink = document.createElement('a');
+        bookLink.className = 'next book-purchase-link';
+        bookLink.href = 'https://www.amazon.com/s?k=Khamryn%27s+Winning+Play+Khamryn+Mills';
+        bookLink.target = '_blank';
+        bookLink.rel = 'noopener noreferrer';
+        bookLink.textContent = 'GET THE BOOK →';
+        if (back) reveal.insertBefore(bookLink, back);
+        else reveal.appendChild(bookLink);
+      }
+    }
+  }
+
+  standardizeAdventureEnding();
+  const observer = new MutationObserver(standardizeAdventureEnding);
+  observer.observe(document.body, { childList: true, subtree: true });
 })();
