@@ -5,12 +5,12 @@
   const ASSET_BASE = 'https://khamrynsbigadventures.github.io/';
   const COVER_VERSION = '20260825-covers4';
 
-  const heroTargets = {
-    'big-game-exact.png': 'book-big-game',
-    'big-bike-exact.png': 'book-big-bike',
-    'cruise-adventures-exact.png': 'book-cruise-adventures',
-    'final-kickoff-exact.png': 'book-final-kickoff',
-    'winning-play-exact.png': 'book-winning-play'
+  const heroAdventureTargets = {
+    'hero-winning-kham': 'winning-play-adventure.html',
+    'hero-football-kham': 'big-game-adventure.html',
+    'hero-cruise-kham': 'cruise-adventure-game.html',
+    'hero-soccer-kham': 'final-kickoff-adventure-music.html',
+    'hero-bike-kham': 'big-bike-adventure.html'
   };
 
   const bookAdventureTargets = {
@@ -21,20 +21,31 @@
     'book-winning-play': 'winning-play-adventure.html'
   };
 
+  /*
+     HERO NAVIGATION:
+     Use the hero's actual class as the source of truth.
+     Do not infer the destination from the image filename because several
+     image assets are reused elsewhere on the page.
+  */
   document.addEventListener('click', function (event) {
-    const image = event.target && event.target.closest ? event.target.closest('img') : null;
-    if (!image) return;
-    const filename = image.getAttribute('src')?.split('/').pop()?.split('?')[0];
-    const targetId = heroTargets[filename];
-    const hero = image.closest('.adventure-hero');
-    if (!targetId || !hero) return;
-    const target = document.getElementById(targetId);
+    const target = event.target && event.target.closest
+      ? event.target.closest('.adventure-hero')
+      : null;
     if (!target) return;
+
+    let destination = null;
+    for (const className of Object.keys(heroAdventureTargets)) {
+      if (target.classList.contains(className)) {
+        destination = heroAdventureTargets[className];
+        break;
+      }
+    }
+    if (!destination) return;
+
     event.preventDefault();
     event.stopPropagation();
     if (event.stopImmediatePropagation) event.stopImmediatePropagation();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#' + targetId);
+    window.location.href = destination;
   }, true);
 
   const books = [
@@ -52,9 +63,6 @@
     const image = cover.querySelector('img');
     if (!image) return;
 
-    // IMPORTANT: index.html already contains the REAL BOOK COVER.
-    // Never replace it with the adventure/character artwork. The *exact.png
-    // files are for the floating adventure art and GET THE BOOK objects only.
     image.setAttribute('loading', 'eager');
     image.setAttribute('decoding', 'async');
     image.setAttribute('fetchpriority', 'high');
