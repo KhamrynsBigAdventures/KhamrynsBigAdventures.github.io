@@ -101,3 +101,24 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initBookLibrary, {once:true});
   else initBookLibrary();
 })();
+
+/* HERO NAVIGATION FIX — each floating Khamryn must use its own adventure URL. */
+(function () {
+  'use strict';
+  function bindHeroAdventureNavigation() {
+    document.querySelectorAll('.hero-orbit .adventure-hero').forEach(function (link) {
+      if (link.dataset.navigationFixed === 'true') return;
+      const destination = link.getAttribute('href');
+      if (!destination) return;
+      link.dataset.navigationFixed = 'true';
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+        window.location.assign(destination);
+      }, true);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindHeroAdventureNavigation, {once:true});
+  else bindHeroAdventureNavigation();
+})();
