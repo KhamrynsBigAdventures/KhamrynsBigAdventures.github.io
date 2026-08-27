@@ -98,19 +98,29 @@
     document.head.appendChild(style);
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initBookLibrary, {once:true});
-  else initBookLibrary();
-})();
-
-/* HERO NAVIGATION FIX — each floating Khamryn must use its own adventure URL. */
-(function () {
-  'use strict';
+  /* HERO NAVIGATION FIX — destination is determined by the hero class itself. */
   function bindHeroAdventureNavigation() {
+    const destinations = {
+      'hero-winning-kham': 'winning-play-adventure.html',
+      'hero-football-kham': 'big-game-adventure.html',
+      'hero-cruise-kham': 'cruise-adventure-game.html',
+      'hero-soccer-kham': 'final-kickoff-adventure-music.html',
+      'hero-bike-kham': 'big-bike-adventure.html'
+    };
+
     document.querySelectorAll('.hero-orbit .adventure-hero').forEach(function (link) {
-      if (link.dataset.navigationFixed === 'true') return;
-      const destination = link.getAttribute('href');
-      if (!destination) return;
+      let destination = null;
+      Object.keys(destinations).some(function (className) {
+        if (link.classList.contains(className)) {
+          destination = destinations[className];
+          return true;
+        }
+        return false;
+      });
+      if (!destination || link.dataset.navigationFixed === 'true') return;
+
       link.dataset.navigationFixed = 'true';
+      link.setAttribute('href', destination);
       link.addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -119,6 +129,12 @@
       }, true);
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindHeroAdventureNavigation, {once:true});
-  else bindHeroAdventureNavigation();
+
+  function start() {
+    initBookLibrary();
+    bindHeroAdventureNavigation();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
+  else start();
 })();
