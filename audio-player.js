@@ -30,14 +30,14 @@
       if (button.getAttribute('href') !== 'index.html') button.setAttribute('href', 'index.html');
     });
 
-    // Winning Play was missing its book CTA. Add one when its final reveal appears.
+    // Winning Play was missing its book CTA. Add the direct book link when its final reveal appears.
     if (location.pathname.endsWith('winning-play-adventure.html')) {
       const reveal = document.querySelector('#bookReveal');
       if (reveal && !reveal.querySelector('.book-purchase-link')) {
         const back = reveal.querySelector('a.back');
         const bookLink = document.createElement('a');
         bookLink.className = 'next book-purchase-link';
-        bookLink.href = 'https://www.amazon.com/s?k=Khamryn%27s+Winning+Play+Khamryn+Mills';
+        bookLink.href = 'https://www.amazon.com/dp/B0GXLHT5F2';
         bookLink.target = '_blank';
         bookLink.rel = 'noopener noreferrer';
         bookLink.textContent = 'GET THE BOOK →';
