@@ -1,0 +1,52 @@
+name: Restore missing adventure book covers
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  restore-covers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore the two missing covers
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def insert_once(path, marker, html):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if html.strip() in text:
+                  return False
+              if marker not in text:
+                  raise SystemExit(f'Marker not found in {path}')
+              p.write_text(text.replace(marker, html + marker, 1), encoding='utf-8')
+              return True
+
+          cover_style = 'display:block;width:min(280px,72vw);height:auto;margin:0 auto 1.5rem;border-radius:18px;box-shadow:0 20px 45px rgba(0,0,0,.3)'
+
+          big_game_cover = f'<img src="images/big-game.svg" alt="Khamryn\'s Big Game book cover" style="{cover_style}">\n'
+          bike_cover = f'<img src="images/big-bike.svg" alt="Khamryn\'s Big Bike Adventure book cover" style="{cover_style}">\n'
+
+          changed = False
+          changed |= insert_once('big-game-adventure.html', '<p class="eyebrow">KHAMRYN\'S BIG GAME</p>', big_game_cover)
+          changed |= insert_once('big-bike-adventure.html', '<p class="section-kicker">BOOK TWO · BIG BIKE ADVENTURE</p>', bike_cover)
+
+          if changed:
+              print('Book covers restored.')
+          else:
+              print('Covers were already present.')
+      - name: Commit the cover restoration and remove this one-time workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add big-game-adventure.html big-bike-adventure.html .github/workflows/restore-adventure-covers.yml
+          git rm .github/workflows/restore-adventure-covers.yml
+          git diff --cached --quiet || git commit -m "Restore Big Game and Big Bike book covers"
+          git push
