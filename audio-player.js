@@ -12,11 +12,11 @@
   }
   if (oldBar) oldBar.remove();
 
-  // Force-load the current client palette after any page-specific cached CSS.
-  // This makes the deep-blue + aqua/teal-green + yellow palette apply site-wide.
+  // Force-load the final supplied-reference palette after page-specific CSS.
+  // The version query intentionally changes whenever the master palette changes.
   const palette = document.createElement('link');
   palette.rel = 'stylesheet';
-  palette.href = 'palette.css?v=20260902-sitewide';
+  palette.href = 'palette.css?v=20260902-reference-final';
   palette.dataset.sitewidePalette = 'true';
   document.head.appendChild(palette);
 
@@ -38,7 +38,6 @@
       if (button.getAttribute('href') !== 'index.html') button.setAttribute('href', 'index.html');
     });
 
-    // Winning Play was missing its book CTA. Add the direct book link when its final reveal appears.
     if (location.pathname.endsWith('winning-play-adventure.html')) {
       const reveal = document.querySelector('#bookReveal');
       if (reveal && !reveal.querySelector('.book-purchase-link')) {
