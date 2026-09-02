@@ -12,6 +12,14 @@
   }
   if (oldBar) oldBar.remove();
 
+  // Force-load the current client palette after any page-specific cached CSS.
+  // This makes the deep-blue + aqua/teal-green + yellow palette apply site-wide.
+  const palette = document.createElement('link');
+  palette.rel = 'stylesheet';
+  palette.href = 'palette.css?v=20260902-sitewide';
+  palette.dataset.sitewidePalette = 'true';
+  document.head.appendChild(palette);
+
   // Keep every finished adventure consistent:
   // GET THE BOOK → then ← Back Home.
   function standardizeAdventureEnding() {
