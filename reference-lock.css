@@ -1,18 +1,8 @@
-/* FINAL REFERENCE LOCK — matches the supplied Khamryn artwork. */
-:root{--ref-aqua:#0B9EAB;--ref-teal:#18B7B0;--ref-blue:#0A3F86;--ref-blue-deep:#07356F;--ref-yellow:#FFD43D;--ref-cream:#FFF9E8;--ref-green:#65C95B}
-html,body{background:#0B9EAB!important}
-body{background:linear-gradient(145deg,#078A99 0%,#0B9EAB 42%,#19B7AE 100%)!important;color:var(--ref-cream)!important}
-.site-header{background:linear-gradient(145deg,#078F9E,#12AAA8)!important;border:3px solid var(--ref-yellow)!important;color:var(--ref-cream)!important}
-.site-header a{color:var(--ref-cream)!important}.site-header .brand-star{color:var(--ref-yellow)!important}
-.hero,.intro,.books,.adventures,.connect{background:linear-gradient(145deg,#078A99 0%,#0BA3AB 45%,#19B7AE 100%)!important}
-.hero h1,.page-hero h1,.book-hero h1{color:var(--ref-yellow)!important;text-shadow:3px 4px 0 var(--ref-blue-deep)!important}
-h1 span{color:var(--ref-yellow)!important;text-shadow:3px 4px 0 var(--ref-blue-deep)!important}
-.book-card,.connect-card{background:linear-gradient(145deg,rgba(255,249,232,.99),rgba(255,255,255,.96))!important;border:3px solid var(--ref-yellow)!important}
-.book-card h3,.book-card p,.connect-card h2,.connect-card p{color:var(--ref-blue)!important}
-.book-art{background:rgba(255,249,232,.10)!important}.book-art::before{background:rgba(255,212,61,.14)!important}
-.book-football{background:linear-gradient(145deg,#075B86,#0A9EAB)!important}.book-bike{background:linear-gradient(145deg,#176D52,#45A96D)!important}.book-cruise{background:linear-gradient(145deg,#075B86,#0BA7B3)!important}.book-soccer,.book-winning{background:linear-gradient(145deg,#087F7A,#16AAA0)!important}
-.hero-orbit .orbit{border:2px solid rgba(255,212,61,.78)!important;box-shadow:none!important}
-.button-gold,.button,.button-gold:visited{background:var(--ref-cream)!important;color:var(--ref-blue)!important;border:3px solid var(--ref-yellow)!important}
-.button-outline{background:rgba(255,249,232,.14)!important;color:var(--ref-cream)!important;border:2px solid var(--ref-yellow)!important}
-.site-footer,footer{background:linear-gradient(145deg,#078A99,#0BA4AB)!important;border-top:3px solid var(--ref-yellow)!important}
-@media(max-width:600px){.site-header{background:linear-gradient(145deg,#078F9E,#12AAA8)!important;border:2px solid var(--ref-yellow)!important}}
+/* FINAL REFERENCE LOCK — supplied Khamryn artwork: aqua/turquoise, bright blue, yellow, green, cream. */
+:root{--ref-aqua:#068C9D;--ref-teal:#20AAAC;--ref-blue:#064682;--ref-blue-deep:#063E76;--ref-yellow:#FFD84A;--ref-cream:#FFF9E8;--ref-green:#8EC39E}
+html,body{background:#068C9D!important}body{background:linear-gradient(145deg,#057F95 0%,#068C9D 42%,#20AAAC 100%)!important;color:var(--ref-cream)!important}
+.site-header{background:linear-gradient(145deg,#057F95,#20AAAC)!important;border:3px solid var(--ref-yellow)!important;color:var(--ref-cream)!important}.site-header a{color:var(--ref-cream)!important}.site-header .brand-star{color:var(--ref-yellow)!important}
+.hero,.intro,.books,.adventures,.connect{background:linear-gradient(145deg,#057F95 0%,#068C9D 45%,#20AAAC 100%)!important}.hero h1,.page-hero h1,.book-hero h1{color:var(--ref-yellow)!important;text-shadow:3px 4px 0 var(--ref-blue-deep)!important}h1 span{color:var(--ref-yellow)!important;text-shadow:3px 4px 0 var(--ref-blue-deep)!important}
+.book-card,.connect-card{background:linear-gradient(145deg,rgba(255,249,232,.99),rgba(255,255,255,.96))!important;border:3px solid var(--ref-yellow)!important}.book-card h3,.book-card p,.connect-card h2,.connect-card p{color:var(--ref-blue)!important}.book-art{background:rgba(255,249,232,.10)!important}.book-art::before{background:rgba(255,216,74,.14)!important}.book-football{background:linear-gradient(145deg,#064682,#068C9D)!important}.book-bike{background:linear-gradient(145deg,#176D52,#45A96D)!important}.book-cruise{background:linear-gradient(145deg,#064682,#20AAAC)!important}.book-soccer,.book-winning{background:linear-gradient(145deg,#087F7A,#20AAAC)!important}
+.hero-orbit .orbit{border:2px solid rgba(255,216,74,.78)!important;box-shadow:none!important}.button-gold,.button,.button-gold:visited{background:var(--ref-cream)!important;color:var(--ref-blue)!important;border:3px solid var(--ref-yellow)!important}.button-outline{background:rgba(255,249,232,.14)!important;color:var(--ref-cream)!important;border:2px solid var(--ref-yellow)!important}.site-footer,footer{background:linear-gradient(145deg,#057F95,#068C9D)!important;border-top:3px solid var(--ref-yellow)!important}
+@media(max-width:600px){.site-header{background:linear-gradient(145deg,#057F95,#20AAAC)!important;border:2px solid var(--ref-yellow)!important}}
