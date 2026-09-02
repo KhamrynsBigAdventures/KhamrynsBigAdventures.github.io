@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Help choose Khamryn's next BIG adventure.">
+<title>What Adventure Should Khamryn Explore Next?</title>
+<link rel="stylesheet" href="style.css?v=20260822-final">
+<link rel="stylesheet" href="palette.css?v=20260902-brand-refresh">
+<style>
+:root{--blue:#07507a;--blue-deep:#063653;--teal:#0b9a9a;--teal-light:#25bcae;--yellow:#ffd447;--cream:#fff9e8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#063653 0%,#075a82 45%,#079a92 100%);color:var(--cream);font-family:Arial,sans-serif;min-height:100vh}.site-header{background:rgba(6,54,83,.95)!important}.future-page{width:min(920px,94vw);margin:0 auto;padding:34px 0 70px}.future-hero{text-align:center;padding:24px 12px 18px}.future-kicker{color:var(--yellow);font-weight:900;letter-spacing:.15em;font-size:.78rem}.future-hero h1{font-family:Georgia,serif;font-size:clamp(2.1rem,6vw,4.2rem);line-height:1.03;margin:.4rem auto .9rem;color:var(--cream)}.future-hero h1 span{color:var(--yellow)}.future-hero p{font-size:clamp(1rem,2.2vw,1.25rem);line-height:1.55;max-width:700px;margin:auto;color:#e9fbf8}.question-card{margin:22px auto 0;background:linear-gradient(145deg,rgba(8,84,119,.98),rgba(9,153,145,.96));border:3px solid rgba(255,212,71,.85);border-radius:30px;padding:clamp(20px,4vw,38px);box-shadow:0 28px 80px rgba(0,0,0,.3)}.progress{display:flex;align-items:center;justify-content:space-between;color:#dff8f4;font-size:.8rem;font-weight:900;letter-spacing:.08em;margin-bottom:18px}.progress-bar{height:10px;border-radius:99px;background:rgba(255,255,255,.15);overflow:hidden}.progress-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),#8de5c7);border-radius:99px;transition:width .3s ease}.question{font-family:Georgia,serif;font-size:clamp(1.45rem,4vw,2.2rem);line-height:1.2;text-align:center;margin:25px auto 22px;color:#fff}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.choice{min-height:72px;border:2px solid rgba(255,255,255,.3);border-radius:18px;background:rgba(255,255,255,.09);color:#fff;padding:14px 12px;font-size:1rem;font-weight:900;cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease}.choice:hover,.choice:focus-visible{transform:translateY(-2px);background:rgba(255,212,71,.17);border-color:var(--yellow);outline:none}.choice.selected{background:var(--yellow);color:#073653;border-color:var(--yellow)}.choice small{display:block;margin-top:4px;font-weight:600;opacity:.78}.result{display:none;text-align:center}.result.show{display:block}.result h2{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3.5rem);margin:.3rem auto .8rem;color:var(--cream)}.result h2 span{color:var(--yellow)}.result-copy{font-size:clamp(1rem,2.2vw,1.25rem);line-height:1.55;max-width:680px;margin:0 auto 20px}.mini-khamryn{width:min(260px,62vw);height:auto;display:block;margin:8px auto 10px;filter:drop-shadow(0 16px 18px rgba(0,0,0,.25))}.wave-label{font-size:2rem;margin-top:-6px}.result-message{margin:18px auto;padding:20px;border-radius:22px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}.result-message strong{color:var(--yellow)}.button-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}.button{display:inline-flex;align-items:center;justify-content:center;min-width:210px;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:900}.button-gold{background:var(--yellow);color:#073653}.button-outline{border:2px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.08)}.idea-note{text-align:center;color:#d9f4ef;font-size:.82rem;margin-top:18px}.back-home{display:block;text-align:center;margin:28px auto 0;color:var(--yellow);font-weight:900;text-decoration:none}@media(max-width:600px){.future-page{padding-top:16px}.choices{grid-template-columns:1fr 1fr;gap:9px}.choice{min-height:70px;padding:11px 7px;font-size:.83rem}.choice small{font-size:.68rem}.question-card{border-radius:24px}.site-header{padding:13px 5vw}.site-header .brand{justify-content:center}.site-header .nav{justify-content:center}}@media(max-width:390px){.choices{grid-template-columns:1fr}.choice{min-height:58px}}
+</style>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-star">✦</span><span>Khamryn's Big Adventures</span></a><nav class="nav"><a href="index.html#books">Books</a><a href="about.html">About Khamryn</a><a href="connect.html">Connect</a></nav></header>
+<main class="future-page">
+<section class="future-hero"><p class="future-kicker">🌙 THE MOON ROCKS BROUGHT YOU HERE!</p><h1>WHAT ADVENTURE SHOULD <span>KHAMRYN</span> EXPLORE NEXT?</h1><p>Khamryn has already explored five BIG adventures. Now you get to help imagine what comes next!</p></section>
+<section class="question-card" aria-live="polite">
+<div id="quiz"><div class="progress"><span id="progressText">QUESTION 1 OF 5</span><span id="progressPercent">20%</span></div><div class="progress-bar"><i id="progressFill"></i></div><h2 class="question" id="questionText"></h2><div class="choices" id="choices"></div></div>
+<div class="result" id="result"><p class="future-kicker">✨ YOU HELPED IMAGINE WHAT'S NEXT!</p><h2><span>BIG</span> IDEA!</h2><p class="result-copy">Your adventure choices have been saved for this visit. Every BIG adventure starts with a BIG idea.</p><img class="mini-khamryn" src="images/winning-play-exact.png" alt="Khamryn waving hello"><div class="wave-label" aria-hidden="true">👋🏾</div><div class="result-message"><p><strong>Your idea might inspire Khamryn’s next BIG adventure! ✨</strong></p><p>Keep reading to see which adventure is next… it could be…</p><p>See you there! 👋🏾</p></div><div class="button-row"><a class="button button-gold" href="https://link.me/kjmills" target="_blank" rel="noopener">Tell Khamryn your idea →</a><a class="button button-outline" href="index.html">Back to the Adventures</a></div></div>
+</section>
+<a class="back-home" href="index.html">← BACK HOME</a>
+</main>
+<script>
+(function(){
+const questions=[
+ {q:'If Khamryn could spend the day doing something NEW, what sounds the most fun?',a:['Roller Skating','Ice Skating','Baseball','Bowling']},
+ {q:'Which adventure would have Khamryn moving, splashing, or exploring?',a:['Swimming','Horseback Riding','Roller Skating','Camping Adventure']},
+ {q:'Which BIG idea would you most want to see in a Khamryn story?',a:['Space Adventure','Baseball','Bowling','Ice Skating']},
+ {q:'Pick the adventure that sounds like the perfect weekend!',a:['Camping Adventure','Horseback Riding','Swimming','Roller Skating']},
+ {q:'One last BIG choice: where should Khamryn explore next?',a:['Space Adventure','Baseball','Ice Skating','Horseback Riding']}
+];
+let step=0;const answers=[];const q=document.getElementById('questionText'),choices=document.getElementById('choices'),fill=document.getElementById('progressFill'),pt=document.getElementById('progressText'),pp=document.getElementById('progressPercent');
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+function render(){const item=questions[step];q.textContent=item.q;choices.innerHTML='';pt.textContent='QUESTION '+(step+1)+' OF '+questions.length;pp.textContent=Math.round(((step+1)/questions.length)*100)+'%';fill.style.width=((step+1)/questions.length*100)+'%';shuffle(item.a).forEach(name=>{const b=document.createElement('button');b.className='choice';b.type='button';b.textContent=name;b.addEventListener('click',()=>{answers.push(name);b.classList.add('selected');setTimeout(()=>{step++;if(step<questions.length)render();else finish();},420)});choices.appendChild(b)})}
+function finish(){document.getElementById('quiz').style.display='none';document.getElementById('result').classList.add('show');document.querySelector('.question-card').scrollIntoView({behavior:'smooth',block:'start'});try{sessionStorage.setItem('khamrynFutureIdeas',JSON.stringify(answers))}catch(e){}}
+render();
+})();
+</script>
+</body></html>
