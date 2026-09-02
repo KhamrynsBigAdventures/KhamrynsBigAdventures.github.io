@@ -1,15 +1,14 @@
-/* Khamryn's Big Adventures — reader-powered future adventure selector. */
+/* Khamryn's Big Adventures — future-adventure moon portal. */
 (function () {
   'use strict';
 
-  function initFutureAdventureSelector() {
+  function initFutureAdventurePortal() {
     const orbit = document.querySelector('.hero-orbit');
     const core = document.querySelector('.hero-core');
-    const hero = document.querySelector('.hero');
-    if (!orbit || !core || !hero || document.querySelector('.future-adventure-panel')) return;
+    if (!orbit || !core || document.querySelector('.future-adventure-moon')) return;
 
     core.outerHTML = `
-      <button class="future-adventure-moon" type="button" aria-expanded="false" aria-controls="future-adventure-panel">
+      <button class="future-adventure-moon" type="button" aria-label="Open the future adventure ideas">
         <span class="moon-glow" aria-hidden="true"></span>
         <span class="moon-craters" aria-hidden="true"></span>
         <span class="moon-star" aria-hidden="true">✦</span>
@@ -18,65 +17,19 @@
         <span class="moon-rock-burst" aria-hidden="true">
           <i>◆</i><i>✦</i><i>●</i><i>◆</i><i>✧</i><i>●</i><i>✦</i><i>◆</i>
         </span>
+        <span class="moon-crack moon-crack-one" aria-hidden="true"></span>
+        <span class="moon-crack moon-crack-two" aria-hidden="true"></span>
+        <span class="moon-crack moon-crack-three" aria-hidden="true"></span>
       </button>`;
 
-    const panel = document.createElement('div');
-    panel.className = 'future-adventure-panel';
-    panel.id = 'future-adventure-panel';
-    panel.hidden = true;
-    panel.innerHTML = `
-      <div class="future-adventure-card">
-        <p class="future-kicker">✨ A NEW BIG ADVENTURE IS WAITING…</p>
-        <h2>Where should Khamryn go next?</h2>
-        <p>Pick an adventure you would LOVE to see Khamryn explore. These are brand-new ideas — not adventures he has already taken!</p>
-        <div class="future-adventure-options" role="group" aria-label="Choose a future Khamryn adventure">
-          ${[
-            ['Roller Skating','🛼'],['Ice Skating','⛸️'],['Baseball','⚾'],['Bowling','🎳'],
-            ['Swimming','🏊🏾'],['Horseback Riding','🐎'],['Space Adventure','🚀'],['Camping Adventure','🏕️']
-          ].map(([name, icon]) => `<button type="button" class="future-choice" data-adventure="${name}"><span>${icon}</span>${name}</button>`).join('')}
-        </div>
-        <div class="future-adventure-message" aria-live="polite" hidden>
-          <div class="future-khamryn-wrap">
-            <img src="images/winning-play-exact.png" alt="Khamryn standing and waving hello" class="future-khamryn">
-            <span class="future-wave" aria-hidden="true">👋🏾</span>
-          </div>
-          <p><strong>Your idea might inspire Khamryn’s next BIG adventure! ✨</strong></p>
-          <p>Keep reading to see which adventure is next… it could be…</p>
-          <p>See you there! 👋🏾</p>
-          <a class="future-contact" href="https://link.me/kjmills" target="_blank" rel="noopener">Tell Khamryn your idea →</a>
-        </div>
-      </div>`;
-
-    /* Keep the selector in normal page flow. This prevents it from floating
-       over the five existing book-adventure characters on small screens. */
-    hero.appendChild(panel);
-
     const moon = orbit.querySelector('.future-adventure-moon');
-    const message = panel.querySelector('.future-adventure-message');
-
     moon.addEventListener('click', function () {
-      const open = panel.hidden;
-      panel.hidden = !open;
-      moon.setAttribute('aria-expanded', String(open));
-      hero.classList.toggle('future-adventures-open', open);
-      orbit.classList.toggle('future-adventures-open', open);
-      if (open) {
-        window.setTimeout(function () {
-          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 120);
-      }
-    });
-
-    panel.querySelectorAll('.future-choice').forEach(function (choice) {
-      choice.addEventListener('click', function () {
-        panel.querySelectorAll('.future-choice').forEach(btn => btn.classList.remove('selected'));
-        choice.classList.add('selected');
-        message.hidden = false;
-        message.dataset.selectedAdventure = choice.dataset.adventure;
-        window.setTimeout(function () {
-          message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 60);
-      });
+      if (moon.classList.contains('moon-exploding')) return;
+      moon.classList.add('moon-exploding');
+      orbit.classList.add('moon-portal-opening');
+      window.setTimeout(function () {
+        window.location.href = 'future-adventure.html';
+      }, 1250);
     });
   }
 
@@ -85,17 +38,17 @@
     const style = document.createElement('style');
     style.id = 'future-adventure-styles';
     style.textContent = `
-      .future-adventure-moon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;width:clamp(190px,20vw,270px);height:clamp(190px,20vw,270px);margin:0;border:2px solid rgba(255,212,71,.75);border-radius:50%;background:radial-gradient(circle at 35% 28%,#f9fff8 0,#bceee2 20%,#55c9b1 48%,#138f91 72%,#075b78 100%);color:#063b58;box-shadow:0 0 0 12px rgba(255,255,255,.07),0 0 55px rgba(91,224,191,.5),inset -22px -26px 40px rgba(0,38,75,.28);cursor:pointer;overflow:visible;z-index:12;transition:transform .35s ease,box-shadow .35s ease}.future-adventure-moon:hover,.future-adventure-moon:focus-visible{transform:translate(-50%,-50%) scale(1.045);box-shadow:0 0 0 14px rgba(255,255,255,.09),0 0 75px rgba(91,224,191,.7),inset -22px -26px 40px rgba(0,38,75,.28);outline:3px solid #ffd447;outline-offset:5px}.future-adventure-moon strong{position:relative;font-family:Georgia,serif;font-size:clamp(.82rem,1.2vw,1.08rem);line-height:1.18;letter-spacing:.04em;text-align:center;text-shadow:0 1px rgba(255,255,255,.6);z-index:2}.future-adventure-moon small{position:relative;z-index:2;margin-top:10px;font-size:.55rem;font-weight:900;letter-spacing:.13em}.moon-star{position:absolute;z-index:3;top:20%;right:21%;color:#fff7ae;font-size:1.2rem;animation:moonTwinkle 1.8s ease-in-out infinite}.moon-glow{position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(255,255,255,.35);animation:moonSpin 14s linear infinite}.moon-craters:before,.moon-craters:after{content:'';position:absolute;border-radius:50%;background:rgba(0,75,105,.15)}.moon-craters:before{width:32px;height:32px;left:22%;top:25%;box-shadow:65px 55px 0 10px rgba(0,75,105,.12),-20px 70px 0 4px rgba(0,75,105,.12)}.moon-craters:after{width:14px;height:14px;right:20%;bottom:24%;box-shadow:-55px 25px 0 5px rgba(0,75,105,.1)}
-      .future-adventure-panel{position:relative;width:min(650px,92vw);margin:34px auto 0;z-index:40}.future-adventure-card{position:relative;padding:25px;border-radius:28px;background:linear-gradient(145deg,rgba(7,77,116,.98),rgba(12,135,132,.98));border:2px solid rgba(255,212,71,.8);box-shadow:0 24px 70px rgba(0,0,0,.4);text-align:center;color:#fff}.future-kicker{color:#ffd447;font-weight:900;letter-spacing:.12em;font-size:.68rem}.future-adventure-card h2{margin:.35rem 0 .5rem;font-family:Georgia,serif;font-size:clamp(1.35rem,3vw,2rem);color:#fff}.future-adventure-card>p:not(.future-kicker){max-width:540px;margin:.4rem auto 1rem;line-height:1.55;color:#e9fbf8}.future-adventure-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.future-choice{border:2px solid rgba(255,255,255,.24);border-radius:16px;background:rgba(255,255,255,.1);color:#fff;padding:12px 10px;font-weight:900;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}.future-choice span{font-size:1.35rem;margin-right:6px}.future-choice:hover,.future-choice:focus-visible,.future-choice.selected{transform:translateY(-2px);background:#ffd447;color:#073a58;border-color:#ffd447;outline:none}.future-adventure-message{margin-top:18px;padding:20px;border-radius:22px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.2)}.future-adventure-message p{margin:.55rem 0;color:#fff}.future-adventure-message strong{color:#ffd447}.future-khamryn-wrap{position:relative;height:145px;margin:-5px auto 5px;display:flex;align-items:flex-end;justify-content:center}.future-khamryn{height:145px;width:auto;max-width:130px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25))}.future-wave{position:absolute;top:10px;margin-left:110px;font-size:2rem;animation:waveBounce .9s ease-in-out infinite alternate}.future-contact{display:inline-flex;margin-top:9px;padding:10px 17px;border-radius:999px;background:#fff;color:#075b78;text-decoration:none;font-weight:900}.moon-rock-burst{position:absolute;inset:-80px;pointer-events:none;z-index:1}.moon-rock-burst i{position:absolute;color:#ffd447;font-style:normal;font-size:1.4rem;text-shadow:0 0 10px rgba(255,212,71,.7);opacity:0;animation:rockFloat 2.8s ease-out infinite}.moon-rock-burst i:nth-child(1){left:7%;top:34%;animation-delay:.1s}.moon-rock-burst i:nth-child(2){left:18%;top:5%;animation-delay:.35s}.moon-rock-burst i:nth-child(3){left:48%;top:0;animation-delay:.55s}.moon-rock-burst i:nth-child(4){right:9%;top:18%;animation-delay:.8s}.moon-rock-burst i:nth-child(5){right:0;top:52%;animation-delay:.25s}.moon-rock-burst i:nth-child(6){right:22%;bottom:0;animation-delay:.65s}.moon-rock-burst i:nth-child(7){left:38%;bottom:-5%;animation-delay:.4s}.moon-rock-burst i:nth-child(8){left:2%;bottom:18%;animation-delay:.9s}.future-adventures-open .moon-rock-burst i{animation-duration:1.8s}.future-adventures-open .adventure-hero{opacity:.82}.future-adventures-open .orbit{opacity:.5}
-      @keyframes moonSpin{to{transform:rotate(360deg)}}@keyframes moonTwinkle{50%{transform:scale(1.35) rotate(12deg);opacity:.55}}@keyframes rockFloat{0%{transform:scale(.2) translate(0,0) rotate(0);opacity:0}25%{opacity:1}100%{transform:translate(0,-38px) scale(1.15) rotate(160deg);opacity:.2}}@keyframes waveBounce{to{transform:rotate(14deg) translateY(-5px)}}
-      @media(max-width:850px){.future-adventure-panel{width:min(680px,92vw);margin-top:28px}.future-adventure-card{padding:22px 18px}}
-      @media(max-width:560px){.future-adventure-moon{width:185px;height:185px}.future-adventure-moon strong{font-size:.78rem}.future-adventure-moon small{font-size:.48rem}.future-adventure-panel{width:calc(100vw - 28px);margin-top:22px}.future-adventure-card{padding:20px 12px;border-radius:24px}.future-adventure-options{grid-template-columns:1fr 1fr;gap:9px}.future-choice{min-height:58px;padding:10px 7px;font-size:.78rem}.future-choice span{font-size:1.18rem;margin-right:4px}.future-adventure-message{padding:16px 10px}.future-khamryn-wrap{height:125px}.future-khamryn{height:125px;max-width:112px}.future-wave{margin-left:95px;font-size:1.75rem}}
-      @media(prefers-reduced-motion:reduce){.future-adventure-moon,.moon-glow,.moon-star,.moon-rock-burst i,.future-wave{animation:none!important;transition:none!important}}
+      .future-adventure-moon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;width:clamp(190px,20vw,270px);height:clamp(190px,20vw,270px);margin:0;border:3px solid #ffd447;border-radius:50%;background:radial-gradient(circle at 34% 25%,#8ee6d1 0,#31b8aa 32%,#087c89 63%,#075077 100%);color:#073b59;box-shadow:0 0 0 10px rgba(255,212,71,.10),0 0 70px rgba(49,184,170,.45),inset -24px -28px 40px rgba(0,38,75,.28);cursor:pointer;overflow:visible;z-index:12;transition:transform .35s ease,box-shadow .35s ease}.future-adventure-moon:hover,.future-adventure-moon:focus-visible{transform:translate(-50%,-50%) scale(1.045);box-shadow:0 0 0 14px rgba(255,212,71,.13),0 0 85px rgba(49,184,170,.62),inset -24px -28px 40px rgba(0,38,75,.28);outline:3px solid #ffd447;outline-offset:5px}.future-adventure-moon strong{position:relative;z-index:4;font-family:Georgia,serif;font-size:clamp(.82rem,1.2vw,1.08rem);line-height:1.18;letter-spacing:.04em;text-align:center;text-shadow:0 1px rgba(255,255,255,.6)}.future-adventure-moon small{position:relative;z-index:4;margin-top:10px;font-size:.55rem;font-weight:900;letter-spacing:.13em}.moon-star{position:absolute;z-index:5;top:18%;right:21%;color:#fff4a8;font-size:1.25rem;animation:moonTwinkle 1.8s ease-in-out infinite}.moon-glow{position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(255,255,255,.38);animation:moonSpin 14s linear infinite}.moon-craters:before,.moon-craters:after{content:'';position:absolute;border-radius:50%;background:rgba(0,70,95,.16)}.moon-craters:before{width:34px;height:34px;left:20%;top:24%;box-shadow:65px 55px 0 10px rgba(0,70,95,.12),-20px 70px 0 4px rgba(0,70,95,.12)}.moon-craters:after{width:15px;height:15px;right:20%;bottom:23%;box-shadow:-55px 25px 0 5px rgba(0,70,95,.1)}
+      .moon-crack{position:absolute;z-index:6;background:#ffd447;border-radius:99px;transform-origin:left center;opacity:.9}.moon-crack-one{width:38px;height:3px;left:23%;top:45%;transform:rotate(22deg)}.moon-crack-two{width:30px;height:3px;right:22%;top:54%;transform:rotate(-28deg)}.moon-crack-three{width:27px;height:3px;left:42%;bottom:22%;transform:rotate(-18deg)}
+      .moon-rock-burst{position:absolute;inset:-70px;pointer-events:none;z-index:7}.moon-rock-burst i{position:absolute;color:#ffd447;font-style:normal;font-size:1.5rem;opacity:0;text-shadow:0 0 12px rgba(255,212,71,.9)}.moon-rock-burst i:nth-child(1){left:4%;top:42%}.moon-rock-burst i:nth-child(2){left:16%;top:4%}.moon-rock-burst i:nth-child(3){left:48%;top:-4%}.moon-rock-burst i:nth-child(4){right:8%;top:18%}.moon-rock-burst i:nth-child(5){right:-1%;top:53%}.moon-rock-burst i:nth-child(6){right:20%;bottom:-4%}.moon-rock-burst i:nth-child(7){left:39%;bottom:-7%}.moon-rock-burst i:nth-child(8){left:0;bottom:19%}
+      .moon-exploding{animation:moonExplode 1.15s cubic-bezier(.2,.8,.2,1) forwards!important}.moon-exploding .moon-crack{animation:crackFlash .35s ease-in forwards}.moon-exploding .moon-glow{animation:none}.moon-exploding .moon-rock-burst i{animation:rockBurst 1.1s cubic-bezier(.15,.8,.2,1) forwards}.moon-exploding .moon-rock-burst i:nth-child(1){--rx:-95px;--ry:-45px}.moon-exploding .moon-rock-burst i:nth-child(2){--rx:-65px;--ry:-105px}.moon-exploding .moon-rock-burst i:nth-child(3){--rx:0px;--ry:-125px}.moon-exploding .moon-rock-burst i:nth-child(4){--rx:75px;--ry:-85px}.moon-exploding .moon-rock-burst i:nth-child(5){--rx:105px;--ry:-10px}.moon-exploding .moon-rock-burst i:nth-child(6){--rx:70px;--ry:95px}.moon-exploding .moon-rock-burst i:nth-child(7){--rx:0px;--ry:115px}.moon-exploding .moon-rock-burst i:nth-child(8){--rx:-85px;--ry:80px}.moon-portal-opening .adventure-hero{animation-play-state:paused;opacity:.25;transition:opacity .35s ease}.moon-portal-opening .orbit{opacity:.2;transition:opacity .35s ease}
+      @keyframes moonSpin{to{transform:rotate(360deg)}}@keyframes moonTwinkle{50%{transform:scale(1.35) rotate(12deg);opacity:.55}}@keyframes moonExplode{0%{transform:translate(-50%,-50%) scale(1);opacity:1}38%{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 22px rgba(255,212,71,.24),0 0 120px rgba(255,212,71,.75)}70%{transform:translate(-50%,-50%) scale(.88);opacity:.7}100%{transform:translate(-50%,-50%) scale(.08);opacity:0}}@keyframes crackFlash{to{opacity:0;box-shadow:0 0 18px #ffd447}}@keyframes rockBurst{0%{transform:translate(0,0) scale(.15) rotate(0);opacity:0}18%{opacity:1;transform:translate(calc(var(--rx)*.35),calc(var(--ry)*.35)) scale(1.1) rotate(60deg)}100%{transform:translate(var(--rx),var(--ry)) scale(.72) rotate(240deg);opacity:0}}
+      @media(max-width:560px){.future-adventure-moon{width:185px;height:185px}.future-adventure-moon strong{font-size:.78rem}.future-adventure-moon small{font-size:.48rem}.moon-rock-burst{inset:-48px}.moon-exploding .moon-rock-burst i:nth-child(1){--rx:-55px;--ry:-28px}.moon-exploding .moon-rock-burst i:nth-child(2){--rx:-40px;--ry:-65px}.moon-exploding .moon-rock-burst i:nth-child(3){--rx:0px;--ry:-75px}.moon-exploding .moon-rock-burst i:nth-child(4){--rx:45px;--ry:-55px}.moon-exploding .moon-rock-burst i:nth-child(5){--rx:58px;--ry:-5px}.moon-exploding .moon-rock-burst i:nth-child(6){--rx:42px;--ry:58px}.moon-exploding .moon-rock-burst i:nth-child(7){--rx:0px;--ry:70px}.moon-exploding .moon-rock-burst i:nth-child(8){--rx:-52px;--ry:48px}}
+      @media(prefers-reduced-motion:reduce){.future-adventure-moon,.moon-glow,.moon-star,.moon-rock-burst i{animation:none!important}.moon-exploding{opacity:0!important}}
     `;
     document.head.appendChild(style);
   }
 
-  function start() { addStyles(); initFutureAdventureSelector(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
-  else start();
+  function start(){addStyles();initFutureAdventurePortal();}
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start,{once:true}); else start();
 })();
