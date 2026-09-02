@@ -44,7 +44,6 @@ body:has(.success.show) .book-reveal.show p{order:3!important;font-size:0!import
 body:has(.success.show) .book-reveal.show p::before{content:"The story doesn’t end at the final whistle."!important;font-size:1.12rem!important}
 body:has(.success.show) .book-reveal.show .cta{order:4!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:210px!important;background:var(--client-yellow)!important;color:#092b49!important;border-radius:999px!important;padding:.95rem 1.6rem!important;font-weight:900!important;text-decoration:none!important}
 body:has(.success.show) .success.show>.secondary{order:5!important;margin:.25rem auto 0!important;color:var(--client-cream)!important;border:1px solid rgba(255,255,255,.42)!important;border-radius:999px!important;padding:.9rem 1.6rem!important;text-decoration:none!important}
-
 body:has(.bike-adventure) .finish.show{display:flex!important;flex-direction:column!important;align-items:center!important;padding:clamp(1.2rem,4vw,2.5rem)!important;text-align:center!important}
 body:has(.bike-adventure) .finish.show .bike-reveal{display:none!important}
 body:has(.bike-adventure) .finish.show h2{order:2!important;font-size:0!important;color:var(--client-cream)!important;line-height:1.05!important;margin:.35rem auto .9rem!important}
@@ -55,7 +54,6 @@ body:has(.bike-adventure) .finish.show .book-cover{order:1!important;width:min(2
 body:has(.bike-adventure) .finish.show .button-row{order:4!important;width:100%!important;display:flex!important;justify-content:center!important;gap:12px!important}
 body:has(.bike-adventure) .finish.show .bike-note{order:5!important;font-size:.82rem!important;margin-top:1.25rem!important}
 body:has(.bike-adventure) .finish.show .book-cta{min-width:210px!important}
-
 body:has(.cruise-game) .result>.voyage-sendoff,body:has(.kickoff-game) .final-scene,body:has(.kickoff-game) .win-title{display:none!important}
 body:has(.cruise-game) .book-reveal.show,body:has(.kickoff-game) .book-reveal.show{display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important;max-width:680px!important;margin:0 auto!important;padding:0!important;opacity:1!important;transform:none!important;max-height:none!important;text-align:center!important;background:transparent!important;border:0!important}
 body:has(.cruise-game) .book-reveal.show .book-cover,body:has(.kickoff-game) .book-reveal.show .reveal-cover{order:1!important;width:min(280px,72vw)!important;margin:0 auto 1.35rem!important}
@@ -65,7 +63,6 @@ body:has(.cruise-game) .book-reveal.show p,body:has(.kickoff-game) .book-reveal.
 body:has(.cruise-game) .book-reveal.show p::before,body:has(.kickoff-game) .book-reveal.show p::before{content:"The story doesn’t end at the final whistle."!important;font-size:1.12rem!important}
 body:has(.cruise-game) .book-reveal.show .book-btn,body:has(.kickoff-game) .book-reveal.show .book-btn{order:4!important;min-width:210px!important;background:var(--client-yellow)!important;color:#092b49!important;border-radius:999px!important;padding:.95rem 1.6rem!important;font-weight:900!important}
 body:has(.cruise-game) .book-reveal.show .back-btn,body:has(.kickoff-game) .book-reveal.show .back{order:5!important;min-width:210px!important;margin-top:.15rem!important;color:var(--client-cream)!important;border:1px solid rgba(255,255,255,.42)!important;border-radius:999px!important;padding:.9rem 1.6rem!important;background:transparent!important}
-
 body:has(.win-game) .book-reveal.show{display:flex!important;flex-direction:column!important;align-items:center!important;max-width:680px!important;margin:1.4rem auto 0!important;padding:0!important;opacity:1!important;transform:none!important;max-height:none!important;background:transparent!important;border:0!important;text-align:center!important}
 body:has(.win-game) .book-reveal.show::before{content:""!important;display:block!important;width:min(280px,72vw)!important;aspect-ratio:2/3!important;margin:0 auto 1.35rem!important;border-radius:18px!important;background:url("images/winning-play.svg") center/cover no-repeat!important;box-shadow:0 20px 50px rgba(0,0,0,.32)!important}
 body:has(.win-game) .book-reveal.show h2{order:2!important;font-family:Georgia,serif!important;font-size:0!important;line-height:1.05!important;color:var(--client-cream)!important;margin:.2rem auto .9rem!important}
@@ -74,3 +71,29 @@ body:has(.win-game) .book-reveal.show p{order:3!important;font-size:0!important;
 body:has(.win-game) .book-reveal.show p::before{content:"The story doesn’t end at the final whistle."!important;font-size:1.12rem!important}
 body:has(.win-game) .book-reveal.show .back{order:5!important;min-width:210px!important;margin-top:.15rem!important;color:var(--client-cream)!important;border:1px solid rgba(255,255,255,.42)!important;border-radius:999px!important;padding:.9rem 1.6rem!important;background:transparent!important}
 body:has(.win-game) .book-reveal.show a:not(.back){order:4!important}
+
+/* SITE-WIDE PALETTE ENFORCEMENT — deep blue + aqua/teal-green + yellow */
+html{background:var(--client-blue-deep)!important}
+body{background:linear-gradient(135deg,#082d4f 0%,#0d4f7f 48%,#159fb5 100%)!important;color:var(--client-cream)!important}
+body::selection{background:var(--client-yellow)!important;color:#082d4f!important}
+header,.site-header,.adventure-header{background:rgba(8,45,79,.96)!important;color:var(--client-cream)!important;border-color:rgba(255,212,71,.28)!important}
+header a,.site-header a,.adventure-header a{color:var(--client-cream)!important}
+header a:hover,.site-header a:hover,.adventure-header a:hover{color:var(--client-yellow)!important}
+main,.wrap,.page,.page-shell,.content,.section-wrap{color:var(--client-cream)}
+.hero,.page-hero,.book-hero,.adventure-hero{background:linear-gradient(135deg,#062744 0%,#0d5f91 48%,#159fb5 100%)!important;color:var(--client-cream)!important}
+.hero::before,.page-hero::before{background-image:radial-gradient(circle at 10% 20%,rgba(255,212,71,.9) 0 1px,transparent 1.5px),radial-gradient(circle at 75% 12%,rgba(255,255,255,.85) 0 1px,transparent 1.5px),radial-gradient(circle at 42% 70%,rgba(73,185,107,.8) 0 1px,transparent 1.5px),radial-gradient(circle at 88% 80%,rgba(255,255,255,.8) 0 1px,transparent 1.5px)!important}
+h1,h2,h3,h4{color:var(--client-cream)!important}h1 span,.eyebrow,.k,.section-kicker,.progress,.hint,.text-link,.back,.brand-star{color:var(--client-yellow)!important}
+p,.lead,.intro,.intro-copy,.hero-text,.book-info p,.adventure-item p,.muted,.description{color:var(--client-muted)!important}
+button,.button,.cta,.book-btn,.book-cta,.again,.primary,.button-gold{background:var(--client-yellow)!important;color:#082d4f!important;border-color:var(--client-yellow)!important}
+.button-outline,.secondary,.back-btn{background:rgba(73,185,107,.16)!important;color:var(--client-cream)!important;border-color:rgba(73,185,107,.72)!important}
+button:hover,.button:hover,.cta:hover,.book-btn:hover,.again:hover{background:#ffe27a!important;color:#082d4f!important}
+.panel,.card,.question,.feedback,.success,.result,.finish,.book-reveal,.book-card,.adventure-item,.connect-card{background:linear-gradient(145deg,rgba(8,45,79,.88),rgba(18,104,116,.78))!important;border-color:rgba(255,212,71,.32)!important;color:var(--client-cream)!important}
+.choice{background:rgba(73,185,107,.13)!important;color:var(--client-cream)!important;border-color:rgba(73,185,107,.72)!important}
+.choice:hover,.choice:focus-visible,.choice[aria-pressed="true"]{background:rgba(255,212,71,.18)!important;border-color:var(--client-yellow)!important;color:var(--client-cream)!important}
+.adventures,.books,.intro,.connect{color:var(--client-cream)}
+.adventures{background:linear-gradient(180deg,#073a60 0%,#075d68 100%)!important}
+.site-footer,footer{background:#06243d!important;color:var(--client-muted)!important;border-color:rgba(255,212,71,.22)!important}
+.site-footer strong,footer strong{color:var(--client-cream)!important}
+.qr-placeholder{background:var(--client-cream)!important;color:#082d4f!important}
+.book-football{background:linear-gradient(135deg,#0a4168,#126ea3)!important}.book-bike{background:linear-gradient(135deg,#176d52,#2f9a68)!important}.book-cruise{background:linear-gradient(135deg,#0d527d,#1985b5)!important}.book-soccer{background:linear-gradient(135deg,#0d5c54,#16816c)!important}.book-winning{background:linear-gradient(135deg,#0d5c54,#16816c)!important}
+@media(max-width:700px){body{background:linear-gradient(160deg,#082d4f 0%,#0d4f7f 58%,#159fb5 100%)!important}}
