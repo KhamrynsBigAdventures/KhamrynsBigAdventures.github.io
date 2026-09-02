@@ -1,157 +1,34 @@
 /* KHAMRYN'S BIG ADVENTURES — MASTER VISUAL SYSTEM
    SOURCE OF TRUTH: supplied Khamryn artwork.
-   Palette: vivid aqua/turquoise field, deep royal blue contrast, sunshine yellow accents,
-   warm cream surfaces, small fresh-green accents. Keep this visual language site-wide. */
+   Visual language: vivid aqua/turquoise field, bright blue, sunshine yellow,
+   warm cream/white surfaces, and fresh green accents.
+*/
 :root{
-  --brand-aqua:#0B9EAB;
-  --brand-aqua-deep:#078A99;
-  --brand-teal:#18B7B0;
-  --brand-teal-light:#5AD7C8;
-  --brand-blue:#0A3F86;
-  --brand-blue-deep:#07356F;
-  --brand-yellow:#FFD43D;
+  --brand-aqua:#068C9D;
+  --brand-aqua-deep:#057F95;
+  --brand-teal:#20AAAC;
+  --brand-teal-light:#58D6C8;
+  --brand-blue:#064682;
+  --brand-blue-deep:#063E76;
+  --brand-yellow:#FFD84A;
   --brand-cream:#FFF9E8;
   --brand-white:#FFFFFF;
-  --brand-green:#65C95B;
-  --brand-shadow:rgba(7,53,111,.22);
+  --brand-green:#8EC39E;
+  --brand-shadow:rgba(6,62,118,.22);
 }
-
-html,body{background:#0B9EAB!important}
-body{
-  color:var(--brand-cream)!important;
-  background:
-    radial-gradient(circle at 78% 17%,rgba(90,215,200,.38),transparent 24%),
-    radial-gradient(circle at 17% 72%,rgba(7,53,111,.16),transparent 30%),
-    linear-gradient(145deg,#078A99 0%,#0B9EAB 42%,#19B7AE 100%)!important;
-}
+html,body{background:#068C9D!important}
+body{color:var(--brand-cream)!important;background:radial-gradient(circle at 72% 48%,rgba(142,195,158,.20),transparent 23%),radial-gradient(circle at 18% 72%,rgba(255,216,74,.10),transparent 24%),linear-gradient(145deg,#057F95 0%,#068C9D 42%,#20AAAC 100%)!important}
 ::selection{background:var(--brand-yellow)!important;color:var(--brand-blue-deep)!important}
-
-/* Header: turquoise like the reference, not a separate dark/navy universe. */
-.site-header,header,.adventure-header{
-  background:linear-gradient(145deg,#078F9E 0%,#12AAA8 100%)!important;
-  color:var(--brand-cream)!important;
-  border:3px solid var(--brand-yellow)!important;
-  box-shadow:0 8px 24px var(--brand-shadow)!important;
-}
-.site-header a,header a,.adventure-header a{color:var(--brand-cream)!important}
-.site-header a:hover,header a:hover,.adventure-header a:hover{color:var(--brand-yellow)!important}
-.brand-star,.eyebrow,.section-kicker,.k,.progress,.hint,.text-link,.back{color:var(--brand-yellow)!important}
-
-/* Main fields: bright aqua/turquoise is the dominant color everywhere. */
-.hero,.page-hero,.book-hero,.adventure-hero,.connect-page,.about-page,
-.intro,.books,.adventures,.connect{
-  color:var(--brand-cream)!important;
-  background:
-    radial-gradient(circle at 80% 18%,rgba(255,212,61,.12),transparent 20%),
-    radial-gradient(circle at 18% 76%,rgba(101,201,91,.13),transparent 27%),
-    linear-gradient(145deg,#078A99 0%,#0BA3AB 45%,#19B7AE 100%)!important;
-}
-.hero::before,.page-hero::before{
-  opacity:.52!important;
-  background-image:
-    radial-gradient(circle at 10% 20%,rgba(255,212,61,.95) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 75% 12%,rgba(255,255,255,.9) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 42% 70%,rgba(101,201,91,.8) 0 1px,transparent 1.6px),
-    radial-gradient(circle at 88% 80%,rgba(255,255,255,.82) 0 1px,transparent 1.6px)!important;
-}
-
-/* Typography: yellow + blue is the signature combination in the supplied artwork. */
-h1,h2,h3,h4{color:var(--brand-cream)!important}
-h1 span{color:var(--brand-yellow)!important;text-shadow:3px 4px 0 var(--brand-blue-deep)!important}
-.hero h1,.page-hero h1,.book-hero h1,.adventure-hero h1{color:var(--brand-yellow)!important;text-shadow:3px 4px 0 var(--brand-blue-deep)!important}
-p,.lead,.intro-copy,.hero-text,.book-info p,.adventure-item p,.muted,.description{color:var(--brand-cream)!important}
-
-/* Cream/yellow CTA treatment from the reference button and speech bubble. */
-button,.button,.cta,.book-btn,.book-cta,.again,.primary,.button-gold{
-  background:var(--brand-cream)!important;
-  color:var(--brand-blue)!important;
-  border:3px solid var(--brand-yellow)!important;
-  box-shadow:0 5px 0 rgba(7,53,111,.18)!important;
-}
-button:hover,.button:hover,.cta:hover,.book-btn:hover,.again:hover{
-  background:var(--brand-yellow)!important;color:var(--brand-blue-deep)!important;
-}
-.button-outline,.secondary,.back-btn{
-  background:rgba(255,249,232,.14)!important;
-  color:var(--brand-cream)!important;
-  border:2px solid var(--brand-yellow)!important;
-}
-
-/* Content cards: warm cream surface with royal-blue text and yellow edging. */
-.panel,.card,.question,.feedback,.success,.result,.finish,.book-reveal,.book-card,.adventure-item,.connect-card{
-  background:linear-gradient(145deg,rgba(255,249,232,.99),rgba(255,255,255,.96))!important;
-  border:3px solid rgba(255,212,61,.94)!important;
-  color:var(--brand-blue)!important;
-  box-shadow:0 18px 45px var(--brand-shadow)!important;
-}
-.panel h1,.panel h2,.panel h3,.card h1,.card h2,.card h3,
-.question h2,.book-card h3,.connect-card h2,.connect-card h3,
-.panel p,.panel .lead,.card p,.question p,.book-card p,.connect-card p{
-  color:var(--brand-blue)!important;
-}
-.choice{
-  background:rgba(24,183,176,.12)!important;
-  color:var(--brand-blue)!important;
-  border:2px solid var(--brand-teal)!important;
-}
-.choice:hover,.choice:focus-visible,.choice[aria-pressed="true"]{
-  background:rgba(255,212,61,.26)!important;
-  border-color:var(--brand-yellow)!important;
-  color:var(--brand-blue-deep)!important;
-}
-
-/* Book art stays visible; supporting fields use the same aqua/blue/green family. */
-.book-art{background:rgba(255,249,232,.10)!important}
-.book-art::before{background:rgba(255,212,61,.14)!important}
-.book-football{background:linear-gradient(145deg,#075B86,#0A9EAB)!important}
-.book-bike{background:linear-gradient(145deg,#176D52,#45A96D)!important}
-.book-cruise{background:linear-gradient(145deg,#075B86,#0BA7B3)!important}
-.book-soccer,.book-winning{background:linear-gradient(145deg,#087F7A,#16AAA0)!important}
-
-/* Homepage orbit echoes the yellow-ringed aqua artwork. */
-.hero-orbit .orbit{border:2px solid rgba(255,212,61,.78)!important;box-shadow:none!important}
-.hero-orbit .hero-core{
-  background:radial-gradient(circle at 35% 25%,#FFFDF2 0%,#91E5D8 30%,#0BA4AB 60%,#075B86 100%)!important;
-  border:3px solid var(--brand-yellow)!important;
-  box-shadow:0 0 70px rgba(255,212,61,.25),inset -20px -24px 34px rgba(7,53,111,.18)!important;
-}
-.hero-orbit .hero-core strong{color:var(--brand-blue)!important}
-.hero-orbit .hero-core strong span,.hero-orbit .core-star,.sparkle{color:var(--brand-yellow)!important}
-.hero-orbit .hero-core small{color:var(--brand-blue-deep)!important}
-
-/* Adventure/game pages inherit the exact same universe. */
-body:has(.adventure-header),body:has(.bike-adventure),body:has(.cruise-game),body:has(.kickoff-game),body:has(.win-game){
-  background:linear-gradient(145deg,#078A99 0%,#0BA4AB 48%,#19B7AE 100%)!important;
-}
-.adventure-header + .wrap .panel,
-.adventure-header + .wrap .book-reveal,
-body:has(.bike-adventure) .bike-panel,
-body:has(.cruise-game) .game-card,
-body:has(.kickoff-game) .game-card,
-body:has(.win-game) .game-card{
-  background:linear-gradient(145deg,rgba(255,249,232,.99),rgba(255,255,255,.96))!important;
-  border-color:rgba(255,212,61,.94)!important;
-  color:var(--brand-blue)!important;
-}
-.adventure-header + .wrap .panel * ,
-body:has(.bike-adventure) .bike-panel * ,
-body:has(.cruise-game) .game-card * ,
-body:has(.kickoff-game) .game-card * ,
-body:has(.win-game) .game-card *{color:var(--brand-blue)}
-.adventure-header + .wrap .choice{background:rgba(24,183,176,.12)!important;border-color:var(--brand-teal)!important;color:var(--brand-blue)!important}
-.adventure-header + .wrap .choice:hover,.adventure-header + .wrap .choice:focus-visible,.adventure-header + .wrap .choice[aria-pressed="true"]{background:rgba(255,212,61,.26)!important;border-color:var(--brand-yellow)!important}
-
-/* Footer: still part of the aqua world, with yellow edge. */
-.site-footer,footer{
-  background:linear-gradient(145deg,#078A99,#0BA4AB)!important;
-  color:var(--brand-cream)!important;
-  border-top:3px solid var(--brand-yellow)!important;
-}
-.site-footer strong,footer strong,.site-footer p,footer p,.footer-links a{color:var(--brand-cream)!important}
-.qr-placeholder{background:var(--brand-cream)!important;color:var(--brand-blue)!important;border:3px solid var(--brand-yellow)!important}
-
-/* Preserve the existing rounded mobile navigation layout; only recolor it. */
-@media(max-width:600px){
-  .site-header{background:linear-gradient(145deg,#078F9E,#12AAA8)!important;border:2px solid var(--brand-yellow)!important}
-  .site-header .nav{border-top-color:rgba(255,212,61,.35)!important}
-}
+.site-header,header,.adventure-header{background:linear-gradient(145deg,#057F95 0%,#20AAAC 100%)!important;color:var(--brand-cream)!important;border:3px solid var(--brand-yellow)!important;box-shadow:0 8px 24px var(--brand-shadow)!important}
+.site-header a,header a,.adventure-header a{color:var(--brand-cream)!important}.site-header a:hover,header a:hover,.adventure-header a:hover{color:var(--brand-yellow)!important}.brand-star,.eyebrow,.section-kicker,.k,.progress,.hint,.text-link,.back{color:var(--brand-yellow)!important}
+.hero,.page-hero,.book-hero,.adventure-hero,.connect-page,.about-page,.intro,.books,.adventures,.connect{color:var(--brand-cream)!important;background:radial-gradient(circle at 72% 48%,rgba(142,195,158,.20),transparent 23%),radial-gradient(circle at 20% 72%,rgba(255,216,74,.10),transparent 24%),linear-gradient(145deg,#057F95 0%,#068C9D 45%,#20AAAC 100%)!important}
+.hero::before,.page-hero::before{opacity:.52!important;background-image:radial-gradient(circle at 10% 20%,rgba(255,216,74,.95) 0 1px,transparent 1.6px),radial-gradient(circle at 75% 12%,rgba(255,255,255,.9) 0 1px,transparent 1.6px),radial-gradient(circle at 42% 70%,rgba(142,195,158,.8) 0 1px,transparent 1.6px),radial-gradient(circle at 88% 80%,rgba(255,255,255,.82) 0 1px,transparent 1.6px)!important}
+h1,h2,h3,h4{color:var(--brand-cream)!important}h1 span{color:var(--brand-yellow)!important;text-shadow:3px 4px 0 var(--brand-blue-deep)!important}.hero h1,.page-hero h1,.book-hero h1,.adventure-hero h1{color:var(--brand-yellow)!important;text-shadow:3px 4px 0 var(--brand-blue-deep)!important}p,.lead,.intro-copy,.hero-text,.book-info p,.adventure-item p,.muted,.description{color:var(--brand-cream)!important}
+button,.button,.cta,.book-btn,.book-cta,.again,.primary,.button-gold{background:var(--brand-cream)!important;color:var(--brand-blue)!important;border:3px solid var(--brand-yellow)!important;box-shadow:0 5px 0 rgba(6,62,118,.18)!important}button:hover,.button:hover,.cta:hover,.book-btn:hover,.again:hover{background:var(--brand-yellow)!important;color:var(--brand-blue-deep)!important}.button-outline,.secondary,.back-btn{background:rgba(255,249,232,.14)!important;color:var(--brand-cream)!important;border:2px solid var(--brand-yellow)!important}
+.panel,.card,.question,.feedback,.success,.result,.finish,.book-reveal,.book-card,.adventure-item,.connect-card{background:linear-gradient(145deg,rgba(255,249,232,.99),rgba(255,255,255,.96))!important;border:3px solid rgba(255,216,74,.94)!important;color:var(--brand-blue)!important;box-shadow:0 18px 45px var(--brand-shadow)!important}.panel h1,.panel h2,.panel h3,.card h1,.card h2,.card h3,.question h2,.book-card h3,.connect-card h2,.connect-card h3,.panel p,.panel .lead,.card p,.question p,.book-card p,.connect-card p{color:var(--brand-blue)!important}
+.choice{background:rgba(32,170,172,.12)!important;color:var(--brand-blue)!important;border:2px solid var(--brand-teal)!important}.choice:hover,.choice:focus-visible,.choice[aria-pressed="true"]{background:rgba(255,216,74,.26)!important;border-color:var(--brand-yellow)!important;color:var(--brand-blue-deep)!important}
+.book-art{background:rgba(255,249,232,.10)!important}.book-art::before{background:rgba(255,216,74,.14)!important}.book-football{background:linear-gradient(145deg,#064682,#068C9D)!important}.book-bike{background:linear-gradient(145deg,#176D52,#45A96D)!important}.book-cruise{background:linear-gradient(145deg,#064682,#20AAAC)!important}.book-soccer,.book-winning{background:linear-gradient(145deg,#087F7A,#20AAAC)!important}
+.hero-orbit .orbit{border:2px solid rgba(255,216,74,.78)!important;box-shadow:none!important}.hero-orbit .hero-core{background:radial-gradient(circle at 35% 25%,#FFFDF2 0%,#91E5D8 30%,#068C9D 60%,#064682 100%)!important;border:3px solid var(--brand-yellow)!important;box-shadow:0 0 70px rgba(255,216,74,.25),inset -20px -24px 34px rgba(6,62,118,.18)!important}.hero-orbit .hero-core strong{color:var(--brand-blue)!important}.hero-orbit .hero-core strong span,.hero-orbit .core-star,.sparkle{color:var(--brand-yellow)!important}.hero-orbit .hero-core small{color:var(--brand-blue-deep)!important}
+body:has(.adventure-header),body:has(.bike-adventure),body:has(.cruise-game),body:has(.kickoff-game),body:has(.win-game){background:linear-gradient(145deg,#057F95 0%,#068C9D 48%,#20AAAC 100%)!important}.adventure-header + .wrap .panel,.adventure-header + .wrap .book-reveal,body:has(.bike-adventure) .bike-panel,body:has(.cruise-game) .game-card,body:has(.kickoff-game) .game-card,body:has(.win-game) .game-card{background:linear-gradient(145deg,rgba(255,249,232,.99),rgba(255,255,255,.96))!important;border-color:rgba(255,216,74,.94)!important;color:var(--brand-blue)!important}.adventure-header + .wrap .panel *,body:has(.bike-adventure) .bike-panel *,body:has(.cruise-game) .game-card *,body:has(.kickoff-game) .game-card *,body:has(.win-game) .game-card *{color:var(--brand-blue)}.adventure-header + .wrap .choice{background:rgba(32,170,172,.12)!important;border-color:var(--brand-teal)!important;color:var(--brand-blue)!important}.adventure-header + .wrap .choice:hover,.adventure-header + .wrap .choice:focus-visible,.adventure-header + .wrap .choice[aria-pressed="true"]{background:rgba(255,216,74,.26)!important;border-color:var(--brand-yellow)!important}
+.site-footer,footer{background:linear-gradient(145deg,#057F95,#068C9D)!important;color:var(--brand-cream)!important;border-top:3px solid var(--brand-yellow)!important}.site-footer strong,footer strong,.site-footer p,footer p,.footer-links a{color:var(--brand-cream)!important}.qr-placeholder{background:var(--brand-cream)!important;color:var(--brand-blue)!important;border:3px solid var(--brand-yellow)!important}
+@media(max-width:600px){.site-header{background:linear-gradient(145deg,#057F95,#20AAAC)!important;border:2px solid var(--brand-yellow)!important}.site-header .nav{border-top-color:rgba(255,216,74,.35)!important}}
