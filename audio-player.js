@@ -9,7 +9,7 @@
   // Sitewide visual source: supplied Khamryn artwork. Cache-bust whenever palette changes.
   const palette = document.createElement('link');
   palette.rel = 'stylesheet';
-  palette.href = 'palette.css?v=20260906-sitewide-teal';
+  palette.href = 'palette.css?v=20260907-clean-palette';
   palette.dataset.sitewidePalette = 'true';
   document.head.appendChild(palette);
 
