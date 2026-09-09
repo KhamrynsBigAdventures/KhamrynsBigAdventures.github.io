@@ -1,10 +1,6 @@
-/* Khamryn's Big Adventures — soundtrack temporarily muted */
+/* Khamryn's Big Adventures — sitewide adventure fixes */
 (function () {
   'use strict';
-  const oldAudio = document.getElementById('khamryn-site-music');
-  const oldBar = document.getElementById('khamryn-music');
-  if (oldAudio) { try { oldAudio.pause(); oldAudio.removeAttribute('src'); oldAudio.load(); } catch (e) {} oldAudio.remove(); }
-  if (oldBar) oldBar.remove();
 
   // Sitewide visual source: supplied Khamryn artwork. Cache-bust whenever palette changes.
   const palette = document.createElement('link');
@@ -37,7 +33,6 @@
     if (!location.pathname.endsWith('winning-play-adventure.html')) return;
     const start = document.getElementById('startGame');
     if (!start) return;
-    // The adventure now starts as soon as the page opens. Keep the first question visible.
     const instructions = document.querySelector('.how-to-play span');
     if (instructions) instructions.innerHTML = 'Read each play and tap the answer you think is best. Choose correctly and you\'ll automatically move to the next play. Get all 6 right to run the winning play! 🏈';
     start.hidden = true;
