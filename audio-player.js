@@ -32,7 +32,20 @@
       }
     }
   }
+
+  function startWinningPlayImmediately() {
+    if (!location.pathname.endsWith('winning-play-adventure.html')) return;
+    const start = document.getElementById('startGame');
+    if (!start) return;
+    // The adventure now starts as soon as the page opens. Keep the first question visible.
+    const instructions = document.querySelector('.how-to-play span');
+    if (instructions) instructions.innerHTML = 'Read each play and tap the answer you think is best. Choose correctly and you\'ll automatically move to the next play. Get all 6 right to run the winning play! 🏈';
+    start.hidden = true;
+    start.click();
+  }
+
   standardizeAdventureEnding();
+  startWinningPlayImmediately();
   const observer = new MutationObserver(standardizeAdventureEnding);
   observer.observe(document.body, { childList: true, subtree: true });
 })();
