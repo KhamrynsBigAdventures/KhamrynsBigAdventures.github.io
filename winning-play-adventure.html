@@ -58,9 +58,9 @@ h1{font-size:clamp(2.2rem,7vw,4.7rem);margin:.25rem 0 1rem}
 <h1>🏈 Khamryn's Winning Play!</h1>
 <p class="copy">Khamryn wants to help the Cowboys win the championship. Can you make smart team-player decisions, trust your teammates, and help Khamryn reach the winning play?</p>
 <div class="how-to-play"><strong>🎮 HOW TO PLAY</strong><span>Read each play and tap the answer you think is best. Choose correctly and you'll automatically move to the next play. Get all 6 right to run the winning play! 🏈</span></div>
-<div class="scoreboard"><div class="team"><strong>⭐ COWBOYS</strong><small>Play together</small></div><div class="score" id="progress">0 / 6</div><div class="team"><strong>🏆 CHAMPIONSHIP</strong><small>One team. One goal.</small></div></div>
+<div id="gameArea" aria-live="polite"><div class="scoreboard"><div class="team"><strong>⭐ COWBOYS</strong><small>Play together</small></div><div class="score" id="progress">0 / 6</div><div class="team"><strong>🏆 CHAMPIONSHIP</strong><small>One team. One goal.</small></div></div>
 <div class="field" aria-hidden="true"><div class="field-lines"></div><div class="endzone left">START</div><div class="endzone right">TD</div><span class="field-ball">🏈</span><span class="field-goal">🏆</span></div>
-<div id="gameArea" aria-live="polite"></div>
+<div id="questionArea" aria-live="polite"></div></div>
 </section></main>
 <div class="football-pop" id="footballPop" aria-hidden="true"><div class="touchdown-word">NICE PLAY! 🏈</div></div>
 <script>
@@ -73,7 +73,7 @@ const questions=[
 {q:'Khamryn has the ball and sees a teammate open for a big play. What should a team player think about?',a:['How the team can make the best play','How to keep the ball no matter what','How to avoid passing','How to stop the play'],c:'How the team can make the best play'},
 {q:'In the final game, what is Khamryn’s winning play?',a:['He passes the touchdown to Josiah','He leaves the game','He tries to win without his teammates','He stops the play'],c:'He passes the touchdown to Josiah'}
 ];
-const area=document.getElementById('gameArea'),progress=document.getElementById('progress'),footballPop=document.getElementById('footballPop');let index=0,locked=false;
+const area=document.getElementById('questionArea'),progress=document.getElementById('progress'),footballPop=document.getElementById('footballPop');let index=0,locked=false;
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function burst(){for(let i=0;i<18;i++){const s=document.createElement('span');s.className='ball-burst show';s.textContent=i%3===0?'⭐':'🏈';const angle=Math.random()*Math.PI*2,d=85+Math.random()*300;s.style.setProperty('--x',Math.cos(angle)*d+'px');s.style.setProperty('--y',Math.sin(angle)*d+'px');s.style.setProperty('--r',(Math.random()*720-360)+'deg');s.style.animationDelay=Math.random()*120+'ms';document.body.appendChild(s);setTimeout(()=>s.remove(),1050)}}
 function celebrate(){footballPop.classList.remove('show');void footballPop.offsetWidth;footballPop.classList.add('show');burst()}
