@@ -1,0 +1,35 @@
+name: Fix future adventure image reference
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-future-adventure-image.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-image-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Fix image reference
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('future-adventure.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('big-idea-thank-you-hq.svg', 'CDFE034C-9E83-46D3-9138-2E78D9AF5A01.jpeg')
+          s = s.replace('big-idea-thank-you-hq.jpg', 'CDFE034C-9E83-46D3-9138-2E78D9AF5A01.jpeg')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add future-adventure.html
+          git diff --cached --quiet || git commit -m 'Fix future adventure result image reference'
+          git push
